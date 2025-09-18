@@ -119,5 +119,9 @@
   "confirm_stop_monitoring_address": "⚠\uFE0F Confirm to stop monitoring the following address?",
   "confirm_stop_monitoring_address_tips": "Days remaining: {days}\nMonitoring will stop immediately upon cancellation. Service time is non-refundable.\n\uD83D\uDD12 To prevent accidental operation, please confirm again:",
   "confirm_stop_monitoring_address_yes": "Confirm",
-  "confirm_stop_monitoring_address_success_tips": "Address monitoring has been successfully stopped. ✅"
+  "confirm_stop_monitoring_address_success_tips": "Address monitoring has been successfully stopped. ✅",
+  "address_list_empty_tips": "No address in the list, please add an address first.",
+  "promotion_link": "Exclusive promotion link",
+  "join_vip_cooperation": "Join the VIP business cooperation group:",
+  "visit_tutorial": "Please visit our tutorial:"
 }

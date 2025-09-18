@@ -300,7 +300,17 @@ func CLICK_BUNDLE_PACKAGE_ADDRESS_STATS2(_lang string, db *gorm.DB, chatID int64
 		//	builder.WriteString("\n") // 添加分隔符
 		//}
 	} else {
+		builder.WriteString("\n")
 
+		builder.WriteString(global.Translations[_lang]["remaining"])
+		builder.WriteString(strconv.FormatInt(user.BundleTimes, 10))
+		builder.WriteString(" " + global.Translations[_lang]["笔"])
+
+		//usedTimes := ExtractLeadingInt64(order.BundleName) - order.Times
+		builder.WriteString("     " + global.Translations[_lang]["used"])
+		builder.WriteString(strconv.FormatInt(usedTimes, 10))
+		builder.WriteString(" " + global.Translations[_lang]["笔"])
+		builder.WriteString("\n")
 		builder.WriteString(global.Translations[_lang]["address_list_empty_tips"] + "\n\n") // 添加分隔符
 	}
 

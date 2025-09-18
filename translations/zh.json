@@ -123,6 +123,10 @@
   "confirm_stop_monitoring_address": "⚠\uFE0F 确认停止监控以下地址？",
   "confirm_stop_monitoring_address_tips": "当前剩余天数：{days} 天\n停止监控后将立即终止监控，服务时间不予退还\n\uD83D\uDD12 为避免误操作，请再次确认：",
   "confirm_stop_monitoring_address_yes": "确认停止",
-  "confirm_stop_monitoring_address_success_tips": "地址监控已成功停止✅"
+  "confirm_stop_monitoring_address_success_tips": "地址监控已成功停止✅",
+  "address_list_empty_tips": "列表无地址，请先添加地址",
+  "promotion_link":"专属推广链接",
+  "join_vip_cooperation": "加入商务合作VIP群：",
+  "visit_tutorial":"请访问我们的使用教程："
 }
 

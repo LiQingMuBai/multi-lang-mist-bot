@@ -95,6 +95,13 @@ func (r *UserRepository) GetByUserID(_chatID int64) (domain.User, error) {
 
 	return jason, err
 }
+func (r *UserRepository) GetByUserIDStr(_chatID string) (domain.User, error) {
+	jason := domain.User{}
+
+	err := r.db.Where(" associates=?", _chatID).First(&jason).Error
+
+	return jason, err
+}
 func (r *UserRepository) UpdateLang(_lang string, _chatID int64) error {
 	query := "UPDATE tg_users SET lang = ? WHERE associates = ?"
 	tx := r.db.Exec(query, _lang, _chatID)

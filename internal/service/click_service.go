@@ -4,6 +4,7 @@ import (
 	"context"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"gorm.io/gorm"
+	"strconv"
 	"strings"
 	"ushield_bot/internal/global"
 	"ushield_bot/internal/infrastructure/repositories"
@@ -71,7 +72,7 @@ func CLICK_DEPOSIT_USDT_RECORDS(_lang string, db *gorm.DB, callbackQuery *tgbota
 }
 
 func ClickBusinessCooperation(_lang string, callbackQuery *tgbotapi.CallbackQuery, bot *tgbotapi.BotAPI) {
-	msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, "👥加入商务合作VIP群：https://t.me/ushield1\n")
+	msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, global.Translations[_lang]["promotion_link"]+"："+"https://t.me/ushield_bot?start="+strconv.FormatInt(callbackQuery.Message.Chat.ID, 10)+"\n\n")
 	msg.ParseMode = "HTML"
 	inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
 		tgbotapi.NewInlineKeyboardRow(
@@ -82,6 +83,20 @@ func ClickBusinessCooperation(_lang string, callbackQuery *tgbotapi.CallbackQuer
 	msg.ReplyMarkup = inlineKeyboard
 	bot.Send(msg)
 }
+
+func ClickOfficalChannel(_lang string, callbackQuery *tgbotapi.CallbackQuery, bot *tgbotapi.BotAPI) {
+	msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, global.Translations[_lang]["join_vip_cooperation"]+"https://t.me/ushield1\n")
+	msg.ParseMode = "HTML"
+	inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
+		tgbotapi.NewInlineKeyboardRow(
+			//tgbotapi.NewInlineKeyboardButtonData("解绑地址", "free_monitor_address"),
+			tgbotapi.NewInlineKeyboardButtonData("🔙"+global.Translations[_lang]["back_home"], "back_home"),
+		),
+	)
+	msg.ReplyMarkup = inlineKeyboard
+	bot.Send(msg)
+}
+
 func ClickCallCenter(_lang string, callbackQuery *tgbotapi.CallbackQuery, bot *tgbotapi.BotAPI) {
 	msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, "📞"+global.Translations[_lang]["support"]+"：@Ushield001\n")
 	msg.ParseMode = "HTML"

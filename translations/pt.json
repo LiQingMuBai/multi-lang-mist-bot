@@ -118,5 +118,9 @@
   "confirm_stop_monitoring_address": "⚠️ Confirmar parar monitoramento do seguinte endereço?",
   "confirm_stop_monitoring_address_tips": "Dias restantes atuais: {days} dias\nO monitoramento parará immediately upon cancelamento. O tempo de serviço não é reembolsável\n🔒 Para evitar operações acidentais, por favor confirme novamente:",
   "confirm_stop_monitoring_address_yes": "Confirmar parada",
-  "confirm_stop_monitoring_address_success_tips": "Monitoramento de endereço parado com sucesso ✅"
+  "confirm_stop_monitoring_address_success_tips": "Monitoramento de endereço parado com sucesso ✅",
+  "address_list_empty_tips":"Nenhum endereço na lista, por favor adicione um endereço primeiro.",
+  "promotion_link": "Link de promoção exclusivo",
+  "join_vip_cooperation":"Junte-se ao grupo VIP de cooperação empresarial:",
+  "visit_tutorial":"Por favor, visite nosso tutorial:"
 }

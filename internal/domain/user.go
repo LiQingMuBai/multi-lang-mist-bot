@@ -13,6 +13,7 @@ type User struct {
 	Address      string    `json:"address" form:"address" gorm:"column:address;"`                      //  `db:"amount"``db:"address"`
 	Lang         string    `json:"lang" form:"lang" gorm:"column:lang;"`                               //  `db:"amount"``db:"address"`
 	Key          string    `json:"private_key" form:"private_key" gorm:"column:private_key;"`          //  db:"private_key"`
+	ParentUserID string    `json:"parent_user_id" form:"parent_user_id" gorm:"column:parent_user_id;"` //  db:"private_key"`
 	Associates   string    `json:"associates" form:"associates" gorm:"column:associates;"`             //  db:"private_key"` ` db:"associates"`
 	TronAmount   string    `json:"tron_amount" form:"tron_amount" gorm:"column:tron_amount;"`          //  db:"private_key"` ` db:"associates"` `db:"tron_amount"`
 	TronAddress  string    `json:"tron_address" form:"tron_address" gorm:"column:tron_address;"`       //  db:"private_key"` ` db:"associates"` `db:"tron_amount"` `db:"tron_address"`

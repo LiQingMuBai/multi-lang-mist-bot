@@ -116,5 +116,9 @@
   "confirm_stop_monitoring_address": "⚠\uFE0F تأكيد إيقاف مراقبة العنوان التالي؟",
   "confirm_stop_monitoring_address_tips": "الأيام المتبقية: {days}\nستتوقف المراقبة فورًا عند الإلغاء. وقت الخدمة غير قابل للاسترداد.\n\uD83D\uDD12 لمنع العمليات العرضية، يرجى التأكيد مرة أخرى:",
   "confirm_stop_monitoring_address_yes": "تأكيد",
-  "confirm_stop_monitoring_address_success_tips": "تم إيقاف مراقبة العنوان بنجاح. ✅"
+  "confirm_stop_monitoring_address_success_tips": "تم إيقاف مراقبة العنوان بنجاح. ✅",
+  "address_list_empty_tips": "لا يوجد عنوان في القائمة، يرجى إضافة عنوان أولاً.",
+  "promotion_link":"رابط ترويج حصري",
+  "join_vip_cooperation": "انضم إلى مجموعة التعاون التجاري للمستخدمين المميزين:",
+  "visit_tutorial": "يرجى زيارة دليل الاستخدام الخاص بنا:"
 }

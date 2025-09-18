@@ -118,5 +118,9 @@
   "confirm_stop_monitoring_address": "⚠️ 以下のアドレスの監視を停止しますか？",
   "confirm_stop_monitoring_address_tips": "現在の残り日数: {days} 日\n監視停止後は直ちに監視が終了します。サービス時間は返金されません\n🔒 誤操作を防ぐため、再度確認してください:",
   "confirm_stop_monitoring_address_yes": "停止を確認",
-  "confirm_stop_monitoring_address_success_tips": "アドレス監視が正常に停止しました ✅"
+  "confirm_stop_monitoring_address_success_tips": "アドレス監視が正常に停止しました ✅",
+  "address_list_empty_tips":"リストにアドレスがありません。まずアドレスを追加してください。",
+  "promotion_link": "専用プロモーションリンク",
+  "join_vip_cooperation": "VIPビジネス提携グループに参加：",
+  "visit_tutorial":"使用チュートリアルをご覧ください："
 }

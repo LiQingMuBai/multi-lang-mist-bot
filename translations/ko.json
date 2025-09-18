@@ -118,5 +118,9 @@
   "confirm_stop_monitoring_address": "⚠️ 다음 주소의 모니터링을停止하시겠습니까?",
   "confirm_stop_monitoring_address_tips": "현재 남은 일수: {days} 일\n모니터링停止后即시 모니터링이终止됩니다. 서비스 시간은 환불되지 않습니다\n🔒误操作을 방지하기 위해再次确认하세요:",
   "confirm_stop_monitoring_address_yes": "停止 확인",
-  "confirm_stop_monitoring_address_success_tips": "주소 모니터링이 성공적으로停止되었습니다 ✅"
+  "confirm_stop_monitoring_address_success_tips": "주소 모니터링이 성공적으로停止되었습니다 ✅",
+  "address_list_empty_tips":"목록에 주소가 없습니다. 먼저 주소를 추가해 주세요.",
+  "promotion_link": "전용 홍보 링크",
+  "join_vip_cooperation":"비즈니스 협력 VIP 그룹에 가입하세요:",
+  "visit_tutorial":"사용 설명서를 방문해 주세요:"
 }

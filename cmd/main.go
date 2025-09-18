@@ -284,9 +284,26 @@ func main() {
 
 				case update.Message.Command() == "start":
 					log.Printf("1")
-
-					//存用户
+					log.Println("text: " + update.Message.Text)
 					userRepo := repositories.NewUserRepository(db)
+					index := strings.LastIndex(update.Message.Text, " ")
+					parentUID := ""
+					if index > 0 {
+
+						parentUIDStr := update.Message.Text
+						parentUID = parentUIDStr[index+1:]
+						fmt.Printf("parentUIDStr: %s\n", parentUID)
+
+						record, err := userRepo.GetByUserIDStr(parentUID)
+						if err != nil {
+							parentUID = ""
+						} else {
+							parentUID = record.Associates
+						}
+
+					}
+					//存用户
+					//userRepo := repositories.NewUserRepository(db)
 					record, err := userRepo.GetByUserID(update.Message.Chat.ID)
 					if err != nil {
 						//增加用户
@@ -294,6 +311,10 @@ func main() {
 						user.Associates = strconv.FormatInt(update.Message.Chat.ID, 10)
 						user.Username = update.Message.Chat.UserName
 						user.CreatedAt = time.Now()
+
+						if len(parentUID) > 0 {
+							user.ParentUserID = parentUID
+						}
 						err := userRepo.Create2(context.Background(), &user)
 
 						expiration := 24 * time.Hour // 短时间缓存空值
@@ -1081,6 +1102,8 @@ func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery 
 		service.MenuNavigateHome(_lang, cache, db, callbackQuery.Message, bot)
 	case callbackQuery.Data == "click_business_cooperation":
 		service.ClickBusinessCooperation(_lang, callbackQuery, bot)
+	case callbackQuery.Data == "click_offical_channel":
+		service.ClickOfficalChannel(_lang, callbackQuery, bot)
 	case callbackQuery.Data == "click_callcenter":
 		service.ClickCallCenter(_lang, callbackQuery, bot)
 	case callbackQuery.Data == "click_my_recepit":

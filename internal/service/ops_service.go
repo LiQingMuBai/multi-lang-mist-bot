@@ -15,7 +15,7 @@ func ExtraQA(_lang string, cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuer
 	//	"2️⃣  第二通知人更改或替换\n第二通知人替换请重复绑定步骤，系统将自动替换。")
 	//"1️⃣ 观察者模式与全局模式的区别\n\n"+
 	//
-	msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, "请访问我们的使用教程https://t.me/ushield_QA")
+	msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, global.Translations[_lang]["visit_tutorial"]+"https://t.me/ushield_QA")
 	//"1️⃣ 观察者模式与全局模式的区别\n\n"+
 	//"➡️观察者模式只可接收冻结预警无法执行服务操作（如发能、查询、解绑）， 全局模式等同主账号权限，可进行所有操作（如检测、续费、管理服务），您可随时通过 /解绑地址 或 /更改权限进行调整。\n\n"+
 	//"2️⃣  主账号被盗，丢失不可用应急说明\n\n"+

@@ -116,5 +116,9 @@
   "confirm_stop_monitoring_address": "⚠\uFE0F ยืนยันการหยุดตรวจสอบที่อยู่ต่อไปนี้หรือไม่?",
   "confirm_stop_monitoring_address_tips": "วันที่เหลือ: {days}\nการตรวจสอบจะหยุดทันทีเมื่อยกเลิก ไม่สามารถขอคืนเวลาที่เหลือได้\n\uD83D\uDD12 เพื่อป้องกันการดำเนินการโดยไม่ตั้งใจ กรุณายืนยันอีกครั้ง:",
   "confirm_stop_monitoring_address_yes": "ยืนยัน",
-  "confirm_stop_monitoring_address_success_tips": "หยุดตรวจสอบที่อยู่เรียบร้อยแล้ว ✅"
+  "confirm_stop_monitoring_address_success_tips": "หยุดตรวจสอบที่อยู่เรียบร้อยแล้ว ✅",
+  "address_list_empty_tips":"ไม่มีที่อยู่ในรายการ กรุณาเพิ่มที่อยู่ก่อน",
+  "promotion_link": "ลิงก์ส่งเสริมการขายเฉพาะบุคคล",
+  "join_vip_cooperation":"เข้าร่วมกลุ่มธุรกิจความร่วมมือระดับวีไอพี:",
+  "visit_tutorial":"กรุณาเข้าชมบทช่วยสอนของเรา:"
 }

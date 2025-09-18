@@ -118,5 +118,9 @@
   "confirm_stop_monitoring_address": "⚠️ Xác nhận dừng giám sát địa chỉ sau?",
   "confirm_stop_monitoring_address_tips": "Số ngày còn lại hiện tại: {days} ngày\nGiám sát sẽ dừng ngay lập tức khi hủy. Thời gian dịch vụ không được hoàn lại\n🔒 Để tránh thao tác nhầm, vui lòng xác nhận lại:",
   "confirm_stop_monitoring_address_yes": "Xác nhận dừng",
-  "confirm_stop_monitoring_address_success_tips": "Giám sát địa chỉ đã dừng thành công ✅"
+  "confirm_stop_monitoring_address_success_tips": "Giám sát địa chỉ đã dừng thành công ✅",
+  "address_list_empty_tips":"Danh sách không có địa chỉ, vui lòng thêm địa chỉ trước.",
+  "promotion_link":"Liên kết quảng bá độc quyền",
+  "join_vip_cooperation":"Tham gia nhóm VIP hợp tác kinh doanh:",
+  "visit_tutorial":"Vui lòng truy cập hướng dẫn sử dụng của chúng tôi:"
 }
