@@ -295,13 +295,13 @@ func CLICK_BUNDLE_PACKAGE_ADDRESS_STATS2(_lang string, db *gorm.DB, chatID int64
 			//builder.WriteString("\n")            // 添加分隔符
 		}
 		//if user.BundleTimes > 0 {
-		//	builder.WriteString("\n\n") // 添加分隔符
+		//	builder.WriteString(global.Translations[_lang]["address_list_empty_tips"]+"\n\n") // 添加分隔符
 		//	builder.WriteString("<b>向其他地址发能</b>:/dispatchOthers")
 		//	builder.WriteString("\n") // 添加分隔符
 		//}
 	} else {
 
-		builder.WriteString("\n\n") // 添加分隔符
+		builder.WriteString(global.Translations[_lang]["address_list_empty_tips"] + "\n\n") // 添加分隔符
 	}
 
 	// 去除最后一个空格
@@ -398,7 +398,7 @@ func CLICK_BUNDLE_PACKAGE_ADDRESS_STATS(_lang string, db *gorm.DB, chatID int64)
 			//builder.WriteString("\n")            // 添加分隔符
 		}
 	} else {
-		builder.WriteString("\n\n") // 添加分隔符
+		builder.WriteString(global.Translations[_lang]["address_list_empty_tips"] + "\n\n") // 添加分隔符
 	}
 
 	// 去除最后一个空格
@@ -501,7 +501,7 @@ func NEXT_BUNDLE_PACKAGE_ADDRESS_STATS(_lang string, callbackQuery *tgbotapi.Cal
 			//builder.WriteString("\n")            // 添加分隔符
 		}
 	} else {
-		builder.WriteString("\n\n") // 添加分隔符
+		builder.WriteString(global.Translations[_lang]["address_list_empty_tips"] + "\n\n") // 添加分隔符
 	}
 
 	// 去除最后一个空格
@@ -599,7 +599,7 @@ func PREV_BUNDLE_PACKAGE_ADDRESS_STATS(_lang string, callbackQuery *tgbotapi.Cal
 				//builder.WriteString("\n")            // 添加分隔符
 			}
 		} else {
-			builder.WriteString("\n\n") // 添加分隔符
+			builder.WriteString(global.Translations[_lang]["address_list_empty_tips"] + "\n\n") // 添加分隔符
 		}
 
 		// 去除最后一个空格
@@ -682,7 +682,7 @@ func PREV_BUNDLE_PACKAGE_ADDRESS_STATS(_lang string, callbackQuery *tgbotapi.Cal
 				//builder.WriteString("\n")            // 添加分隔符
 			}
 		} else {
-			builder.WriteString("\n\n") // 添加分隔符
+			builder.WriteString(global.Translations[_lang]["address_list_empty_tips"] + "\n\n") // 添加分隔符
 		}
 
 		// 去除最后一个空格
