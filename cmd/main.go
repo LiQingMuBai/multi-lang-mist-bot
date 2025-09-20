@@ -1518,7 +1518,7 @@ func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery 
 			allButtons = append(allButtons, tgbotapi.NewInlineKeyboardButtonData("💰"+usdtRecord.Name, "deposit_usdt_"+usdtRecord.Amount))
 		}
 
-		extraButtons = append(extraButtons, tgbotapi.NewInlineKeyboardButtonData("🔘"+global.Translations[_lang]["switch_to_trx_deposit"], "deposit_amount"), tgbotapi.NewInlineKeyboardButtonData("🔙"+global.Translations[_lang]["back_home"], "back_home"))
+		extraButtons = append(extraButtons, tgbotapi.NewInlineKeyboardButtonData("🔁"+global.Translations[_lang]["switch_to_trx_deposit"], "deposit_amount"), tgbotapi.NewInlineKeyboardButtonData("🔙"+global.Translations[_lang]["back_home"], "back_home"))
 
 		for i := 0; i < len(allButtons); i += 2 {
 			end := i + 2

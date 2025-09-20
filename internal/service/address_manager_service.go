@@ -77,9 +77,9 @@ func ADDRESS_LIST_TRACE(_lang string, cache cache.Cache, bot *tgbotapi.BotAPI, c
 	msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, "📊 "+global.Translations[_lang]["currently_monitoring_addresses"]+"\n"+
 		result+
 		//"💰 当前余额："+"\n- "+user.TronAmount+" TRX \n - "+user.Amount+" USDT \n"+
-		"💰"+global.Translations[_lang]["balance"]+": "+"\n"+
-		"- TRX：   "+user.TronAmount+"\n"+
-		"-  USDT："+user.Amount+"\n"+
+		"💰"+global.Translations[_lang]["balance"]+": "+" "+
+		"-TRX： "+user.TronAmount+"    "+
+		"-USDT： "+user.Amount+"\n"+
 		global.Translations[_lang]["freeze_alert_service_monitoring_tips"])
 	msg.ParseMode = "HTML"
 
@@ -87,6 +87,7 @@ func ADDRESS_LIST_TRACE(_lang string, cache cache.Cache, bot *tgbotapi.BotAPI, c
 		tgbotapi.NewInlineKeyboardRow(
 			//tgbotapi.NewInlineKeyboardButtonData("解绑地址", "free_monitor_address"),
 			tgbotapi.NewInlineKeyboardButtonData("🛑"+global.Translations[_lang]["stop_monitoring"], "stop_freeze_risk"),
+			tgbotapi.NewInlineKeyboardButtonData("🔗"+global.Translations[_lang]["secondary_contact"], "click_backup_account"),
 			//tgbotapi.NewInlineKeyboardButtonData("🔙️"+global.Translations[_lang]["back_homepage"], "back_risk_home"),
 			//tgbotapi.NewInlineKeyboardButtonData("地址管理", "user_backup_notify"),
 		),

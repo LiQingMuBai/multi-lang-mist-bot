@@ -21,7 +21,7 @@ func DEPOSIT_AMOUNT(_lang string, db *gorm.DB, callbackQuery *tgbotapi.CallbackQ
 		allButtons = append(allButtons, tgbotapi.NewInlineKeyboardButtonData("💰"+trx.Name, "deposit_trx_"+trx.Amount))
 	}
 
-	extraButtons = append(extraButtons, tgbotapi.NewInlineKeyboardButtonData("🔘"+global.Translations[_lang]["switch_to_usdt_deposit"], "forward_deposit_usdt"), tgbotapi.NewInlineKeyboardButtonData("🔙"+global.Translations[_lang]["back_home"], "back_home"))
+	extraButtons = append(extraButtons, tgbotapi.NewInlineKeyboardButtonData("🔁"+global.Translations[_lang]["switch_to_usdt_deposit"], "forward_deposit_usdt"), tgbotapi.NewInlineKeyboardButtonData("🔙"+global.Translations[_lang]["back_home"], "back_home"))
 
 	for i := 0; i < len(allButtons); i += 2 {
 		end := i + 2

@@ -52,8 +52,8 @@
   "none": "无",
   "secondary_contact": "第二通知人",
   "secondary_contact_none": "第二通知人：（无）",
-  "switch_to_trx_deposit": "切换到TRX充值",
-  "switch_to_usdt_deposit": "切换到USDT充值",
+  "switch_to_trx_deposit": "TRX充值",
+  "switch_to_usdt_deposit": "USDT充值",
 
   "trx_deposit_records": "TRX充值记录",
   "usdt_deposit_records": "USDT充值记录",
@@ -70,7 +70,7 @@
   "NAACUAMS": "当前没有地址在进行预警监控服务",
   "monitoring_address_list": "预警地址列表如下：",
 
-  "transaction_plans_tips": "欢迎使用U盾能量笔数套餐\n一次购买/多地址使用/一键发能\n⚙\uFE0F 功能介绍\n➕添加地址：可添加4个常用地址\n\uD83D\uDCCD地址列表：可向4个常用地址或向其他地址快速发能\n⏳ 能量有效期 1 小时，过期将自动回收",
+  "transaction_plans_tips": "欢迎使用U盾能量笔数套餐\n一次购买/多地址使用/一键发能\n⚙\uFE0F 功能介绍\n➕添加地址：可添加4个常用地址\n\uD83D\uDD22地址列表：可向4个常用地址或向其他地址快速发能\n⏳ 能量有效期 1 小时，过期将自动回收",
   "address_list": "地址列表",
   "transaction_plans_usdt_payment": "USDT支付",
   "transaction_plans_trx_payment": "TRX支付",

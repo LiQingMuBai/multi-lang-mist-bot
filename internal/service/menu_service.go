@@ -50,10 +50,10 @@ func MenuNavigateAddressFreeze(_lang string, cache cache.Cache, bot *tgbotapi.Bo
 			tgbotapi.NewInlineKeyboardButtonData(global.Translations[_lang]["alert_monitoring_list"], "address_list_trace"),
 			tgbotapi.NewInlineKeyboardButtonData(global.Translations[_lang]["freeze_alert_deduction_record"], "address_freeze_risk_records"),
 		),
-		tgbotapi.NewInlineKeyboardRow(
-			//tgbotapi.NewInlineKeyboardButtonData(global.Translations[_lang]["freeze_alert_deduction_record"], "address_freeze_risk_records"),
-			tgbotapi.NewInlineKeyboardButtonData("🔗"+global.Translations[_lang]["secondary_contact"], "click_backup_account"),
-		),
+		//tgbotapi.NewInlineKeyboardRow(
+		//	//tgbotapi.NewInlineKeyboardButtonData(global.Translations[_lang]["freeze_alert_deduction_record"], "address_freeze_risk_records"),
+		//	tgbotapi.NewInlineKeyboardButtonData("🔗"+global.Translations[_lang]["secondary_contact"], "click_backup_account"),
+		//),
 	)
 	msg.ReplyMarkup = inlineKeyboard
 
@@ -178,7 +178,7 @@ func MenuNavigateBundlePackage(_lang string, db *gorm.DB, _chatID int64, bot *tg
 	var keyboard [][]tgbotapi.InlineKeyboardButton
 	for _, trx := range trxlist {
 
-		allButtons = append(allButtons, tgbotapi.NewInlineKeyboardButtonData("👝"+strings.ReplaceAll(trx.Name, "笔", global.Translations[_lang]["笔"]), CombineInt64AndString("bundle_", trx.Id)))
+		allButtons = append(allButtons, tgbotapi.NewInlineKeyboardButtonData(strings.ReplaceAll(trx.Name, "笔", global.Translations[_lang]["笔"]), CombineInt64AndString("bundle_", trx.Id)))
 	}
 
 	if token == "TRX" {
@@ -193,7 +193,7 @@ func MenuNavigateBundlePackage(_lang string, db *gorm.DB, _chatID int64, bot *tg
 	}
 
 	extraButtons = append(extraButtons,
-		tgbotapi.NewInlineKeyboardButtonData("🧾"+global.Translations[_lang]["address_list"], "click_bundle_package_address_stats"),
+		tgbotapi.NewInlineKeyboardButtonData("🔢"+global.Translations[_lang]["address_list"], "click_bundle_package_address_stats"),
 		//tgbotapi.NewInlineKeyboardButtonData("➕"+global.Translations[_lang]["add_address"], "click_bundle_package_address_management"),
 		tgbotapi.NewInlineKeyboardButtonData("📜"+global.Translations[_lang]["billing"], "click_bundle_package_cost_records"),
 	)
