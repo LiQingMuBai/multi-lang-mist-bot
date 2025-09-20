@@ -548,6 +548,10 @@ func handleRegularMessage(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbo
 						msg.ReplyMarkup = inlineKeyboard
 						msg.ParseMode = "HTML"
 						bot.Send(msg)
+						expiration := 1 * time.Minute // 短时间缓存空值
+
+						//设置用户状态
+						cache.Set(strconv.FormatInt(message.Chat.ID, 10), "null_dispatch_others_", expiration)
 					}
 				} else {
 					service.MenuNavigateBundlePackage(_lang, db, message.Chat.ID, bot, "TRX")
@@ -609,6 +613,10 @@ func handleRegularMessage(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbo
 						msg.ReplyMarkup = inlineKeyboard
 						msg.ParseMode = "HTML"
 						bot.Send(msg)
+						expiration := 1 * time.Minute // 短时间缓存空值
+
+						//设置用户状态
+						cache.Set(strconv.FormatInt(message.Chat.ID, 10), "null_dispatch_others_", expiration)
 					}
 				}
 
@@ -832,6 +840,11 @@ func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery 
 				msg.ReplyMarkup = inlineKeyboard
 				msg.ParseMode = "HTML"
 				bot.Send(msg)
+
+				expiration := 1 * time.Minute // 短时间缓存空值
+
+				//设置用户状态
+				cache.Set(strconv.FormatInt(callbackQuery.Message.Chat.ID, 10), "null_dispatch_others_", expiration)
 			}
 		}
 
