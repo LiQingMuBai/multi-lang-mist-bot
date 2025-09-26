@@ -2,6 +2,7 @@ package cache
 
 import (
 	"context"
+	"strings"
 	"sync"
 	"time"
 )
@@ -26,6 +27,10 @@ func (m *memoryCache) Get(key string) (string, error) {
 			return item.value, nil
 		}
 		m.store.Delete(key)
+	}
+
+	if strings.Contains(key, "LANG_") {
+		return "zh", nil
 	}
 	return "", nil
 }

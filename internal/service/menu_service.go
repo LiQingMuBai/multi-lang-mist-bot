@@ -2,8 +2,6 @@ package service
 
 import (
 	"context"
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
-	"gorm.io/gorm"
 	"os"
 	"strconv"
 	"strings"
@@ -12,6 +10,9 @@ import (
 	"ushield_bot/internal/global"
 	"ushield_bot/internal/infrastructure/repositories"
 	. "ushield_bot/internal/infrastructure/tools"
+
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+	"gorm.io/gorm"
 )
 
 func MenuNavigateAddressFreeze(_lang string, cache cache.Cache, bot *tgbotapi.BotAPI, chatID int64, db *gorm.DB) {
@@ -328,17 +329,18 @@ func MenuNavigateHome2(db *gorm.DB, message *tgbotapi.Message, bot *tgbotapi.Bot
 		tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonData("中文", "set_lang_"+"zh"),
 			tgbotapi.NewInlineKeyboardButtonData("English", "set_lang_"+"en"),
-			tgbotapi.NewInlineKeyboardButtonData("tiếng Việt", "set_lang_"+"vi"),
+			tgbotapi.NewInlineKeyboardButtonData("粵語", "set_lang_"+"ch"),
 		),
 		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("Español", "set_lang_"+"es"),
-			tgbotapi.NewInlineKeyboardButtonData("Português", "set_lang_"+"pt"),
+			tgbotapi.NewInlineKeyboardButtonData("한국어", "set_lang_"+"ko"),
+
+			tgbotapi.NewInlineKeyboardButtonData("ภาษาไทย", "set_lang_"+"th"),
 			tgbotapi.NewInlineKeyboardButtonData("日本語", "set_lang_"+"ja"),
 		),
 		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("العربية", "set_lang_"+"ar"),
-			tgbotapi.NewInlineKeyboardButtonData("한국어", "set_lang_"+"ko"),
-			tgbotapi.NewInlineKeyboardButtonData("ภาษาไทย", "set_lang_"+"th"),
+			tgbotapi.NewInlineKeyboardButtonData("tiếng Việt", "set_lang_"+"vi"),
+			tgbotapi.NewInlineKeyboardButtonData("Português", "set_lang_"+"pt"),
+			tgbotapi.NewInlineKeyboardButtonData("Español", "set_lang_"+"es"),
 		),
 	)
 

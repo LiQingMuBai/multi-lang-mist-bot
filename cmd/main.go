@@ -4,17 +4,18 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
+	"os"
+	"path/filepath"
+	"strconv"
+	"strings"
+
 	"github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"github.com/joho/godotenv"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-	"log"
-	"os"
-	"path/filepath"
-	"strconv"
-	"strings"
 
 	"time"
 	"ushield_bot/internal/global"
@@ -188,59 +189,64 @@ func main() {
 					userOperationPackageAddressesRepo := repositories.NewUserOperationPackageAddressesRepo(db)
 
 					record, _ := userOperationPackageAddressesRepo.Get(context.Background(), subscribeBundleID)
+					if record.ChatID != update.Message.Chat.ID {
 
-					log.Printf("address is %s\n", record.Address)
+						log.Println("不是自己的权利")
+						//return
+					} else {
+						log.Printf("address is %s\n", record.Address)
 
-					userRepo := repositories.NewUserRepository(db)
-					user, _ := userRepo.GetByUserID(update.Message.Chat.ID)
+						userRepo := repositories.NewUserRepository(db)
+						user, _ := userRepo.GetByUserID(update.Message.Chat.ID)
 
-					_bundleTimes := user.BundleTimes - 1
-					//time.Sleep(100 * time.Millisecond)
-					if user.BundleTimes > 0 {
-						userRepo.UpdateBundleTimes(_bundleTimes, update.Message.Chat.ID)
+						_bundleTimes := user.BundleTimes - 1
+						//time.Sleep(100 * time.Millisecond)
+						if user.BundleTimes > 0 {
+							userRepo.UpdateBundleTimes(_bundleTimes, update.Message.Chat.ID)
 
-						//
-						//msg2 := service.CLICK_BUNDLE_PACKAGE_ADDRESS_STATS(db, update.Message.Chat.ID)
-						//bot.Send(msg2)
+							//
+							//msg2 := service.CLICK_BUNDLE_PACKAGE_ADDRESS_STATS(db, update.Message.Chat.ID)
+							//bot.Send(msg2)
 
-						//调用trxfee接口
+							//调用trxfee接口
 
-						var sysOrder domain.UserEnergyOrders
-						orderNo, _ := GenerateOrderID(record.Address, 4)
-						//fmt.Printf("  OrderNo: %s\n", orderNo)
-						sysOrder.OrderNo = orderNo
-						sysOrder.TxId = ""
-						sysOrder.FromAddress = record.Address
-						//sysOrder.ToAddress = item.Address
-						sysOrder.Amount = 65000
-						sysOrder.ChatId = strconv.FormatInt(update.Message.Chat.ID, 10)
-						//
-						////添加一条记录
-						ueoRepo := repositories.NewUserEnergyOrdersRepo(db)
-						errsg := ueoRepo.Create(context.Background(), &sysOrder)
+							var sysOrder domain.UserEnergyOrders
+							orderNo, _ := GenerateOrderID(record.Address, 4)
+							//fmt.Printf("  OrderNo: %s\n", orderNo)
+							sysOrder.OrderNo = orderNo
+							sysOrder.TxId = ""
+							sysOrder.FromAddress = record.Address
+							//sysOrder.ToAddress = item.Address
+							sysOrder.Amount = 65000
+							sysOrder.ChatId = strconv.FormatInt(update.Message.Chat.ID, 10)
+							//
+							////添加一条记录
+							ueoRepo := repositories.NewUserEnergyOrdersRepo(db)
+							errsg := ueoRepo.Create(context.Background(), &sysOrder)
 
-						if errsg == nil {
-							trxfeeClient := trxfee.NewTrxfeeClient(trxfeeUrl, trxfeeApiKey, trxfeeSecret)
+							if errsg == nil {
+								trxfeeClient := trxfee.NewTrxfeeClient(trxfeeUrl, trxfeeApiKey, trxfeeSecret)
 
-							fmt.Sprintf("发送（%d）笔能量给（%s），订单号 %s\n", 1, record.Address, orderNo)
-							trxfeeClient.Order(orderNo, record.Address, 65_000*1)
+								fmt.Sprintf("发送（%d）笔能量给（%s），订单号 %s\n", 1, record.Address, orderNo)
+								trxfeeClient.Order(orderNo, record.Address, 65_000*1)
 
-							msg := tgbotapi.NewMessage(update.Message.Chat.ID, "📢【✅"+global.Translations[user.Lang]["UShield_sent_transaction_energy"]+"】\n\n"+
-								global.Translations[user.Lang]["to_address"]+record.Address+"\n\n"+
-								global.Translations[user.Lang]["remaining_transactions"]+strconv.FormatInt(_bundleTimes, 10)+"\n\n")
+								msg := tgbotapi.NewMessage(update.Message.Chat.ID, "📢【✅"+global.Translations[user.Lang]["UShield_sent_transaction_energy"]+"】\n\n"+
+									global.Translations[user.Lang]["to_address"]+record.Address+"\n\n"+
+									global.Translations[user.Lang]["remaining_transactions"]+strconv.FormatInt(_bundleTimes, 10)+"\n\n")
 
-							inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
-								tgbotapi.NewInlineKeyboardRow(
-									tgbotapi.NewInlineKeyboardButtonData("⚡️"+global.Translations[user.Lang]["dispatch_again"], "click_bundle_package_address_stats"),
-								),
-							)
-							msg.ReplyMarkup = inlineKeyboard
-							msg.ParseMode = "HTML"
+								inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
+									tgbotapi.NewInlineKeyboardRow(
+										tgbotapi.NewInlineKeyboardButtonData("⚡️"+global.Translations[user.Lang]["dispatch_again"], "click_bundle_package_address_stats"),
+									),
+								)
+								msg.ReplyMarkup = inlineKeyboard
+								msg.ParseMode = "HTML"
+								bot.Send(msg)
+							}
+						} else {
+							msg := service.CLICK_BUNDLE_PACKAGE_ADDRESS_STATS2(user.Lang, db, update.Message.Chat.ID)
 							bot.Send(msg)
 						}
-					} else {
-						msg := service.CLICK_BUNDLE_PACKAGE_ADDRESS_STATS2(user.Lang, db, update.Message.Chat.ID)
-						bot.Send(msg)
 					}
 					//msg := tgbotapi.NewMessage(update.Message.Chat.ID, "📢【✅"+global.Translations[_lang]["UShield_sent_transaction_energy"]+"】\n\n"+
 					//	global.Translations[_lang]["to_address"]+record.Address+"\n\n"+
@@ -722,11 +728,11 @@ func handleRegularMessage(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbo
 func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery *tgbotapi.CallbackQuery, db *gorm.DB, _trxfeeUrl, _trxfeeApiKey, _trxfeeSecret string) {
 	// 先应答回调
 
-	log.Println("已选择: " + callbackQuery.Data)
-	callback := tgbotapi.NewCallback(callbackQuery.ID, "已选择: "+callbackQuery.Data)
-	if _, err := bot.Request(callback); err != nil {
-		log.Printf("Error answering callback: %v", err)
-	}
+	//log.Println("已选择: " + callbackQuery.Data)
+	//callback := tgbotapi.NewCallback(callbackQuery.ID, "已选择: "+callbackQuery.Data)
+	//if _, err := bot.Request(callback); err != nil {
+	//	log.Printf("Error answering callback: %v", err)
+	//}
 	_lang, err := cache.Get("LANG_" + strconv.FormatInt(callbackQuery.Message.Chat.ID, 10))
 
 	if err != nil {
