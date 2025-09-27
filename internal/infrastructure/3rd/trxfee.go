@@ -1,6 +1,7 @@
 package trxfee
 
 import (
+	"bytes"
 	"crypto/hmac"
 	"crypto/sha256"
 	"encoding/hex"
@@ -8,7 +9,10 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strconv"
 	"time"
+
+	jsoniter "github.com/json-iterator/go"
 )
 
 type TrxfeeClient struct {
@@ -68,56 +72,56 @@ func (c *TrxfeeClient) Account() (resp *AccountDataResp, err error) {
 }
 func (c *TrxfeeClient) Order(_outTradeNo, _receiveAddress string, _energyAmount int) {
 	time.Sleep(1 * time.Second)
-	//timestamp := strconv.FormatInt(time.Now().Unix(), 10)
-	//
-	//data := Data{
-	//	EnergyAmount:   _energyAmount,
-	//	Period:         "1H",
-	//	ReceiveAddress: _receiveAddress,
-	//	CallbackURL:    "http://{mydomain}/callback",
-	//	OutTradeNo:     _outTradeNo,
-	//}
-	//
-	//ordered_data := map[string]interface{}{
-	//	"energy_amount":   data.EnergyAmount,
-	//	"period":          data.Period,
-	//	"receive_address": data.ReceiveAddress,
-	//	"callback_url":    data.CallbackURL,
-	//	"out_trade_no":    data.OutTradeNo,
-	//}
-	//
-	//json := jsoniter.ConfigCompatibleWithStandardLibrary
-	//b, err := json.Marshal(ordered_data)
-	//if err != nil {
-	//	panic(err)
-	//}
-	//json_data := string(b)
-	//
-	//message := timestamp + "&" + json_data
-	//signature := createHmac(message, c.APISecret)
-	//
-	//client := &http.Client{}
-	//req, err := http.NewRequest("POST", c.URL+"/v1/api", bytes.NewBuffer([]byte(json_data)))
-	//if err != nil {
-	//	panic(err)
-	//}
-	//
-	//req.Header.Set("API-KEY", c.APIKey)
-	//req.Header.Set("TIMESTAMP", timestamp)
-	//req.Header.Set("SIGNATURE", signature)
-	//req.Header.Set("Content-Type", "application/json")
-	//
-	//resp, err := client.Do(req)
-	//if err != nil {
-	//	panic(err)
-	//}
-	//defer resp.Body.Close()
-	//
-	//respBody, err := ioutil.ReadAll(resp.Body)
-	//if err != nil {
-	//	panic(err)
-	//}
-	//fmt.Println(string(respBody))
+	timestamp := strconv.FormatInt(time.Now().Unix(), 10)
+
+	data := Data{
+		EnergyAmount:   _energyAmount,
+		Period:         "1H",
+		ReceiveAddress: _receiveAddress,
+		CallbackURL:    "http://{mydomain}/callback",
+		OutTradeNo:     _outTradeNo,
+	}
+
+	ordered_data := map[string]interface{}{
+		"energy_amount":   data.EnergyAmount,
+		"period":          data.Period,
+		"receive_address": data.ReceiveAddress,
+		"callback_url":    data.CallbackURL,
+		"out_trade_no":    data.OutTradeNo,
+	}
+
+	json := jsoniter.ConfigCompatibleWithStandardLibrary
+	b, err := json.Marshal(ordered_data)
+	if err != nil {
+		panic(err)
+	}
+	json_data := string(b)
+
+	message := timestamp + "&" + json_data
+	signature := createHmac(message, c.APISecret)
+
+	client := &http.Client{}
+	req, err := http.NewRequest("POST", c.URL+"/v1/api", bytes.NewBuffer([]byte(json_data)))
+	if err != nil {
+		panic(err)
+	}
+
+	req.Header.Set("API-KEY", c.APIKey)
+	req.Header.Set("TIMESTAMP", timestamp)
+	req.Header.Set("SIGNATURE", signature)
+	req.Header.Set("Content-Type", "application/json")
+
+	resp, err := client.Do(req)
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
+
+	respBody, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(string(respBody))
 
 }
 
