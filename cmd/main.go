@@ -477,15 +477,18 @@ func handleStartCommand(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbota
 	}
 	keyboard := tgbotapi.NewReplyKeyboard(
 		tgbotapi.NewKeyboardButtonRow(
+
 			tgbotapi.NewKeyboardButton("⚡"+global.Translations[_lang]["energy_swap"]),
 			tgbotapi.NewKeyboardButton("🖊️"+global.Translations[_lang]["transaction_plans"]),
 			tgbotapi.NewKeyboardButton("🤖"+global.Translations[_lang]["smart_transaction_plans"]),
 		),
 		tgbotapi.NewKeyboardButtonRow(
+			tgbotapi.NewKeyboardButton("🕸"+global.Translations[_lang]["address_trace_menu"]),
 			tgbotapi.NewKeyboardButton("🔍"+global.Translations[_lang]["address_check"]),
 			tgbotapi.NewKeyboardButton("🚨"+global.Translations[_lang]["usdt_freeze_alert"]),
 		),
 		tgbotapi.NewKeyboardButtonRow(
+			tgbotapi.NewKeyboardButton("✅"+global.Translations[_lang]["usdt_trx_swap"]),
 			tgbotapi.NewKeyboardButton("👤"+global.Translations[_lang]["my_account"]),
 			tgbotapi.NewKeyboardButton("🌍"+global.Translations[_lang]["language"]),
 		),
@@ -523,6 +526,10 @@ func handleRegularMessage(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbo
 	}
 
 	switch message.Text {
+	case "✅" + global.Translations[_lang]["usdt_trx_swap"]:
+		service.MenuNavigateSwapExchange(_lang, db, message, bot)
+	case "🕸" + global.Translations[_lang]["address_trace_menu"]:
+		service.MenuNavigateAddressTrace(_lang, cache, bot, message.Chat.ID, db)
 	case "🔍" + global.Translations[_lang]["address_check"]:
 		service.MenuNavigateAddressDetection(_lang, cache, bot, message.Chat.ID, db)
 	case "🚨" + global.Translations[_lang]["usdt_freeze_alert"]:
@@ -748,6 +755,105 @@ func handleRegularMessage(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbo
 			if service.ExtractBundleService(_lang, message, bot, db, status) {
 				return
 			}
+
+		case strings.HasPrefix(status, "address_trace_add"):
+			if !IsValidAddress(message.Text) {
+				msg := tgbotapi.NewMessage(message.Chat.ID, "💬"+"<b>"+global.Translations[_lang]["address_wrong_tips"]+"</b>"+"\n")
+				msg.ParseMode = "HTML"
+				bot.Send(msg)
+				return
+			}
+
+			userRepo := repositories.NewUserAddressTraceRepo(db)
+
+			model, err := userRepo.Find(context.Background(), message.Chat.ID, message.Text)
+
+			if err != nil {
+			}
+			if model.Id > 0 {
+				msg := tgbotapi.NewMessage(message.Chat.ID, "✅"+"<b>"+global.Translations[_lang]["address_trace_add_repeat_tips"]+"</b>"+"\n")
+				inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
+
+					tgbotapi.NewInlineKeyboardRow(
+						//tgbotapi.NewInlineKeyboardButtonData("解绑地址", "free_monitor_address"),
+						tgbotapi.NewInlineKeyboardButtonData("🔙️"+global.Translations[_lang]["back_homepage"], "back_user_address_trace"),
+					),
+				)
+				msg.ReplyMarkup = inlineKeyboard
+				msg.ParseMode = "HTML"
+				bot.Send(msg)
+
+				return
+			}
+
+			total, err := userRepo.Count(context.Background(), message.Chat.ID)
+			if err != nil {
+			}
+			if total >= 4 {
+				msg := tgbotapi.NewMessage(message.Chat.ID, "✅"+"<b>"+global.Translations[_lang]["address_trace_add_max_tips"]+"</b>"+"\n")
+				inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
+
+					tgbotapi.NewInlineKeyboardRow(
+						//tgbotapi.NewInlineKeyboardButtonData("解绑地址", "free_monitor_address"),
+						tgbotapi.NewInlineKeyboardButtonData("🔙️"+global.Translations[_lang]["back_homepage"], "back_user_address_trace"),
+					),
+				)
+				msg.ReplyMarkup = inlineKeyboard
+				msg.ParseMode = "HTML"
+				bot.Send(msg)
+
+				return
+			}
+			var record domain.UserAddressTrace
+			record.ChatID = message.Chat.ID
+			record.Address = message.Text
+			record.Status = 1
+			if IsValidAddress(message.Text) {
+				record.Network = "tron"
+			}
+			if IsValidAddress(message.Text) {
+				record.Network = "ethereum"
+			}
+			errsg := userRepo.Create(context.Background(), &record)
+			if errsg != nil {
+			}
+
+			msg := tgbotapi.NewMessage(message.Chat.ID, "✅"+"<b>"+global.Translations[_lang]["address_added_success"]+"</b>"+"\n")
+			inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
+
+				tgbotapi.NewInlineKeyboardRow(
+					//tgbotapi.NewInlineKeyboardButtonData("解绑地址", "free_monitor_address"),
+					tgbotapi.NewInlineKeyboardButtonData("🔙️"+global.Translations[_lang]["back_homepage"], "back_user_address_trace"),
+				),
+			)
+			msg.ReplyMarkup = inlineKeyboard
+			msg.ParseMode = "HTML"
+			bot.Send(msg)
+
+		case strings.HasPrefix(status, "address_trace_delete"):
+			if !IsValidAddress(message.Text) {
+				msg := tgbotapi.NewMessage(message.Chat.ID, "💬"+"<b>"+global.Translations[_lang]["address_wrong_tips"]+"</b>"+"\n")
+				msg.ParseMode = "HTML"
+				bot.Send(msg)
+				return
+			}
+			userRepo := repositories.NewUserAddressTraceRepo(db)
+			err := userRepo.Remove(context.Background(), message.Chat.ID, message.Text)
+			if err != nil {
+				return
+			}
+			msg := tgbotapi.NewMessage(message.Chat.ID, "✅ "+"<b>"+global.Translations[_lang]["address_deleted_success"]+"</b>"+"\n")
+			inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
+
+				tgbotapi.NewInlineKeyboardRow(
+					//tgbotapi.NewInlineKeyboardButtonData("解绑地址", "free_monitor_address"),
+					tgbotapi.NewInlineKeyboardButtonData("🔙️"+global.Translations[_lang]["back_homepage"], "back_user_address_trace"),
+				),
+			)
+			msg.ReplyMarkup = inlineKeyboard
+
+			msg.ParseMode = "HTML"
+			bot.Send(msg)
 
 		case strings.HasPrefix(status, "usdt_risk_monitor"):
 			//fmt.Printf("bundle: %s", status)
@@ -1170,6 +1276,8 @@ func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery 
 		//设置用户状态
 		cache.Set(strconv.FormatInt(callbackQuery.Message.Chat.ID, 10), "click_backup_account", expiration)
 
+	case callbackQuery.Data == "back_user_address_trace":
+		service.MenuNavigateAddressTrace(_lang, cache, bot, callbackQuery.Message.Chat.ID, db)
 	case callbackQuery.Data == "back_risk_home":
 		service.MenuNavigateAddressFreeze(_lang, cache, bot, callbackQuery.Message.Chat.ID, db)
 	case callbackQuery.Data == "click_switch_trx":
@@ -1517,32 +1625,6 @@ func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery 
 			return
 		}
 
-		//sysDictionariesRepo := repositories.NewSysDictionariesRepo(db)
-		//
-		//server_trx_price, _ := sysDictionariesRepo.GetDictionaryDetail("server_trx_price")
-		//
-		//server_usdt_price, _ := sysDictionariesRepo.GetDictionaryDetail("server_usdt_price")
-		//
-		//msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, "🎯 服务开启后U盾将 24 小时不间断保护您的资产安全。\n"+
-		//	"⏰ 系统将在冻结前启动预警机制，持续 10 分钟每分钟推送提醒，通知您及时转移资产。\n"+
-		//	"📌 服务价格（每地址）：\n • "+server_trx_price+" TRX / 30天\n • "+
-		//	" 或 "+server_usdt_price+" USDT / 30天\n"+
-		//	"是否确认开启该服务？")
-		//msg.ParseMode = "HTML"
-		//
-		//inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
-		//	tgbotapi.NewInlineKeyboardRow(
-		//		tgbotapi.NewInlineKeyboardButtonData("✅ 确认开启", "start_freeze_risk_1"),
-		//		tgbotapi.NewInlineKeyboardButtonData("❌ 取消操作", "back_risk_home"),
-		//	),
-		//	tgbotapi.NewInlineKeyboardRow(
-		//		tgbotapi.NewInlineKeyboardButtonData("🔙️"+global.Translations[_lang]["back_homepage"], "back_risk_home"),
-		//	),
-		//)
-		//msg.ReplyMarkup = inlineKeyboard
-		//
-		//bot.Send(msg)
-
 		msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, global.Translations[_lang]["enter_address_for_alert"])
 		msg.ParseMode = "HTML"
 		bot.Send(msg)
@@ -1655,6 +1737,26 @@ func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery 
 		service.DepositPrevOrder(_lang, cache, bot, callbackQuery, db)
 	case callbackQuery.Data == "cancel_order":
 		service.DepositCancelOrder(_lang, cache, bot, callbackQuery, db)
+
+	case callbackQuery.Data == "address_trace_add":
+		msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, global.Translations[_lang]["address_trace_add_tips"]+"\n")
+		msg.ParseMode = "HTML"
+		bot.Send(msg)
+
+		expiration := 1 * time.Minute // 短时间缓存空值
+
+		//设置用户状态
+		cache.Set(strconv.FormatInt(callbackQuery.Message.Chat.ID, 10), callbackQuery.Data, expiration)
+	case callbackQuery.Data == "address_trace_delete":
+		msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, global.Translations[_lang]["address_trace_delete_tips"]+"\n")
+		msg.ParseMode = "HTML"
+		bot.Send(msg)
+
+		expiration := 1 * time.Minute // 短时间缓存空值
+
+		//设置用户状态
+		cache.Set(strconv.FormatInt(callbackQuery.Message.Chat.ID, 10), callbackQuery.Data, expiration)
+
 	case callbackQuery.Data == "forward_deposit_usdt":
 		usdtSubscriptionsRepo := repositories.NewUserUsdtSubscriptionsRepository(db)
 

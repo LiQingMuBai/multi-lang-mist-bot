@@ -15,6 +15,86 @@ import (
 	"gorm.io/gorm"
 )
 
+func MenuNavigateSwapExchange(_lang string, db *gorm.DB, message *tgbotapi.Message, bot *tgbotapi.BotAPI) {
+	// 当点击"按钮 1"时显示内联键盘
+	inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
+		tgbotapi.NewInlineKeyboardRow(
+			tgbotapi.NewInlineKeyboardButtonData("🖊️"+global.Translations[_lang]["transaction_plans"], "back_bundle_package"),
+		),
+	)
+	//_agent := os.Getenv("Agent")
+	//sysUserRepo := repositories.NewSysUsersRepository(db)
+	//receiveAddress, _, _ := sysUserRepo.Find(context.Background(), _agent)
+
+	//dictRepo := repositories.NewSysDictionariesRepo(db)
+	//receiveAddress, _ := dictRepo.GetReceiveAddress(_agent)
+
+	dictDetailRepo := repositories.NewSysDictionariesRepo(db)
+
+	usdt_swap_trx_amount, _ := dictDetailRepo.GetDictionaryDetail("usdt_swap_trx_amount")
+	usdt_swap_trx_min_amount, _ := dictDetailRepo.GetDictionaryDetail("usdt_swap_trx_min_amount")
+	usdt_swap_trx_max_amount, _ := dictDetailRepo.GetDictionaryDetail("usdt_swap_trx_max_amount")
+	usdt_swap_trx_swap_address, _ := dictDetailRepo.GetDictionaryDetail("usdt_swap_trx_swap_address")
+
+	originStr := global.Translations[_lang]["usdt_trx_swap_head"]
+
+	targetStr := strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(originStr, "{trx_amount}", usdt_swap_trx_amount), "{swap_address}", usdt_swap_trx_swap_address), "{min_amount}", usdt_swap_trx_min_amount), "{max_amount}", usdt_swap_trx_max_amount)
+
+	msg := tgbotapi.NewMessage(message.Chat.ID, targetStr)
+	msg.ReplyMarkup = inlineKeyboard
+	msg.ParseMode = "HTML"
+	//msg.DisableWebPagePreview = true
+	bot.Send(msg)
+}
+
+func MenuNavigateAddressTrace(_lang string, cache cache.Cache, bot *tgbotapi.BotAPI, chatID int64, db *gorm.DB) {
+
+	originStr := global.Translations[_lang]["address_trace_head_tips"]
+	userRepo := repositories.NewUserAddressTraceRepo(db)
+	orderlist, _ := userRepo.Query(context.Background(), chatID)
+
+	var builder strings.Builder
+	if len(orderlist) > 0 {
+
+		builder.WriteString("\n")
+		//builder.WriteString("\n") // 添加分隔符
+		//- [6.29] +3000 TRX（订单 #TOPUP-92308）
+		for _, order := range orderlist {
+			builder.WriteString("\n") // 添加分隔符
+			builder.WriteString("<code>" + order.Address + "</code>")
+			builder.WriteString("\n")
+			// 添加分隔符
+		}
+
+	}
+
+	// 去除最后一个空格
+	result := strings.TrimSpace(builder.String())
+
+	//msg := tgbotapi.NewMessage(chatID, "🧾"+global.Translations[_lang]["package_address_list"]+"\n"+
+	//	result+"\n")
+
+	msg := tgbotapi.NewMessage(chatID, originStr+"\n"+
+		result+"\n")
+	msg.ParseMode = "HTML"
+
+	// 当点击"按钮 1"时显示内联键盘
+	inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
+		tgbotapi.NewInlineKeyboardRow(
+			tgbotapi.NewInlineKeyboardButtonData("➕"+global.Translations[_lang]["address_trace_add"], "address_trace_add"),
+			tgbotapi.NewInlineKeyboardButtonData("➖"+global.Translations[_lang]["address_trace_delete"], "address_trace_delete"),
+		),
+	)
+	msg.ReplyMarkup = inlineKeyboard
+
+	bot.Send(msg)
+
+	expiration := 1 * time.Minute // 短时间缓存空值
+
+	//设置用户状态
+	cache.Set(strconv.FormatInt(chatID, 10), "usdt_risk_query", expiration)
+}
+
 func MenuNavigateAddressFreeze(_lang string, cache cache.Cache, bot *tgbotapi.BotAPI, chatID int64, db *gorm.DB) {
 
 	userRepo := repositories.NewSysDictionariesRepo(db)
