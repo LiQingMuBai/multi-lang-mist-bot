@@ -19,6 +19,7 @@ type User struct {
 	TronAddress  string    `json:"tron_address" form:"tron_address" gorm:"column:tron_address;"`       //  db:"private_key"` ` db:"associates"` `db:"tron_amount"` `db:"tron_address"`
 	EthAddress   string    `json:"eth_address" form:"eth_address" gorm:"column:eth_address;"`          //  db:"private_key"` ` db:"associates"` `db:"tron_amount"` `db:"eth_address"`
 	EthAmount    string    `json:"eth_amount" form:"eth_amount" gorm:"column:eth_amount;"`             //  db:"private_key"` ` db:"associates"` `db:"tron_amount"` `db:"eth_amount"`
+	BotName      string    `json:"bot_name" form:"bot_name" gorm:"column:bot_name;"`                   //  db:"private_key"` ` db:"associates"` `db:"tron_amount"` `db:"eth_amount"`
 	CreatedAt    time.Time `json:"createdAt" form:"createdAt" gorm:"column:created_at;"`               //createdAt字段 `db:"create_at"`
 	//UpdatedAt   time.Time `json:"updatedAt" form:"updatedAt" gorm:"column:updated_at;"`         //updatedAt字段`db:"update_at"`
 }

@@ -143,6 +143,8 @@ func main() {
 	trxfeeApiKey := os.Getenv("TRXFEE_APIKEY")
 	trxfeeSecret := os.Getenv("TRXFEE_APISECRET")
 
+	botName := os.Getenv("BOT_NAME")
+
 	log.Printf("Trxfee URL: %s", trxfeeUrl)
 	log.Printf("trxfeeApiKeyL: %s", trxfeeApiKey)
 	log.Printf("\ttrxfeeSecret: %s", trxfeeSecret)
@@ -177,6 +179,104 @@ func main() {
 					msg := tgbotapi.NewMessage(update.Message.Chat.ID, "📢 功能开发中！想第一时间知道它上线吗？记得关注我们的官方频道：@ushield1 🔔\n\n")
 					msg.ParseMode = "HTML"
 					bot.Send(msg)
+
+				case strings.HasPrefix(update.Message.Command(), "open_ST"):
+					subscribeBundleID := strings.ReplaceAll(update.Message.Command(), "open_ST", "")
+					log.Println("subscribeBundleID : " + subscribeBundleID)
+					log.Println(subscribeBundleID + "   open_ST command")
+
+					//手动发能
+
+					//trxfee
+					userSmartTransactionPackageSubscriptionsRepo := repositories.NewUserSmartTransactionPackageSubscriptionsRepository(db)
+
+					record, _ := userSmartTransactionPackageSubscriptionsRepo.GetRecordByID(subscribeBundleID)
+					if record.ChatID != update.Message.Chat.ID {
+						log.Println("不是自己的权利")
+						//return
+					} else {
+
+						userRepo := repositories.NewUserRepository(db)
+						user, _ := userRepo.GetByUserID(update.Message.Chat.ID)
+
+						log.Printf("address is %s\n", record.Address)
+
+						//发送请求给trxfee，开启启动智能托管
+						record.Status = 2
+						err := userSmartTransactionPackageSubscriptionsRepo.UpdateStatusByID(context.Background(), subscribeBundleID, record.Status)
+
+						if err != nil {
+
+							return
+
+						}
+						trxfeeClient := trxfee.NewTrxfeeClient(trxfeeUrl, trxfeeApiKey, trxfeeSecret)
+						trxfeeClient.EnableTimesOrder(record.Address)
+
+						msg := tgbotapi.NewMessage(update.Message.Chat.ID, "✅"+global.Translations[user.Lang]["smart_transaction_auto_dispatch_open_successfully"]+"\n")
+						msg.ParseMode = "HTML"
+						inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
+							//tgbotapi.NewInlineKeyboardRow(
+							//	tgbotapi.NewInlineKeyboardButtonData(global.Translations[_lang]["prev"], "next_bundle_package_address_stats"),
+							//	tgbotapi.NewInlineKeyboardButtonData(global.Translations[_lang]["next"], "prev_bundle_package_address_stats"),
+							//),
+							tgbotapi.NewInlineKeyboardRow(
+								//tgbotapi.NewInlineKeyboardButtonData("解绑地址", "free_monitor_address"),
+								tgbotapi.NewInlineKeyboardButtonData("🔙️"+global.Translations[user.Lang]["back_homepage"], "back_bundle_package_ST"),
+							),
+						)
+						msg.ReplyMarkup = inlineKeyboard
+						bot.Send(msg)
+
+					}
+
+				case strings.HasPrefix(update.Message.Command(), "close_ST"):
+					subscribeBundleID := strings.ReplaceAll(update.Message.Command(), "close_ST", "")
+					log.Println("subscribeBundleID : " + subscribeBundleID)
+					log.Println(subscribeBundleID + "   closeST command")
+
+					//手动发能
+
+					//trxfee
+					userSmartTransactionPackageSubscriptionsRepo := repositories.NewUserSmartTransactionPackageSubscriptionsRepository(db)
+
+					record, _ := userSmartTransactionPackageSubscriptionsRepo.GetRecordByID(subscribeBundleID)
+					if record.ChatID != update.Message.Chat.ID {
+						log.Println("不是自己的权利")
+						//return
+					} else {
+
+						userRepo := repositories.NewUserRepository(db)
+						user, _ := userRepo.GetByUserID(update.Message.Chat.ID)
+
+						log.Printf("address is %s\n", record.Address)
+
+						//发送请求给trxfee，禁止启动智能托管
+						record.Status = 1
+						err := userSmartTransactionPackageSubscriptionsRepo.UpdateStatusByID(context.Background(), subscribeBundleID, record.Status)
+
+						if err != nil {
+							return
+						}
+						trxfeeClient := trxfee.NewTrxfeeClient(trxfeeUrl, trxfeeApiKey, trxfeeSecret)
+						trxfeeClient.EnableTimesOrder(record.Address)
+
+						msg := tgbotapi.NewMessage(update.Message.Chat.ID, "✅"+global.Translations[user.Lang]["smart_transaction_auto_dispatch_close_successfully"]+"\n")
+						msg.ParseMode = "HTML"
+						inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
+							//tgbotapi.NewInlineKeyboardRow(
+							//	tgbotapi.NewInlineKeyboardButtonData(global.Translations[_lang]["prev"], "next_bundle_package_address_stats"),
+							//	tgbotapi.NewInlineKeyboardButtonData(global.Translations[_lang]["next"], "prev_bundle_package_address_stats"),
+							//),
+							tgbotapi.NewInlineKeyboardRow(
+								//tgbotapi.NewInlineKeyboardButtonData("解绑地址", "free_monitor_address"),
+								tgbotapi.NewInlineKeyboardButtonData("🔙️"+global.Translations[user.Lang]["back_homepage"], "back_bundle_package_ST"),
+							),
+						)
+						msg.ReplyMarkup = inlineKeyboard
+						bot.Send(msg)
+
+					}
 
 				case strings.HasPrefix(update.Message.Command(), "dispatchNow"):
 					subscribeBundleID := strings.ReplaceAll(update.Message.Command(), "dispatchNow", "")
@@ -318,6 +418,7 @@ func main() {
 						user.Username = update.Message.Chat.UserName
 						user.CreatedAt = time.Now()
 
+						user.BotName = botName
 						if len(parentUID) > 0 {
 							user.ParentUserID = parentUID
 						}
@@ -378,6 +479,7 @@ func handleStartCommand(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbota
 		tgbotapi.NewKeyboardButtonRow(
 			tgbotapi.NewKeyboardButton("⚡"+global.Translations[_lang]["energy_swap"]),
 			tgbotapi.NewKeyboardButton("🖊️"+global.Translations[_lang]["transaction_plans"]),
+			tgbotapi.NewKeyboardButton("🤖"+global.Translations[_lang]["smart_transaction_plans"]),
 		),
 		tgbotapi.NewKeyboardButtonRow(
 			tgbotapi.NewKeyboardButton("🔍"+global.Translations[_lang]["address_check"]),
@@ -427,6 +529,10 @@ func handleRegularMessage(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbo
 		service.MenuNavigateAddressFreeze(_lang, cache, bot, message.Chat.ID, db)
 	case "🖊️" + global.Translations[_lang]["transaction_plans"]:
 		service.MenuNavigateBundlePackage(_lang, db, message.Chat.ID, bot, "TRX")
+
+	case "🤖" + global.Translations[_lang]["smart_transaction_plans"]:
+		service.MenuNavigateSmartTransactionPlans(_lang, db, message.Chat.ID, bot, "TRX")
+
 	case "⚡" + global.Translations[_lang]["energy_swap"]:
 		service.MenuNavigateEnergyExchange(_lang, db, message, bot)
 	case "👤" + global.Translations[_lang]["my_account"]:
@@ -673,12 +779,18 @@ func handleRegularMessage(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbo
 			if service.APPLY_BUNDLE_PACKAGE(_lang, cache, bot, message, db, status) {
 				return
 			}
+		case strings.HasPrefix(status, "apply_ST_bundle_package_"):
+			trxfeeClient := trxfee.NewTrxfeeClient(_trxfeeUrl, _trxfeeApiKey, _trxfeeSecret)
+
+			if service.APPLY_ST_BUNDLE_PACKAGE(trxfeeClient, _lang, cache, bot, message, db, status) {
+				return
+			}
 
 		case strings.HasPrefix(status, "click_backup_account"):
 
 			log.Printf("进入click_backup_account状态：%s\n", message.Text)
 			if strings.Contains(message.Text, "@") {
-				msg := tgbotapi.NewMessage(message.Chat.ID, "❌ 用户名格式有误，去掉@符号，请重新输入")
+				msg := tgbotapi.NewMessage(message.Chat.ID, "❌ "+global.Translations[_lang]["backup_account_tips"])
 				msg.ParseMode = "HTML"
 				bot.Send(msg)
 				return
@@ -691,7 +803,7 @@ func handleRegularMessage(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbo
 
 			if err != nil {
 				log.Printf("访问失败 %s\n", err)
-				msg := tgbotapi.NewMessage(message.Chat.ID, "❌ 用户名格式有误，请重新输入")
+				msg := tgbotapi.NewMessage(message.Chat.ID, "❌"+global.Translations[_lang]["backup_account_tips2"])
 				msg.ParseMode = "HTML"
 				bot.Send(msg)
 				return
@@ -699,7 +811,7 @@ func handleRegularMessage(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbo
 
 			if user.Id == 0 {
 				log.Printf("无该用户 %s\n", userName)
-				msg := tgbotapi.NewMessage(message.Chat.ID, "❌ 用户名格式有误，请重新输入")
+				msg := tgbotapi.NewMessage(message.Chat.ID, "❌"+global.Translations[_lang]["backup_account_tips2"])
 				msg.ParseMode = "HTML"
 				bot.Send(msg)
 				return
@@ -709,7 +821,7 @@ func handleRegularMessage(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbo
 
 			err2 := userRepo.UpdateBackupChat(context.Background(), userName, message.Chat.ID)
 			if err2 == nil {
-				msg := tgbotapi.NewMessage(message.Chat.ID, "✅ 成功绑定第二紧急联系人: "+message.Text)
+				msg := tgbotapi.NewMessage(message.Chat.ID, "✅ "+global.Translations[_lang]["backup_account_tips3"]+message.Text)
 				msg.ParseMode = "HTML"
 				bot.Send(msg)
 				//return true
@@ -728,11 +840,11 @@ func handleRegularMessage(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbo
 func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery *tgbotapi.CallbackQuery, db *gorm.DB, _trxfeeUrl, _trxfeeApiKey, _trxfeeSecret string) {
 	// 先应答回调
 
-	//log.Println("已选择: " + callbackQuery.Data)
-	//callback := tgbotapi.NewCallback(callbackQuery.ID, "已选择: "+callbackQuery.Data)
-	//if _, err := bot.Request(callback); err != nil {
-	//	log.Printf("Error answering callback: %v", err)
-	//}
+	log.Println("已选择: " + callbackQuery.Data)
+	callback := tgbotapi.NewCallback(callbackQuery.ID, "已选择: "+callbackQuery.Data)
+	if _, err := bot.Request(callback); err != nil {
+		log.Printf("Error answering callback: %v", err)
+	}
 	_lang, err := cache.Get("LANG_" + strconv.FormatInt(callbackQuery.Message.Chat.ID, 10))
 
 	if err != nil {
@@ -1064,6 +1176,15 @@ func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery 
 		service.MenuNavigateBundlePackage(_lang, db, callbackQuery.Message.Chat.ID, bot, "TRX")
 	case callbackQuery.Data == "click_switch_usdt":
 		service.MenuNavigateBundlePackage(_lang, db, callbackQuery.Message.Chat.ID, bot, "USDT")
+
+	case callbackQuery.Data == "click_switch_trx_ST":
+		service.MenuNavigateSTBundlePackage(_lang, db, callbackQuery.Message.Chat.ID, bot, "TRX")
+	case callbackQuery.Data == "click_switch_usdt_ST":
+		service.MenuNavigateSTBundlePackage(_lang, db, callbackQuery.Message.Chat.ID, bot, "USDT")
+
+	case callbackQuery.Data == "back_bundle_package_ST":
+		service.MenuNavigateSTBundlePackage(_lang, db, callbackQuery.Message.Chat.ID, bot, "TRX")
+
 	case callbackQuery.Data == "back_bundle_package":
 		service.MenuNavigateBundlePackage(_lang, db, callbackQuery.Message.Chat.ID, bot, "TRX")
 	case callbackQuery.Data == "click_bundle_package_address_manager_config":
@@ -1102,6 +1223,10 @@ func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery 
 		msg := service.CLICK_BUNDLE_PACKAGE_ADDRESS_STATS2(_lang, db, callbackQuery.Message.Chat.ID)
 		bot.Send(msg)
 
+	case callbackQuery.Data == "click_bundle_package_address_stats_ST":
+		msg := service.CLICK_BUNDLE_PACKAGE_ADDRESS_STATS_ST(_lang, db, callbackQuery.Message.Chat.ID)
+		bot.Send(msg)
+
 	case callbackQuery.Data == "next_bundle_package_address_stats":
 		if service.NEXT_BUNDLE_PACKAGE_ADDRESS_STATS(_lang, callbackQuery, db, bot) {
 			return
@@ -1136,6 +1261,11 @@ func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery 
 	case callbackQuery.Data == "click_bundle_package_cost_records":
 		msg := service.ExtractBundlePackage(_lang, db, callbackQuery)
 		bot.Send(msg)
+
+	case callbackQuery.Data == "click_bundle_package_cost_records_ST":
+		msg := service.ExtractBundlePackageST(_lang, db, callbackQuery)
+		bot.Send(msg)
+
 	case callbackQuery.Data == "click_bundle_package_management":
 		msg := service.ExtractBundlePackage(_lang, db, callbackQuery)
 		bot.Send(msg)
@@ -1511,6 +1641,9 @@ func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery 
 		bot.Send(msg)
 
 		handleStartCommand(cache, bot, callbackQuery.Message)
+
+	case strings.HasPrefix(callbackQuery.Data, "ST_bundle_"):
+		service.ST_BUNDLE_CHECK(_lang, cache, bot, callbackQuery, db)
 
 	case strings.HasPrefix(callbackQuery.Data, "bundle_"):
 		service.BUNDLE_CHECK2(_lang, cache, bot, callbackQuery, db)

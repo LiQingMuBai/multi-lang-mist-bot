@@ -3,8 +3,6 @@ package service
 import (
 	"context"
 	"fmt"
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
-	"gorm.io/gorm"
 	"strconv"
 	"strings"
 	"time"
@@ -13,6 +11,9 @@ import (
 	"ushield_bot/internal/global"
 	"ushield_bot/internal/infrastructure/repositories"
 	. "ushield_bot/internal/infrastructure/tools"
+
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+	"gorm.io/gorm"
 )
 
 func BUNDLE_CHECK2(_lang string, cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery *tgbotapi.CallbackQuery, db *gorm.DB) {
@@ -158,10 +159,10 @@ func BUNDLE_CHECK2(_lang string, cache cache.Cache, bot *tgbotapi.BotAPI, callba
 
 }
 
-func BUNDLE_CHECK(_lang string, cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery *tgbotapi.CallbackQuery, db *gorm.DB) {
+func ST_BUNDLE_CHECK(_lang string, cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery *tgbotapi.CallbackQuery, db *gorm.DB) {
 	//deductionAmount := callbackQuery.Data[7:len(callbackQuery.Data)]
-	userOperationBundlesRepo := repositories.NewUserOperationBundlesRepository(db)
-	bundleID := strings.ReplaceAll(callbackQuery.Data, "bundle_", "")
+	userOperationBundlesRepo := repositories.NewUserSmartTransactionBundlesRepository(db)
+	bundleID := strings.ReplaceAll(callbackQuery.Data, "ST_bundle_", "")
 	bundlePackage, err := userOperationBundlesRepo.Query(context.Background(), bundleID)
 
 	if err != nil {
@@ -204,17 +205,11 @@ func BUNDLE_CHECK(_lang string, cache cache.Cache, bot *tgbotapi.BotAPI, callbac
 
 	if lessBalance {
 		msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID,
-			//"💬"+"<b>"+"用户姓名: "+"</b>"+user.Username+"\n"+
-			//	"👤"+"<b>"+"用户电报ID: "+"</b>"+user.Associates+"\n"+
-			//	"💵"+"<b>"+"余额不足 "+"</b>"+"\n"+
-			//	"💴"+"<b>"+"当前TRX余额:  "+"</b>"+user.TronAmount+" TRX"+"\n"+
-			//	"💴"+"<b>"+"当前USDT余额:  "+"</b>"+user.Amount+" USDT")
-
 			"🆔"+global.Translations[_lang]["user_id"]+": "+user.Associates+"\n"+
 				"👤"+global.Translations[_lang]["username"]+": @"+user.Username+"\n"+
 				"💰"+global.Translations[_lang]["balance"]+": "+"\n"+
 				"- TRX：   "+user.TronAmount+"\n"+
-				"-  USDT："+user.Amount)
+				"- USDT："+user.Amount)
 
 		msg.ParseMode = "HTML"
 
@@ -230,10 +225,10 @@ func BUNDLE_CHECK(_lang string, cache cache.Cache, bot *tgbotapi.BotAPI, callbac
 		return
 	}
 
-	msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, "🧾"+"<b>"+"请选择接收能量的地址或重新输入 "+"</b>"+"\n")
-	userOperationPackageAddressesRepo := repositories.NewUserOperationPackageAddressesRepo(db)
-
-	addresses, _ := userOperationPackageAddressesRepo.Query(context.Background(), callbackQuery.Message.Chat.ID)
+	msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, "🧾"+global.Translations[_lang]["enter_address"]+"\n")
+	//userOperationPackageAddressesRepo := repositories.NewUserOperationPackageAddressesRepo(db)
+	//
+	//addresses, _ := userOperationPackageAddressesRepo.Query(context.Background(), callbackQuery.Message.Chat.ID)
 
 	//msg := tgbotapi.NewMessage(_chatID, "👇请选择要设置的地址："+"\n")
 	//地址绑定
@@ -243,11 +238,11 @@ func BUNDLE_CHECK(_lang string, cache cache.Cache, bot *tgbotapi.BotAPI, callbac
 	var allButtons []tgbotapi.InlineKeyboardButton
 	var extraButtons []tgbotapi.InlineKeyboardButton
 	var keyboard [][]tgbotapi.InlineKeyboardButton
-	for _, item := range addresses {
-		allButtons = append(allButtons, tgbotapi.NewInlineKeyboardButtonData(TruncateString(item.Address), "apply_bundle_package_"+bundleID+"_"+item.Address))
-	}
+	//for _, item := range addresses {
+	//	allButtons = append(allButtons, tgbotapi.NewInlineKeyboardButtonData(TruncateString(item.Address), "apply_bundle_package_"+bundleID+"_"+item.Address))
+	//}
 
-	extraButtons = append(extraButtons, tgbotapi.NewInlineKeyboardButtonData("🔙️"+global.Translations[_lang]["back_homepage"], "back_bundle_package"))
+	extraButtons = append(extraButtons, tgbotapi.NewInlineKeyboardButtonData("🔙️"+global.Translations[_lang]["back_homepage"], "back_bundle_package_ST"))
 
 	for i := 0; i < len(allButtons); i += 1 {
 		end := i + 1
@@ -277,7 +272,7 @@ func BUNDLE_CHECK(_lang string, cache cache.Cache, bot *tgbotapi.BotAPI, callbac
 
 	expiration := 1 * time.Minute // 短时间缓存空值
 	//设置用户状态
-	cache.Set(strconv.FormatInt(callbackQuery.Message.Chat.ID, 10), "apply_bundle_package_"+bundleID, expiration)
+	cache.Set(strconv.FormatInt(callbackQuery.Message.Chat.ID, 10), "apply_ST_bundle_package_"+bundleID, expiration)
 	//扣款
 }
 

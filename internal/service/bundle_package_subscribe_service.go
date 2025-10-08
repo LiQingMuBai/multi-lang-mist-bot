@@ -3,8 +3,6 @@ package service
 import (
 	"context"
 	"fmt"
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
-	"gorm.io/gorm"
 	"log"
 	"strconv"
 	"strings"
@@ -12,9 +10,13 @@ import (
 	"ushield_bot/internal/cache"
 	"ushield_bot/internal/domain"
 	"ushield_bot/internal/global"
+	trxfee "ushield_bot/internal/infrastructure/3rd"
 	"ushield_bot/internal/infrastructure/repositories"
 	. "ushield_bot/internal/infrastructure/tools"
 	"ushield_bot/internal/request"
+
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+	"gorm.io/gorm"
 )
 
 func CLICK_BUNDLE_PACKAGE_ADDRESS_MANAGER_REMOVE(_lang string, cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbotapi.Message, db *gorm.DB) bool {
@@ -129,7 +131,7 @@ func APPLY_BUNDLE_PACKAGE(_lang string, cache cache.Cache, bot *tgbotapi.BotAPI,
 				"👤"+global.Translations[_lang]["username"]+": @"+user.Username+"\n"+
 				"💰"+global.Translations[_lang]["balance"]+": "+"\n"+
 				"- TRX：   "+user.TronAmount+"\n"+
-				"-  USDT："+user.Amount)
+				"- USDT："+user.Amount)
 
 		msg.ParseMode = "HTML"
 
@@ -714,4 +716,241 @@ func PREV_BUNDLE_PACKAGE_ADDRESS_STATS(_lang string, callbackQuery *tgbotapi.Cal
 		bot.Send(msg)
 	}
 	return state, false
+}
+func APPLY_ST_BUNDLE_PACKAGE(trxfeeClient *trxfee.TrxfeeClient, _lang string, cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbotapi.Message, db *gorm.DB, status string) bool {
+	if !IsValidAddress(message.Text) {
+		msg := tgbotapi.NewMessage(message.Chat.ID, "💬"+"<b>"+global.Translations[_lang]["invalid_address_tips"]+"</b>"+"\n")
+		msg.ParseMode = "HTML"
+		bot.Send(msg)
+		return true
+	}
+
+	bundleID := strings.ReplaceAll(status, "apply_ST_bundle_package_", "")
+	userOperationBundlesRepo := repositories.NewUserSmartTransactionBundlesRepository(db)
+	bundlePackage, err := userOperationBundlesRepo.Query(context.Background(), bundleID)
+
+	if err != nil {
+		fmt.Println(err)
+	}
+	userRepo := repositories.NewUserRepository(db)
+	user, _ := userRepo.GetByUserID(message.Chat.ID)
+
+	lessBalance := false
+	if bundlePackage.Token == "USDT" {
+		//扣usdt
+		if flag, _ := CompareNumberStrings(user.Amount, bundlePackage.Amount); flag < 0 {
+			lessBalance = true
+		}
+		fmt.Printf("bundle %v is USDT\n", bundlePackage)
+	} else if bundlePackage.Token == "TRX" {
+		//扣trx
+		if flag, _ := CompareNumberStrings(user.TronAmount, bundlePackage.Amount); flag < 0 {
+			lessBalance = true
+		}
+
+		fmt.Printf("bundle %v is trx\n", bundlePackage)
+	}
+
+	if lessBalance {
+		msg := tgbotapi.NewMessage(message.Chat.ID,
+			"🆔"+global.Translations[_lang]["user_id"]+": "+user.Associates+"\n"+
+				"👤"+global.Translations[_lang]["username"]+": @"+user.Username+"\n"+
+				"💰"+global.Translations[_lang]["balance"]+": "+"\n"+
+				"- TRX：   "+user.TronAmount+"\n"+
+				"- USDT："+user.Amount)
+
+		msg.ParseMode = "HTML"
+
+		inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
+			tgbotapi.NewInlineKeyboardRow(
+				tgbotapi.NewInlineKeyboardButtonData("💵"+global.Translations[_lang]["deposit"], "deposit_amount"),
+			),
+		)
+
+		msg.ReplyMarkup = inlineKeyboard
+		bot.Send(msg)
+
+		return false
+	}
+
+	//加入訂閲記錄
+	userPackageSubscriptionsRepo := repositories.NewUserSmartTransactionPackageSubscriptionsRepository(db)
+
+	//判断是否已经购买的地址，在进行中的
+	item, err := userPackageSubscriptionsRepo.Get(message.Text)
+
+	if err != nil {
+		return false
+	}
+
+	if item.Id > 0 {
+		msg := tgbotapi.NewMessage(message.Chat.ID, global.Translations[_lang]["smart_transaction_plans_repeat_order"]+
+			"🆔"+global.Translations[_lang]["user_id"]+": "+user.Associates+"\n"+
+			"👤"+global.Translations[_lang]["username"]+": @"+user.Username+"\n"+
+			"💰"+global.Translations[_lang]["balance"]+": "+"\n"+
+			"- TRX：   "+user.TronAmount+"\n"+
+			"- USDT："+user.Amount)
+
+		msg.ParseMode = "HTML"
+
+		inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
+			tgbotapi.NewInlineKeyboardRow(
+				tgbotapi.NewInlineKeyboardButtonData("💵"+global.Translations[_lang]["deposit"], "deposit_amount"),
+			),
+		)
+
+		msg.ReplyMarkup = inlineKeyboard
+		bot.Send(msg)
+
+		return false
+	}
+
+	//扣錢
+	if bundlePackage.Token == "TRX" {
+		balance, _ := SubtractStringNumbers(user.TronAmount, bundlePackage.Amount, 1)
+		fmt.Printf("TRX balance %s\n", balance)
+		user.TronAmount = balance
+	} else if bundlePackage.Token == "USDT" {
+		balance, _ := SubtractStringNumbers(user.Amount, bundlePackage.Amount, 1)
+		fmt.Printf("USDT balance %s\n", balance)
+
+		user.Amount = balance
+	}
+
+	err = userRepo.Update2(context.Background(), &user)
+	if err != nil {
+
+		return false
+	}
+
+	var record domain.UserSmartTransactionPackageSubscriptions
+	record.ChatID = message.Chat.ID
+	record.Address = message.Text
+	bundle, _ := strconv.ParseInt(bundleID, 10, 64)
+
+	record.BundleID = bundle
+	record.Status = 2
+	record.Amount = bundlePackage.Amount
+	record.Times = ExtractLeadingInt64(bundlePackage.Name)
+	record.BundleName = bundlePackage.Name
+
+	err = userPackageSubscriptionsRepo.Create(context.Background(), &record)
+	if err != nil {
+		return true
+	}
+
+	//
+
+	fmt.Printf("address %s\n", record.Address)
+	fmt.Printf("times %d\n", record.Times)
+
+	trxfeeClient.TimesOrder(record.Address, int(record.Times))
+
+	msg := tgbotapi.NewMessage(message.Chat.ID, "✅"+global.Translations[_lang]["smart_transaction_package_order_purchased_successfully"]+"\n"+
+		global.Translations[_lang]["package_name"]+"："+strings.ReplaceAll(bundlePackage.Name, "笔", global.Translations[_lang]["笔"])+"\n"+
+		global.Translations[_lang]["payment_amount"]+"："+bundlePackage.Amount+" "+bundlePackage.Token+"\n"+
+		global.Translations[_lang]["address"]+"："+message.Text+"\n"+
+		global.Translations[_lang]["order_id"]+"："+fmt.Sprintf("%d", record.Id)+""+"\n")
+	msg.ParseMode = "HTML"
+	// 当点击"按钮 1"时显示内联键盘
+	inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
+		tgbotapi.NewInlineKeyboardRow(
+			tgbotapi.NewInlineKeyboardButtonData("🧾"+global.Translations[_lang]["smart_transaction_package_address_list"], "click_bundle_package_address_stats_ST"),
+			tgbotapi.NewInlineKeyboardButtonData("🔙️"+global.Translations[_lang]["back_homepage"], "back_bundle_package_ST"),
+		),
+	)
+	msg.ReplyMarkup = inlineKeyboard
+
+	bot.Send(msg)
+
+	expiration := 1 * time.Minute // 短时间缓存空值
+
+	//设置用户状态
+	cache.Set(strconv.FormatInt(message.Chat.ID, 10), "null_apply_bundle_package_address_ST", expiration)
+	return false
+}
+func CLICK_BUNDLE_PACKAGE_ADDRESS_STATS_ST(_lang string, db *gorm.DB, chatID int64) tgbotapi.MessageConfig {
+
+	//fmt.Println("ExtractBundlePackage")
+	userAddressDetectionRepo := repositories.NewUserSmartTransactionPackageSubscriptionsRepository(db)
+	var info request.UserAddressDetectionSearch
+
+	info.Page = 1
+	info.PageSize = 100000
+	orderlist, total, err := userAddressDetectionRepo.GetUserSmartTransactionPackageSubscriptionsInfoList(context.Background(), info, chatID)
+	if err != nil {
+
+		fmt.Println("能量笔数套餐空", err)
+	}
+	var builder strings.Builder
+	if total > 0 {
+		//- [6.29] +3000 TRX（订单 #TOPUP-92308）
+		for _, order := range orderlist {
+			//builder.WriteString(global.Translations[_lang]["address"]+"：")
+			builder.WriteString("\n")
+			builder.WriteString("<code>" + order.Address + "</code>")
+			builder.WriteString("\n")
+			//builder.WriteString("状态：")
+			////0默认初始化状态  1 自动派送 2 手动 3 结束
+			//if order.Status == 3 {
+			//	builder.WriteString("<b>" + "已结束" + "</b>")
+			//} else if order.Status == 2 {
+			//	builder.WriteString("<b>" + "已停止" + "</b>")
+			//} else if order.Status == 1 {
+			//	builder.WriteString("<b>" + "已开启" + "</b>")
+			//} else if order.Status == 0 {
+			//	builder.WriteString("<b>" + "初始化" + "</b>")
+			//}
+			//
+			//builder.WriteString("\n")
+
+			builder.WriteString(global.Translations[_lang]["remaining"])
+			builder.WriteString(strconv.FormatInt(order.Times, 10))
+			builder.WriteString(" " + global.Translations[_lang]["笔"])
+
+			usedTimes := ExtractLeadingInt64(order.BundleName) - order.Times
+			builder.WriteString("     " + global.Translations[_lang]["used"])
+			builder.WriteString(strconv.FormatInt(usedTimes, 10))
+			builder.WriteString(" " + global.Translations[_lang]["笔"])
+
+			////builder.WriteString(" （能量笔数套餐）")
+
+			builder.WriteString("\n") // 添加分隔符
+			if order.Times > 0 {
+				if order.Status == 2 {
+					builder.WriteString(global.Translations[_lang]["close_auto_dispatch_energy"] + ":/close_ST")
+					builder.WriteString(strconv.FormatInt(order.Id, 10))
+				}
+				if order.Status == 1 {
+					builder.WriteString(global.Translations[_lang]["open_auto_dispatch_energy"] + ":/open_ST")
+					builder.WriteString(strconv.FormatInt(order.Id, 10))
+				}
+				builder.WriteString("\n") // 添加分隔符
+			}
+			//builder.WriteString("\n")
+			builder.WriteString("➖➖➖➖➖➖➖➖➖➖➖➖➖") // 添加分隔符
+			//builder.WriteString("\n")            // 添加分隔符
+		}
+	} else {
+		builder.WriteString(global.Translations[_lang]["smart_transaction__list_empty_tips"] + "\n\n") // 添加分隔符
+	}
+
+	// 去除最后一个空格
+	result := strings.TrimSpace(builder.String())
+
+	msg := tgbotapi.NewMessage(chatID, "🧾"+global.Translations[_lang]["smart_transaction_package_address_list"]+"\n\n"+
+		result+"\n")
+	msg.ParseMode = "HTML"
+	inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
+		//tgbotapi.NewInlineKeyboardRow(
+		//	tgbotapi.NewInlineKeyboardButtonData(global.Translations[_lang]["prev"], "next_bundle_package_address_stats"),
+		//	tgbotapi.NewInlineKeyboardButtonData(global.Translations[_lang]["next"], "prev_bundle_package_address_stats"),
+		//),
+		tgbotapi.NewInlineKeyboardRow(
+			//tgbotapi.NewInlineKeyboardButtonData("解绑地址", "free_monitor_address"),
+			tgbotapi.NewInlineKeyboardButtonData("🔙️"+global.Translations[_lang]["back_homepage"], "back_bundle_package_ST"),
+		),
+	)
+	msg.ReplyMarkup = inlineKeyboard
+	return msg
 }

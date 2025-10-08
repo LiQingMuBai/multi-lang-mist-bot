@@ -2,9 +2,35 @@ package tools
 
 import (
 	"fmt"
+	"math"
 	"strconv"
 	"time"
 )
+
+func SubtractAndRound(s1, s2 string, n float64) (string, error) {
+	// Step 1: Parse strings to float64
+	a, err := strconv.ParseFloat(s1, 64)
+	if err != nil {
+		return "", fmt.Errorf("invalid number s1: %w", err)
+	}
+	b, err := strconv.ParseFloat(s2, 64)
+	if err != nil {
+		return "", fmt.Errorf("invalid number s2: %w", err)
+	}
+
+	// Step 2: Subtract
+	result := a - b*n
+
+	// Step 3: Round to 1 decimal place (round half up)
+	// Multiply by 10, round, then divide by 10
+	rounded := math.Round(result*10) / 10
+
+	//return rounded, nil
+
+	// 3. 将结果转为字符串
+	return fmt.Sprintf("%v", rounded), nil
+
+}
 
 func SubtractStringNumbers(a, b string, n float64) (string, error) {
 	// 1. 将字符串转为 float64
@@ -20,9 +46,9 @@ func SubtractStringNumbers(a, b string, n float64) (string, error) {
 
 	// 2. 计算减法
 	result := numA - numB*n
-
+	rounded := math.Round(result*10) / 10
 	// 3. 将结果转为字符串
-	return fmt.Sprintf("%v", result), nil
+	return fmt.Sprintf("%v", rounded), nil
 }
 func CompareStringsWithFloat(a, b string, n float64) bool {
 	// 将字符串转换为 float64

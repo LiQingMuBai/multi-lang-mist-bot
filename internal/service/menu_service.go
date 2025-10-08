@@ -352,3 +352,163 @@ func MenuNavigateHome2(db *gorm.DB, message *tgbotapi.Message, bot *tgbotapi.Bot
 	msg.ParseMode = "HTML"
 	bot.Send(msg)
 }
+
+func MenuNavigateSmartTransactionPlans(_lang string, db *gorm.DB, _chatID int64, bot *tgbotapi.BotAPI, token string) {
+	bundlesRepo := repositories.NewUserSmartTransactionBundlesRepository(db)
+
+	trxlist, err := bundlesRepo.ListByToken(context.Background(), token)
+
+	if err != nil {
+
+	}
+
+	var allButtons []tgbotapi.InlineKeyboardButton
+	var extraButtons []tgbotapi.InlineKeyboardButton
+	var onlyButtons []tgbotapi.InlineKeyboardButton
+	var keyboard [][]tgbotapi.InlineKeyboardButton
+	for _, trx := range trxlist {
+		allButtons = append(allButtons, tgbotapi.NewInlineKeyboardButtonData("🛒"+strings.ReplaceAll(trx.Name, "笔", global.Translations[_lang]["笔"]), CombineInt64AndString("ST_bundle_", trx.Id)))
+	}
+
+	if token == "TRX" {
+		onlyButtons = append(onlyButtons,
+			tgbotapi.NewInlineKeyboardButtonData("🔁"+global.Translations[_lang]["transaction_plans_usdt_payment"], "click_switch_usdt_ST"),
+		)
+	}
+	if token == "USDT" {
+		onlyButtons = append(onlyButtons,
+			tgbotapi.NewInlineKeyboardButtonData("🔁"+global.Translations[_lang]["transaction_plans_trx_payment"], "click_switch_trx_ST"),
+		)
+	}
+
+	extraButtons = append(extraButtons,
+		tgbotapi.NewInlineKeyboardButtonData("🔢"+global.Translations[_lang]["address_list"], "click_bundle_package_address_stats_ST"),
+		tgbotapi.NewInlineKeyboardButtonData("📜"+global.Translations[_lang]["billing"], "click_bundle_package_cost_records_ST"),
+	)
+
+	for i := 0; i < len(allButtons); i += 2 {
+		end := i + 2
+		if end > len(allButtons) {
+			end = len(allButtons)
+		}
+		row := allButtons[i:end]
+		keyboard = append(keyboard, tgbotapi.NewInlineKeyboardRow(row...))
+	}
+	for i := 0; i < len(onlyButtons); i += 1 {
+		end := i + 1
+		if end > len(onlyButtons) {
+			end = len(onlyButtons)
+		}
+		row := onlyButtons[i:end]
+		keyboard = append(keyboard, tgbotapi.NewInlineKeyboardRow(row...))
+	}
+
+	for i := 0; i < len(extraButtons); i += 2 {
+		end := i + 2
+		if end > len(extraButtons) {
+			end = len(extraButtons)
+		}
+		row := extraButtons[i:end]
+		keyboard = append(keyboard, tgbotapi.NewInlineKeyboardRow(row...))
+	}
+
+	// 3. 创建键盘标记
+	inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(keyboard...)
+
+	userRepo := repositories.NewUserRepository(db)
+	user, _ := userRepo.GetByUserID(_chatID)
+	if IsEmpty(user.Amount) {
+		user.Amount = "0"
+	}
+
+	if IsEmpty(user.TronAmount) {
+		user.TronAmount = "0"
+	}
+
+	msg := tgbotapi.NewMessage(_chatID, "<b>"+global.Translations[_lang]["smart_transaction_plans_head"]+"</b>"+"\n\n"+global.Translations[_lang]["smart_transaction_plans_tips"])
+	msg.ReplyMarkup = inlineKeyboard
+	msg.ParseMode = "HTML"
+
+	bot.Send(msg)
+}
+func MenuNavigateSTBundlePackage(_lang string, db *gorm.DB, _chatID int64, bot *tgbotapi.BotAPI, token string) {
+	//bundlesRepo := repositories.NewUserOperationBundlesRepository(db)
+	bundlesRepo := repositories.NewUserSmartTransactionBundlesRepository(db)
+
+	trxlist, err := bundlesRepo.ListByToken(context.Background(), token)
+
+	if err != nil {
+
+	}
+
+	var allButtons []tgbotapi.InlineKeyboardButton
+	var extraButtons []tgbotapi.InlineKeyboardButton
+	var onlyButtons []tgbotapi.InlineKeyboardButton
+	var keyboard [][]tgbotapi.InlineKeyboardButton
+	for _, trx := range trxlist {
+
+		allButtons = append(allButtons, tgbotapi.NewInlineKeyboardButtonData(strings.ReplaceAll(trx.Name, "笔", global.Translations[_lang]["笔"]), CombineInt64AndString("ST_bundle_", trx.Id)))
+	}
+
+	if token == "TRX" {
+		onlyButtons = append(onlyButtons,
+			tgbotapi.NewInlineKeyboardButtonData("🔁"+global.Translations[_lang]["transaction_plans_usdt_payment"], "click_switch_usdt_ST"),
+		)
+	}
+	if token == "USDT" {
+		onlyButtons = append(onlyButtons,
+			tgbotapi.NewInlineKeyboardButtonData("🔁"+global.Translations[_lang]["transaction_plans_trx_payment"], "click_switch_trx_ST"),
+		)
+	}
+
+	extraButtons = append(extraButtons,
+		tgbotapi.NewInlineKeyboardButtonData("🔢"+global.Translations[_lang]["address_list"], "click_bundle_package_address_stats_ST"),
+		//tgbotapi.NewInlineKeyboardButtonData("➕"+global.Translations[_lang]["add_address"], "click_bundle_package_address_management"),
+		tgbotapi.NewInlineKeyboardButtonData("📜"+global.Translations[_lang]["billing"], "click_bundle_package_cost_records_ST"),
+	)
+
+	for i := 0; i < len(allButtons); i += 2 {
+		end := i + 2
+		if end > len(allButtons) {
+			end = len(allButtons)
+		}
+		row := allButtons[i:end]
+		keyboard = append(keyboard, tgbotapi.NewInlineKeyboardRow(row...))
+	}
+	for i := 0; i < len(onlyButtons); i += 1 {
+		end := i + 1
+		if end > len(onlyButtons) {
+			end = len(onlyButtons)
+		}
+		row := onlyButtons[i:end]
+		keyboard = append(keyboard, tgbotapi.NewInlineKeyboardRow(row...))
+	}
+
+	for i := 0; i < len(extraButtons); i += 2 {
+		end := i + 2
+		if end > len(extraButtons) {
+			end = len(extraButtons)
+		}
+		row := extraButtons[i:end]
+		keyboard = append(keyboard, tgbotapi.NewInlineKeyboardRow(row...))
+	}
+
+	// 3. 创建键盘标记
+	inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(keyboard...)
+
+	userRepo := repositories.NewUserRepository(db)
+	user, _ := userRepo.GetByUserID(_chatID)
+	if IsEmpty(user.Amount) {
+		user.Amount = "0"
+	}
+
+	if IsEmpty(user.TronAmount) {
+		user.TronAmount = "0"
+	}
+
+	msg := tgbotapi.NewMessage(_chatID, "<b>"+global.Translations[_lang]["smart_transaction_plans_head"]+"</b>"+"\n\n"+global.Translations[_lang]["smart_transaction_plans_tips"])
+	msg.ReplyMarkup = inlineKeyboard
+	msg.ParseMode = "HTML"
+
+	bot.Send(msg)
+}

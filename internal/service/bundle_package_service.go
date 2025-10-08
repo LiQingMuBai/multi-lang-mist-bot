@@ -3,8 +3,6 @@ package service
 import (
 	"context"
 	"fmt"
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
-	"gorm.io/gorm"
 	"strconv"
 	"strings"
 	"time"
@@ -15,6 +13,9 @@ import (
 	"ushield_bot/internal/infrastructure/tools"
 	. "ushield_bot/internal/infrastructure/tools"
 	"ushield_bot/internal/request"
+
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+	"gorm.io/gorm"
 )
 
 func ExtractBundlePackage(_lang string, db *gorm.DB, callbackQuery *tgbotapi.CallbackQuery) tgbotapi.MessageConfig {
@@ -464,4 +465,57 @@ func DispatchOthers(_lang string, bundleID string, cache cache.Cache, bot *tgbot
 
 	//设置用户状态
 	cache.Set(strconv.FormatInt(_chatID, 10), "dispatch_others", expiration)
+}
+
+func ExtractBundlePackageST(_lang string, db *gorm.DB, callbackQuery *tgbotapi.CallbackQuery) tgbotapi.MessageConfig {
+
+	fmt.Println("ExtractBundlePackageST")
+	//userAddressDetectionRepo := repositories.NewUserPackageSubscriptionsRepository(db)
+	userAddressDetectionRepo := repositories.NewUserSmartTransactionPackageSubscriptionsRepository(db)
+	var info request.UserAddressDetectionSearch
+
+	info.Page = 1
+	info.PageSize = 10000
+	trxlist, total, err := userAddressDetectionRepo.GetUserSmartTransactionPackageSubscriptionsInfoList(context.Background(), info, callbackQuery.Message.Chat.ID)
+	if err != nil {
+
+		fmt.Println("能量笔数套餐空", err)
+	}
+	var builder strings.Builder
+	if total > 0 {
+		//- [6.29] +3000 TRX（订单 #TOPUP-92308）
+		for _, word := range trxlist {
+			builder.WriteString("[")
+			builder.WriteString(word.CreatedDate)
+			builder.WriteString("]")
+			builder.WriteString(" -")
+			builder.WriteString(strings.ReplaceAll(word.BundleName, "笔", global.Translations[_lang]["笔"]))
+
+			//builder.WriteString(" TRX ")
+			//builder.WriteString(" （能量笔数套餐）")
+
+			builder.WriteString("\n") // 添加分隔符
+		}
+	} else {
+		builder.WriteString("\n") // 添加分隔符
+	}
+
+	// 去除最后一个空格
+	result := strings.TrimSpace(builder.String())
+
+	msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, "🧾"+global.Translations[_lang]["deduction_records"]+"\n\n "+
+		result+"\n")
+	msg.ParseMode = "HTML"
+	inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
+		//tgbotapi.NewInlineKeyboardRow(
+		//	tgbotapi.NewInlineKeyboardButtonData(global.Translations[_lang]["prev"], "prev_bundle_package_page"),
+		//	tgbotapi.NewInlineKeyboardButtonData(global.Translations[_lang]["next"], "next_bundle_package_page"),
+		//),
+		tgbotapi.NewInlineKeyboardRow(
+			//tgbotapi.NewInlineKeyboardButtonData("解绑地址", "free_monitor_address"),
+			tgbotapi.NewInlineKeyboardButtonData("🔙️"+global.Translations[_lang]["back_homepage"], "back_bundle_package_ST"),
+		),
+	)
+	msg.ReplyMarkup = inlineKeyboard
+	return msg
 }

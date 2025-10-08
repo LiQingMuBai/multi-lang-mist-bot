@@ -1,0 +1,8 @@
+db:
+  host: "206.238.42.123"
+  port: "6033"
+  username: "root"
+  password: "MasionMagela"
+  dbname: "onlyone"
+  sslmode: "disable"
+

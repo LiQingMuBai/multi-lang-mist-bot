@@ -17,3 +17,17 @@ func TestCompareNumberStrings(t *testing.T) {
 
 	fmt.Println(value)
 }
+
+func TestSubtractStringNumbers(t *testing.T) {
+
+	a := "47.99999999999999"
+	b := "5.2"
+	n := 1
+	value, err := SubtractStringNumbers(a, b, float64(n))
+	if err != nil {
+
+		t.Error(err.Error())
+	}
+
+	fmt.Println(value)
+}
