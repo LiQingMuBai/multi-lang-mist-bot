@@ -1717,10 +1717,6 @@ func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery 
 	case callbackQuery.Data == "address_manager":
 		service.ADDRESS_MANAGER(_lang, cache, bot, callbackQuery.Message.Chat.ID, db)
 
-	case callbackQuery.Data == "deposit_amount":
-
-		service.DEPOSIT_AMOUNT(_lang, db, callbackQuery, bot)
-
 	case strings.HasPrefix(callbackQuery.Data, "set_lang_"):
 		lang := strings.ReplaceAll(callbackQuery.Data, "set_lang_", "")
 		expiration := 24 * time.Hour // 短时间缓存空值
@@ -1775,8 +1771,13 @@ func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery 
 
 		//设置用户状态
 		cache.Set(strconv.FormatInt(callbackQuery.Message.Chat.ID, 10), callbackQuery.Data, expiration)
+	case callbackQuery.Data == "deposit_amount":
+
+		service.DEPOSIT_AMOUNT(_lang, db, callbackQuery, bot)
 
 	case callbackQuery.Data == "forward_deposit_usdt":
+
+		fmt.Printf("\nforward_deposit_usdt\n")
 		usdtSubscriptionsRepo := repositories.NewUserUsdtSubscriptionsRepository(db)
 
 		usdtlist, err := usdtSubscriptionsRepo.ListAll(context.Background())
