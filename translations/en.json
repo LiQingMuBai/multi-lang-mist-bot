@@ -123,5 +123,34 @@
   "address_list_empty_tips": "No address in the list, please add an address first.",
   "promotion_link": "Exclusive promotion link",
   "join_vip_cooperation": "Join the VIP business cooperation group:",
-  "visit_tutorial": "Please visit our tutorial:"
+  "visit_tutorial": "Please visit our tutorial:",
+  "usdt_trx_swap": "USDT to TRX Swap",
+  "usdt_trx_swap_head": "Welcome to U-Shield USDT to TRX Swap Service\n\uD83D\uDCC8Real-time Exchange Rate\n\uD83D\uDD381 USDT  ≈   {trx_amount} TRX\n\uD83D\uDD38Swap Receiving Address: <code>{swap_address}</code>\n➖➖➖➖\uD83D\uDC46Click to Copy\uD83D\uDC46➖➖➖➖\n⚙\uFE0F Function Introduction\nUSDT → TRX Swap (Automatic Return)\nSingle Transaction Limit:\nUSDT: Minimum {min_amount}U   Maximum {max_amount}U\n\n⚠\uFE0F Please use a decentralized wallet for transfers",
+
+  "address_trace_add": "Add Address",
+  "address_trace_add_tips": "Please enter the address to add: ",
+  "address_trace_add_repeat_tips": "The address you entered already exists, please re-enter",
+  "address_trace_add_max_tips": "You can add up to 4 frequently used addresses",
+  "address_trace_delete": "Delete Address",
+  "address_trace_delete_tips": "Please enter the address to delete: ",
+  "address_trace_menu": "Address Tracking",
+  "address_trace_head_tips": "Welcome to U-Shield Address Monitoring Service for TRX and USDT transaction information\n⚠️You can add 4 frequently used addresses\n",
+
+  "backup_account_tips": "Incorrect username format. Remove the @ symbol and re-enter.",
+  "backup_account_tips2": "Incorrect username format, please re-enter",
+  "backup_account_tip3": "Successfully bound the second emergency contact: ",
+
+  "smart_transaction__list_empty_tips": "The list is empty, please purchase smart transactions first",
+  "smart_transaction_auto_dispatch_close_successfully": "Successfully closed smart transaction",
+  "smart_transaction_auto_dispatch_open_successfully": "Successfully opened smart transaction",
+  "smart_transaction_package_address_list": "Smart Transaction Address List",
+  "close_auto_dispatch_energy": "Close",
+  "open_auto_dispatch_energy": "Open",
+  "smart_transaction_package_order_purchased_successfully": "Smart transaction package order purchased successfully",
+  "smart_transaction_plans_repeat_order": "Subscription record already exists for this address and is in progress. No need to purchase again.\n\n",
+  "smart_transaction_plans": "Smart Transactions",
+  "smart_transaction_plans_head1": "Introduction to Smart Transactions",
+  "smart_transaction_plans_head": "",
+  "smart_transaction_plans_tips1": "The system will automatically detect your energy balance. If it is not enough for one transaction, it will automatically replenish your energy. Within the number of transactions purchased, you will no longer burn TRX to purchase transactions, but instead, the fee will be deducted based on the actual energy consumed.  Consuming 65k deducts 1 transaction, consuming 131k deducts 2 transactions.\n\nExplanation 1: If there are no transactions for a long time, 2 transactions will be deducted per day as an occupancy fee. This fee will not be charged if there are transactions.\nExplanation 2: Do not make transactions too frequently, as the energy may not have arrived yet. It is recommended to have an interval of at least 1 minute.\nExplanation 3: If you enter an idle paused state, please manually turn it on in the list.",
+  "smart_transaction_plans_tips": "Welcome to U-Shield Energy Smart Management\n⚙\uFE0F Function Introduction\n\uD83E\uDD16After smart management is enabled, the system will automatically detect the address's energy balance. When the energy is less than 131k, the system will automatically replenish energy.\n\uD83D\uDCCCThe package transactions are only limited to the bound address and cannot be cross-shared.\n\uD83D\uDD0BConsuming 65k deducts 1 transaction, consuming 131k deducts 2 transactions.\n⛽Each transaction requires 0.345TRX bandwidth. Please ensure that there is enough TRX in the address.\n⏰Energy is valid on the same day. If there are no transactions, an occupancy fee of 2 transactions/day will be charged. For consecutive transactions, it is recommended to have an interval of 1 minute.\n\uD83D\uDCA4You can turn on or pause management in the list. If the address is idle for two days, the system will automatically pause management."
 }

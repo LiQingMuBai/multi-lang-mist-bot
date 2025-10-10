@@ -122,5 +122,37 @@
   "address_list_empty_tips":"Danh sách không có địa chỉ, vui lòng thêm địa chỉ trước.",
   "promotion_link":"Liên kết quảng bá độc quyền",
   "join_vip_cooperation":"Tham gia nhóm VIP hợp tác kinh doanh:",
-  "visit_tutorial":"Vui lòng truy cập hướng dẫn sử dụng của chúng tôi:"
+  "visit_tutorial":"Vui lòng truy cập hướng dẫn sử dụng của chúng tôi:",
+
+
+
+  "usdt_trx_swap": "Hoán đổi USDT sang TRX",
+  "usdt_trx_swap_head": "Chào mừng bạn đến với Dịch vụ Hoán đổi USDT sang TRX của U-Shield\n\uD83D\uDCC8Tỷ giá hối đoái theo thời gian thực\n\uD83D\uDD381 USDT  ≈   {trx_amount} TRX\n\uD83D\uDD38Địa chỉ nhận hoán đổi: <code>{swap_address}</code>\n➖➖➖➖\uD83D\uDC46Nhấn để sao chép\uD83D\uDC46➖➖➖➖\n⚙\uFE0F Giới thiệu chức năng\nUSDT → TRX Hoán đổi (Tự động hoàn trả)\nGiới hạn giao dịch đơn lẻ:\nUSDT: Tối thiểu {min_amount}U   Tối đa {max_amount}U\n\n⚠\uFE0F Vui lòng sử dụng ví phi tập trung để chuyển khoản",
+
+  "address_trace_add": "Thêm địa chỉ",
+  "address_trace_add_tips": "Vui lòng nhập địa chỉ cần thêm: ",
+  "address_trace_add_repeat_tips": "Địa chỉ bạn đã nhập đã tồn tại, vui lòng nhập lại",
+  "address_trace_add_max_tips": "Bạn có thể thêm tối đa 4 địa chỉ thường dùng",
+  "address_trace_delete": "Xóa địa chỉ",
+  "address_trace_delete_tips": "Vui lòng nhập địa chỉ cần xóa: ",
+  "address_trace_menu": "Theo dõi địa chỉ",
+  "address_trace_head_tips": "Chào mừng bạn đến với Dịch vụ Giám sát Địa chỉ U-Shield cho thông tin giao dịch TRX và USDT\n⚠️Bạn có thể thêm 4 địa chỉ thường dùng\n",
+
+  "backup_account_tips": "Định dạng tên người dùng không chính xác. Xóa ký hiệu @ và nhập lại.",
+  "backup_account_tips2": "Định dạng tên người dùng không chính xác, vui lòng nhập lại",
+  "backup_account_tip3": "Đã liên kết thành công người liên hệ khẩn cấp thứ hai: ",
+
+  "smart_transaction__list_empty_tips": "Danh sách trống, vui lòng mua giao dịch thông minh trước",
+  "smart_transaction_auto_dispatch_close_successfully": "Đã đóng giao dịch thông minh thành công",
+  "smart_transaction_auto_dispatch_open_successfully": "Đã mở giao dịch thông minh thành công",
+  "smart_transaction_package_address_list": "Danh sách địa chỉ giao dịch thông minh",
+  "close_auto_dispatch_energy": "Đóng Tự động điều phối năng lượng",
+  "open_auto_dispatch_energy": "Mở Tự động điều phối năng lượng",
+  "smart_transaction_package_order_purchased_successfully": "Đã mua thành công đơn hàng gói giao dịch thông minh",
+  "smart_transaction_plans_repeat_order": "Đã có bản ghi đăng ký cho địa chỉ này và đang được tiến hành. Không cần mua lại.\n\n",
+  "smart_transaction_plans": "Giao dịch thông minh",
+  "smart_transaction_plans_head1": "Giới thiệu về Giao dịch thông minh",
+  "smart_transaction_plans_head": "",
+  "smart_transaction_plans_tips1": "Hệ thống sẽ tự động phát hiện số dư năng lượng của bạn. Nếu không đủ cho một giao dịch, nó sẽ tự động bổ sung năng lượng của bạn. Trong số lượng giao dịch đã mua, bạn sẽ không còn đốt TRX để mua giao dịch nữa, mà thay vào đó, phí sẽ được khấu trừ dựa trên năng lượng thực tế tiêu thụ. Tiêu thụ 65k sẽ trừ 1 giao dịch, tiêu thụ 131k sẽ trừ 2 giao dịch.\n\nGiải thích 1: Nếu không có giao dịch nào trong một thời gian dài, 2 giao dịch sẽ bị trừ mỗi ngày làm phí chiếm chỗ. Phí này sẽ không được tính nếu có giao dịch.\nGiải thích 2: Không thực hiện giao dịch quá thường xuyên, vì năng lượng có thể chưa đến. Nên có khoảng thời gian ít nhất là 1 phút.\nGiải thích 3: Nếu bạn chuyển sang trạng thái tạm dừng không hoạt động, vui lòng bật nó theo cách thủ công trong danh sách.",
+  "smart_transaction_plans_tips": "Chào mừng bạn đến với Quản lý thông minh năng lượng U-Shield\n⚙\uFE0F Giới thiệu chức năng\n\uD83E\uDD16Sau khi bật quản lý thông minh, hệ thống sẽ tự động phát hiện số dư năng lượng của địa chỉ. Khi năng lượng nhỏ hơn 131k, hệ thống sẽ tự động bổ sung năng lượng.\n\uD83D\uDCCCCác giao dịch gói chỉ giới hạn cho địa chỉ được liên kết và không thể chia sẻ chéo.\n\uD83D\uDD0BTiêu thụ 65k sẽ trừ 1 giao dịch, tiêu thụ 131k sẽ trừ 2 giao dịch.\n⛽Mỗi giao dịch yêu cầu băng thông 0,345TRX. Vui lòng đảm bảo rằng có đủ TRX trong địa chỉ.\n⏰Năng lượng có giá trị trong cùng ngày. Nếu không có giao dịch, phí chiếm chỗ là 2 giao dịch/ngày sẽ được tính. Đối với các giao dịch liên tiếp, nên có khoảng thời gian 1 phút.\n\uD83D\uDCA4Bạn có thể bật hoặc tạm dừng quản lý trong danh sách. Nếu địa chỉ không hoạt động trong hai ngày, hệ thống sẽ tự động tạm dừng quản lý."
 }

@@ -134,7 +134,7 @@
 
 
 
-  "usdt_trx_swap": "USDT闪兑",
+  "usdt_trx_swap": "TRX闪兑",
   "usdt_trx_swap_head": "欢迎使用U盾TRX闪兑服务\n\uD83D\uDCC8实时汇率\n\uD83D\uDD381 USDT  ≈   {trx_amount} TRX\n\uD83D\uDD38闪兑收款地址: <code>{swap_address}</code>\n➖➖➖➖\uD83D\uDC46点击复制\uD83D\uDC46➖➖➖➖\n⚙\uFE0F 功能介绍\nUSDT → TRX 闪兑（自动原路返回）\n单笔转入限额:\nUSDT ：最少{min_amount}U   最大{max_amount}U\n\n⚠\uFE0F 转账请务必使用去中心化钱包",
 
   "address_trace_add": "添加地址",

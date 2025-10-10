@@ -122,5 +122,39 @@
   "address_list_empty_tips": "列表無地址，請先添加地址",
   "promotion_link": "專屬推廣連結",
   "join_vip_cooperation": "加入商務合作VIP群：",
-  "visit_tutorial": "請訪問我們的使用教程："
+  "visit_tutorial": "請訪問我們的使用教程：",
+
+
+
+
+
+  "usdt_trx_swap": "USDT 兌換 TRX",
+  "usdt_trx_swap_head": "歡迎使用 U 盾 USDT 兌換 TRX 服務\n\uD83D\uDCC8 實時匯率\n\uD83D\uDD381 USDT  ≈   {trx_amount} TRX\n\uD83D\uDD38 兌換收款地址: <code>{swap_address}</code>\n➖➖➖➖\uD83D\uDC46 點擊複製\uD83D\uDC46➖➖➖➖\n⚙\uFE0F 功能介紹\nUSDT → TRX 兌換 (自動原路返回)\n單筆轉入限額:\nUSDT: 最少 {min_amount}U   最多 {max_amount}U\n\n⚠\uFE0F 轉賬請務必使用去中心化錢包",
+
+  "address_trace_add": "添加地址",
+  "address_trace_add_tips": "請輸入需添加嘅地址: ",
+  "address_trace_add_repeat_tips": "您輸入嘅地址已存在，請重新輸入",
+  "address_trace_add_max_tips": "最多可以添加 4 個常用地址",
+  "address_trace_delete": "刪除地址",
+  "address_trace_delete_tips": "請輸入需刪除嘅地址: ",
+  "address_trace_menu": "地址追蹤",
+  "address_trace_head_tips": "歡迎使用 U 盾地址監控 TRX 同 USDT 動賬資訊\n⚠️可以添加 4 個常用地址\n",
+
+  "backup_account_tips": "用戶名格式有誤，請移除 @ 符號並重新輸入",
+  "backup_account_tips2": "用戶名格式有誤，請重新輸入",
+  "backup_account_tip3": "成功綁定第二緊急聯絡人: ",
+
+  "smart_transaction__list_empty_tips": "列表為空，請先購買智能筆數",
+  "smart_transaction_auto_dispatch_close_successfully": "成功關閉智能筆數",
+  "smart_transaction_auto_dispatch_open_successfully": "成功開啟智能筆數",
+  "smart_transaction_package_address_list": "智能筆數地址列表",
+  "close_auto_dispatch_energy": "關閉自動發能量",
+  "open_auto_dispatch_energy": "開啟自動發能量",
+  "smart_transaction_package_order_purchased_successfully": "智能筆數套餐訂單購買成功",
+  "smart_transaction_plans_repeat_order": "該地址已經有訂閱記錄，正在進行中，唔需要重複購買。\n\n",
+  "smart_transaction_plans": "智能筆數",
+  "smart_transaction_plans_head1": "智能筆數介紹",
+  "smart_transaction_plans_head": "",
+  "smart_transaction_plans_tips1": "系統將自動檢測您嘅能量餘量。如果唔夠一筆轉賬，系統會自動為您補充能量。喺購買嘅筆數內，唔會再燃燒 TRX 嚟購買筆數，而係根據實際消耗嘅能量扣費。消耗 65k 扣 1 筆，消耗 131k 扣 2 筆。\n\n說明 1：如果長期冇轉賬，每日會扣除 2 筆作為佔用費。如果有轉賬就唔會收取呢個費用。\n說明 2：轉賬間隔唔好太短，能量可能仲未到賬。建議間隔至少 1 分鐘。\n說明 3：如果進入空閒暫停狀態，請喺列表手動開啟。",
+  "smart_transaction_plans_tips": "歡迎使用 U 盾能量智能托管\n⚙\uFE0F 功能介紹\n\uD83E\uDD16 喺開啟智能托管之後，系統會自動檢測地址嘅能量餘量。當能量少過 131k 時，系統會自動補充能量。\n\uD83D\uDCCC 套餐筆數只限綁定嘅地址，唔可以交叉共享。\n\uD83D\uDD0B 消耗 65k 扣 1 筆，消耗 131k 扣 2 筆。\n⛽ 每筆轉賬需要 0.345TRX 嘅帶寬。請確保地址內有足夠嘅 TRX。\n⏰ 能量喺當日有效。如果冇轉賬，每日會收取 2 筆嘅佔用費。連續轉賬建議間隔 1 分鐘。\n\uD83D\uDCA4 您可以喺列表開啟或暫停托管。如果地址空閒兩日，系統會自動暫停托管。"
 }

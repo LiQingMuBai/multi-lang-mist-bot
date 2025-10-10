@@ -122,5 +122,37 @@
   "address_list_empty_tips":"リストにアドレスがありません。まずアドレスを追加してください。",
   "promotion_link": "専用プロモーションリンク",
   "join_vip_cooperation": "VIPビジネス提携グループに参加：",
-  "visit_tutorial":"使用チュートリアルをご覧ください："
+  "visit_tutorial":"使用チュートリアルをご覧ください：",
+
+
+
+  "usdt_trx_swap": "USDTからTRXへのスワップ",
+  "usdt_trx_swap_head": "U-Shield USDTからTRXへのスワップサービスへようこそ\n\uD83D\uDCC8リアルタイム為替レート\n\uD83D\uDD381 USDT  ≈   {trx_amount} TRX\n\uD83D\uDD38スワップ受取アドレス: <code>{swap_address}</code>\n➖➖➖➖\uD83D\uDC46クリックしてコピー\uD83D\uDC46➖➖➖➖\n⚙\uFE0F 機能紹介\nUSDT → TRX スワップ (自動返送)\n1回あたりの送金額制限:\nUSDT: 最低 {min_amount}U   最高 {max_amount}U\n\n⚠\uFE0F 送金には必ず分散型ウォレットを使用してください",
+
+  "address_trace_add": "アドレス追加",
+  "address_trace_add_tips": "追加するアドレスを入力してください: ",
+  "address_trace_add_repeat_tips": "入力されたアドレスはすでに存在します。再入力してください",
+  "address_trace_add_max_tips": "よく使うアドレスは4つまで追加できます",
+  "address_trace_delete": "アドレス削除",
+  "address_trace_delete_tips": "削除するアドレスを入力してください: ",
+  "address_trace_menu": "アドレス追跡",
+  "address_trace_head_tips": "TRXおよびUSDTトランザクション情報に関するU-Shieldアドレス監視サービスへようこそ\n⚠️よく使うアドレスは4つまで追加できます\n",
+
+  "backup_account_tips": "ユーザー名の形式が正しくありません。@記号を削除して再入力してください",
+  "backup_account_tips2": "ユーザー名の形式が正しくありません。再入力してください",
+  "backup_account_tip3": "2番目の緊急連絡先を正常にバインドしました: ",
+
+  "smart_transaction__list_empty_tips": "リストが空です。先にスマートトランザクションを購入してください",
+  "smart_transaction_auto_dispatch_close_successfully": "スマートトランザクションを正常に閉じました",
+  "smart_transaction_auto_dispatch_open_successfully": "スマートトランザクションを正常に開きました",
+  "smart_transaction_package_address_list": "スマートトランザクションアドレスリスト",
+  "close_auto_dispatch_energy": "自動エネルギーディスパッチを閉じる",
+  "open_auto_dispatch_energy": "自動エネルギーディスパッチを開く",
+  "smart_transaction_package_order_purchased_successfully": "スマートトランザクションパッケージの注文が正常に購入されました",
+  "smart_transaction_plans_repeat_order": "このアドレスのサブスクリプションレコードはすでに存在し、進行中です。再度購入する必要はありません。\n\n",
+  "smart_transaction_plans": "スマートトランザクション",
+  "smart_transaction_plans_head1": "スマートトランザクションの紹介",
+  "smart_transaction_plans_head": "",
+  "smart_transaction_plans_tips1": "システムは自動的にエネルギー残高を検出し、1回のトランザクションに十分でない場合は自動的にエネルギーを補充します。購入したトランザクション数内では、TRXを消費してトランザクションを購入する代わりに、実際のエネルギー消費量に基づいて料金が差し引かれます。65kを消費すると1トランザクションが差し引かれ、131kを消費すると2トランザクションが差し引かれます。\n\n説明1：長期間トランザクションがない場合、占有料として1日あたり2トランザクションが差し引かれます。トランザクションがある場合は、この料金は請求されません。\n説明2：トランザクションの間隔が短すぎると、エネルギーがまだ到着していない可能性があります。少なくとも1分間隔を空けることをお勧めします。\n説明3：アイドル一時停止状態になった場合は、リストで手動でオンにしてください。",
+  "smart_transaction_plans_tips": "U-Shieldエナジースマート管理へようこそ\n⚙\uFE0F 機能紹介\n\uD83E\uDD16スマート管理が有効になると、システムは自動的にアドレスのエネルギー残高を検出します。エネルギーが131k未満の場合、システムは自動的にエネルギーを補充します。\n\uD83D\uDCCCパッケージトランザクションは、バインドされたアドレスにのみ制限され、クロス共有できません。\n\uD83D\uDD0B65kを消費すると1トランザクションが差し引かれ、131kを消費すると2トランザクションが差し引かれます。\n⛽各トランザクションには0.345TRXの帯域幅が必要です。アドレスに十分なTRXがあることを確認してください。\n⏰エネルギーは当日有効です。トランザクションがない場合、占有料として2トランザクション/日が請求されます。連続トランザクションの場合、1分間隔を空けることをお勧めします。\n\uD83D\uDCA4リストで管理をオンまたは一時停止できます。アドレスが2日間アイドル状態の場合、システムは自動的に管理を一時停止します。"
 }

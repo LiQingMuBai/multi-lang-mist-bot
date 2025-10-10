@@ -122,5 +122,37 @@
   "address_list_empty_tips":"No hay direcciones en la lista, por favor agregue una dirección primero.",
   "promotion_link":"Enlace de promoción exclusivo",
   "join_vip_cooperation": "Únase al grupo VIP de cooperación comercial:",
-  "visit_tutorial":"Por favor, visite nuestro tutorial:"
+  "visit_tutorial":"Por favor, visite nuestro tutorial:",
+
+
+
+  "usdt_trx_swap": "Intercambio de USDT a TRX",
+  "usdt_trx_swap_head": "Bienvenido al Servicio de Intercambio de USDT a TRX de U-Shield\n\uD83D\uDCC8Tasa de cambio en tiempo real\n\uD83D\uDD381 USDT  ≈   {trx_amount} TRX\n\uD83D\uDD38Dirección de recepción del intercambio: <code>{swap_address}</code>\n➖➖➖➖\uD83D\uDC46Haz clic para copiar\uD83D\uDC46➖➖➖➖\n⚙\uFE0F Introducción a la función\nIntercambio de USDT → TRX (Retorno automático)\nLímite de transacción única:\nUSDT: Mínimo {min_amount}U   Máximo {max_amount}U\n\n⚠\uFE0F Utiliza una billetera descentralizada para las transferencias",
+
+  "address_trace_add": "Añadir dirección",
+  "address_trace_add_tips": "Por favor, introduce la dirección que deseas añadir: ",
+  "address_trace_add_repeat_tips": "La dirección que has introducido ya existe, por favor, vuelve a introducirla",
+  "address_trace_add_max_tips": "Puedes añadir hasta 4 direcciones usadas frecuentemente",
+  "address_trace_delete": "Eliminar dirección",
+  "address_trace_delete_tips": "Por favor, introduce la dirección que deseas eliminar: ",
+  "address_trace_menu": "Seguimiento de dirección",
+  "address_trace_head_tips": "Bienvenido al Servicio de Monitoreo de Direcciones de U-Shield para información de transacciones de TRX y USDT\n⚠️Puedes añadir 4 direcciones usadas frecuentemente\n",
+
+  "backup_account_tips": "Formato de nombre de usuario incorrecto. Elimina el símbolo @ y vuelve a introducirlo.",
+  "backup_account_tips2": "Formato de nombre de usuario incorrecto, por favor, vuelve a introducirlo",
+  "backup_account_tip3": "Contacto de emergencia secundario vinculado con éxito: ",
+
+  "smart_transaction__list_empty_tips": "La lista está vacía, por favor, compra transacciones inteligentes primero",
+  "smart_transaction_auto_dispatch_close_successfully": "Transacción inteligente cerrada con éxito",
+  "smart_transaction_auto_dispatch_open_successfully": "Transacción inteligente abierta con éxito",
+  "smart_transaction_package_address_list": "Lista de direcciones de transacciones inteligentes",
+  "close_auto_dispatch_energy": "Cerrar Despacho Automático de Energía",
+  "open_auto_dispatch_energy": "Abrir Despacho Automático de Energía",
+  "smart_transaction_package_order_purchased_successfully": "Pedido de paquete de transacciones inteligentes comprado con éxito",
+  "smart_transaction_plans_repeat_order": "Ya existe un registro de suscripción para esta dirección y está en curso. No es necesario volver a comprar.\n\n",
+  "smart_transaction_plans": "Transacciones inteligentes",
+  "smart_transaction_plans_head1": "Introducción a las transacciones inteligentes",
+  "smart_transaction_plans_head": "",
+  "smart_transaction_plans_tips1": "El sistema detectará automáticamente tu saldo de energía. Si no es suficiente para una transacción, repondrá automáticamente tu energía. Dentro del número de transacciones compradas, ya no quemarás TRX para comprar transacciones, sino que la tarifa se deducirá según la energía real consumida. Consumir 65k deduce 1 transacción, consumir 131k deduce 2 transacciones.\n\nExplicación 1: Si no hay transacciones durante un período prolongado, se deducirán 2 transacciones por día como tarifa de ocupación. Esta tarifa no se cobrará si hay transacciones.\nExplicación 2: No realices transacciones con demasiada frecuencia, ya que la energía puede que aún no haya llegado. Se recomienda tener un intervalo de al menos 1 minuto.\nExplicación 3: Si entras en un estado de pausa inactivo, por favor, actívala manualmente en la lista.",
+  "smart_transaction_plans_tips": "Bienvenido a la Gestión Inteligente de Energía de U-Shield\n⚙\uFE0F Introducción a la función\n\uD83E\uDD16Después de activar la gestión inteligente, el sistema detectará automáticamente el saldo de energía de la dirección. Cuando la energía sea inferior a 131k, el sistema repondrá automáticamente la energía.\n\uD83D\uDCCC Las transacciones del paquete están limitadas únicamente a la dirección vinculada y no se pueden compartir entre ellas.\n\uD83D\uDD0B Consumir 65k deduce 1 transacción, consumir 131k deduce 2 transacciones.\n⛽ Cada transacción requiere 0.345TRX de ancho de banda. Por favor, asegúrate de que haya suficiente TRX en la dirección.\n⏰ La energía es válida el mismo día. Si no hay transacciones, se cobrará una tarifa de ocupación de 2 transacciones/día. Para transacciones consecutivas, se recomienda tener un intervalo de 1 minuto.\n\uD83D\uDCA4 Puedes activar o pausar la gestión en la lista. Si la dirección está inactiva durante dos días, el sistema pausará automáticamente la gestión."
 }
