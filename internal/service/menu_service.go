@@ -92,7 +92,7 @@ func MenuNavigateAddressTrace(_lang string, cache cache.Cache, bot *tgbotapi.Bot
 	expiration := 1 * time.Minute // 短时间缓存空值
 
 	//设置用户状态
-	cache.Set(strconv.FormatInt(chatID, 10), "usdt_risk_query", expiration)
+	cache.Set(strconv.FormatInt(chatID, 10), "usdt_address_trace", expiration)
 }
 
 func MenuNavigateAddressFreeze(_lang string, cache cache.Cache, bot *tgbotapi.BotAPI, chatID int64, db *gorm.DB) {
