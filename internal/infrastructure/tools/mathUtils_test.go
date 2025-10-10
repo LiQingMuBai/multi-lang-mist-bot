@@ -31,3 +31,20 @@ func TestSubtractStringNumbers(t *testing.T) {
 
 	fmt.Println(value)
 }
+
+func TestMultiplyStringNumbers(t *testing.T) {
+
+	energy_cost_2x, err1 := StringMultiply("1", 2)
+
+	if err1 != nil {
+		t.Error(err1.Error())
+	}
+	fmt.Println(energy_cost_2x)
+	energy_cost_10x, err2 := StringMultiply("1", 10)
+
+	if err2 != nil {
+		t.Error(err2.Error())
+	}
+	fmt.Println(energy_cost_10x)
+
+}

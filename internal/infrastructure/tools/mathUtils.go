@@ -65,9 +65,9 @@ func CompareStringsWithFloat(a, b string, n float64) bool {
 	// 比较 a 和 b * 2
 	return floatA >= bTimesTwo
 }
-func StringMultiply(s string, n int64) (string, error) {
+func StringMultiply(s string, n float64) (string, error) {
 	// 将字符串转换为 int64
-	num, err := strconv.ParseInt(s, 10, 64)
+	num, err := strconv.ParseFloat(s, 64)
 	if err != nil {
 		return "", fmt.Errorf("无法将字符串转换为int64: %v", err)
 	}
@@ -76,7 +76,7 @@ func StringMultiply(s string, n int64) (string, error) {
 	result := num * n
 
 	// 将结果转换回字符串
-	return strconv.FormatInt(result, 10), nil
+	return fmt.Sprintf("%v", result), nil
 }
 
 func AddStringsAsFloats(a, b string) string {
