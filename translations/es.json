@@ -146,13 +146,19 @@
   "smart_transaction_auto_dispatch_close_successfully": "Transacción inteligente cerrada con éxito",
   "smart_transaction_auto_dispatch_open_successfully": "Transacción inteligente abierta con éxito",
   "smart_transaction_package_address_list": "Lista de direcciones de transacciones inteligentes",
-  "close_auto_dispatch_energy": "Cerrar Despacho Automático de Energía",
-  "open_auto_dispatch_energy": "Abrir Despacho Automático de Energía",
+
   "smart_transaction_package_order_purchased_successfully": "Pedido de paquete de transacciones inteligentes comprado con éxito",
   "smart_transaction_plans_repeat_order": "Ya existe un registro de suscripción para esta dirección y está en curso. No es necesario volver a comprar.\n\n",
   "smart_transaction_plans": "Transacciones inteligentes",
   "smart_transaction_plans_head1": "Introducción a las transacciones inteligentes",
   "smart_transaction_plans_head": "",
   "smart_transaction_plans_tips1": "El sistema detectará automáticamente tu saldo de energía. Si no es suficiente para una transacción, repondrá automáticamente tu energía. Dentro del número de transacciones compradas, ya no quemarás TRX para comprar transacciones, sino que la tarifa se deducirá según la energía real consumida. Consumir 65k deduce 1 transacción, consumir 131k deduce 2 transacciones.\n\nExplicación 1: Si no hay transacciones durante un período prolongado, se deducirán 2 transacciones por día como tarifa de ocupación. Esta tarifa no se cobrará si hay transacciones.\nExplicación 2: No realices transacciones con demasiada frecuencia, ya que la energía puede que aún no haya llegado. Se recomienda tener un intervalo de al menos 1 minuto.\nExplicación 3: Si entras en un estado de pausa inactivo, por favor, actívala manualmente en la lista.",
-  "smart_transaction_plans_tips": "Bienvenido a la Gestión Inteligente de Energía de U-Shield\n⚙\uFE0F Introducción a la función\n\uD83E\uDD16Después de activar la gestión inteligente, el sistema detectará automáticamente el saldo de energía de la dirección. Cuando la energía sea inferior a 131k, el sistema repondrá automáticamente la energía.\n\uD83D\uDCCC Las transacciones del paquete están limitadas únicamente a la dirección vinculada y no se pueden compartir entre ellas.\n\uD83D\uDD0B Consumir 65k deduce 1 transacción, consumir 131k deduce 2 transacciones.\n⛽ Cada transacción requiere 0.345TRX de ancho de banda. Por favor, asegúrate de que haya suficiente TRX en la dirección.\n⏰ La energía es válida el mismo día. Si no hay transacciones, se cobrará una tarifa de ocupación de 2 transacciones/día. Para transacciones consecutivas, se recomienda tener un intervalo de 1 minuto.\n\uD83D\uDCA4 Puedes activar o pausar la gestión en la lista. Si la dirección está inactiva durante dos días, el sistema pausará automáticamente la gestión."
+  "smart_transaction_plans_tips": "Bienvenido a la Gestión Inteligente de Energía de U-Shield\n⚙\uFE0F Introducción a la función\n\uD83E\uDD16Después de activar la gestión inteligente, el sistema detectará automáticamente el saldo de energía de la dirección. Cuando la energía sea inferior a 131k, el sistema repondrá automáticamente la energía.\n\uD83D\uDCCC Las transacciones del paquete están limitadas únicamente a la dirección vinculada y no se pueden compartir entre ellas.\n\uD83D\uDD0B Consumir 65k deduce 1 transacción, consumir 131k deduce 2 transacciones.\n⛽ Cada transacción requiere 0.345TRX de ancho de banda. Por favor, asegúrate de que haya suficiente TRX en la dirección.\n⏰ La energía es válida el mismo día. Si no hay transacciones, se cobrará una tarifa de ocupación de 2 transacciones/día. Para transacciones consecutivas, se recomienda tener un intervalo de 1 minuto.\n\uD83D\uDCA4 Puedes activar o pausar la gestión en la lista. Si la dirección está inactiva durante dos días, el sistema pausará automáticamente la gestión.",
+
+  "close_auto_dispatch_energy": "Pausar",
+  "open_auto_dispatch_energy": "Abrir",
+  "tron_energy_menu": "Energía Tron",
+  "smart_transaction_disable": "Gestionado: 🟢 Activado ",
+  "smart_transaction_enable": "Gestionado: 🔴 Pausado "
+
 }

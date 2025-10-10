@@ -151,18 +151,24 @@
   "backup_account_tips2": "用户名格式有误，请重新输入",
   "backup_account_tip3": "成功绑定第二紧急联系人 : ",
 
-  "smart_transaction__list_empty_tips": "列表为空，请先购买智能笔数",
+  "smart_transaction__list_empty_tips": "列表为空，请先购买托管笔数",
   "smart_transaction_auto_dispatch_close_successfully": "成功关闭智能笔数",
   "smart_transaction_auto_dispatch_open_successfully": "成功开启智能笔数",
-  "smart_transaction_package_address_list": "智能笔数地址列表",
-  "close_auto_dispatch_energy": "关闭自动发能",
-  "open_auto_dispatch_energy": "开启自动发能",
-  "smart_transaction_package_order_purchased_successfully": "智能笔数套餐订单购买成功",
+  "smart_transaction_package_address_list": "托管列表",
+
+  "smart_transaction_package_order_purchased_successfully": "智能托管订单购买成功",
   "smart_transaction_plans_repeat_order": "已有该地址订阅记录，正在进行中，无需重复订阅购买\n\n",
-  "smart_transaction_plans": "智能笔数",
-  "smart_transaction_plans_head1": "智能笔数介绍",
+  "smart_transaction_plans": "托管笔数",
+  "smart_transaction_plans_head1": "托管笔数介绍",
   "smart_transaction_plans_head": "",
   "smart_transaction_plans_tips1": "系统将自动检测您的能量余量，如果不足一笔转账，自动为您补充能量，在购买的笔数内不再燃烧TRX购买的笔数，而是根据实际消耗能量扣费，消耗65k扣费1笔，消耗131k扣费两笔\n\n说明1：如长期不转账，1天扣除2次笔数作为占用费，有转账则不收取\n说明2：转账间隔不要太短, 能量可能还未到账，建议间隔不小于1分钟\n说明3：如果进入空闲暂停状态，请到列表手动开启",
-  "smart_transaction_plans_tips": "欢迎使用 U盾能量智能托管\n⚙\uFE0F 功能介绍\n\uD83E\uDD16智能托管开启后系统将自动检测地址能量余量，能量不足131k时系统将自动补能\n\uD83D\uDCCC套餐笔数仅限绑定地址，不可交叉共享\n\uD83D\uDD0B消耗65k扣1笔，消耗131k扣2笔\n⛽每笔转账需消耗0.345TRX带宽，请确保地址内有足够的TRX\n⏰能量当日有效，无转账将收取2笔/天占用费，连续转账建议间隔1分钟\n\uD83D\uDCA4可在列表中开启或暂停托管，地址休眠两天系统将自动暂停托管"
+  "smart_transaction_plans_tips": "欢迎使用 U盾能量智能托管\n⚙\uFE0F 功能介绍\n\uD83E\uDD16智能托管开启后系统将自动检测地址能量余量，能量不足131k时系统将自动补能\n\uD83D\uDCCC套餐笔数仅限绑定地址，不可交叉共享\n\uD83D\uDD0B消耗65k扣1笔，消耗131k扣2笔\n⛽每笔转账需消耗0.345TRX带宽，请确保地址内有足够的TRX\n⏰能量当日有效，无转账将收取2笔/天占用费，连续转账建议间隔1分钟\n\uD83D\uDCA4可在列表中开启或暂停托管，地址休眠两天系统将自动暂停托管",
+
+  "close_auto_dispatch_energy": "暂停",
+  "open_auto_dispatch_energy": "开启",
+  "tron_energy_menu": "波场能量",
+  "smart_transaction_disable": "托管:\uD83D\uDFE2 已开启 ",
+  "smart_transaction_enable": "托管:\uD83D\uDFE1 已暂停 "
+
 }
 

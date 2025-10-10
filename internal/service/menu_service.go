@@ -15,13 +15,88 @@ import (
 	"gorm.io/gorm"
 )
 
-func MenuNavigateSwapExchange(_lang string, db *gorm.DB, message *tgbotapi.Message, bot *tgbotapi.BotAPI) {
-	// 当点击"按钮 1"时显示内联键盘
+func MenuNavigateTronEnergy(_lang string, db *gorm.DB, message *tgbotapi.Message, bot *tgbotapi.BotAPI) {
 	inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
+		//tgbotapi.NewInlineKeyboardRow(
+		//	tgbotapi.NewInlineKeyboardButtonData("🆔我的账户", "click_my_account"),
+		//
+		//),
+
+		//tgbotapi.NewKeyboardButton("⚡"+global.Translations[_lang]["energy_swap"]),
+		//tgbotapi.NewKeyboardButton("🖊️"+global.Translations[_lang]["transaction_plans"]),
+		//tgbotapi.NewKeyboardButton("🤖"+global.Translations[_lang]["smart_transaction_plans"]),
+
 		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("🖊️"+global.Translations[_lang]["transaction_plans"], "back_bundle_package"),
+			//tgbotapi.NewInlineKeyboardButtonData("⚡"+global.Translations[_lang]["energy_swap"], "click_energy_swap"),
+			tgbotapi.NewInlineKeyboardButtonData("🖊️"+global.Translations[_lang]["transaction_plans"], "click_transaction_plan"),
+			tgbotapi.NewInlineKeyboardButtonData("🤖"+global.Translations[_lang]["smart_transaction_plans"], "click_smart_transaction_plan"),
 		),
 	)
+
+	userRepo := repositories.NewUserRepository(db)
+	user, _ := userRepo.GetByUserID(message.Chat.ID)
+
+	if IsEmpty(user.Amount) {
+		user.Amount = "0"
+	}
+
+	if IsEmpty(user.TronAmount) {
+		user.TronAmount = "0"
+	}
+
+	_agent := os.Getenv("Agent")
+	sysUserRepo := repositories.NewSysUsersRepository(db)
+	receiveAddress, _, _ := sysUserRepo.Find(context.Background(), _agent)
+
+	//dictRepo := repositories.NewSysDictionariesRepo(db)
+	//receiveAddress, _ := dictRepo.GetReceiveAddress(_agent)
+
+	dictDetailRepo := repositories.NewSysDictionariesRepo(db)
+
+	energy_cost, _ := dictDetailRepo.GetDictionaryDetail("energy_cost")
+
+	energy_cost_2x, _ := StringMultiply(energy_cost, 2)
+	energy_cost_10x, _ := StringMultiply(energy_cost, 10)
+
+	originStr := global.Translations[_lang]["energy_swap_tips"]
+
+	targetStr := strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(originStr, "{energy_cost}", energy_cost), "{energy_cost_2x}", energy_cost_2x), "{receiveAddress}", receiveAddress), "{energy_cost_10x}", energy_cost_10x)
+
+	msg := tgbotapi.NewMessage(message.Chat.ID, targetStr)
+	msg.ReplyMarkup = inlineKeyboard
+	msg.ParseMode = "HTML"
+	bot.Send(msg)
+	//str := ""
+	//if len(user.BackupChatID) > 0 {
+	//	//id, _ := strconv.ParseInt(user.BackupChatID, 10, 64)
+	//	//backup_user, _ := userRepo.GetByUserID(id)
+	//	str = "🔗 " + global.Translations[_lang]["secondary_contact"] + "：  " + "@" + user.BackupChatID
+	//} else {
+	//	str = global.Translations[_lang]["secondary_contact_none"]
+	//}
+
+	//msg := tgbotapi.NewMessage(message.Chat.ID, "🆔 "+global.Translations[_lang]["user_id"]+"："+user.Associates+"\n👤 "+global.Translations[_lang]["username"]+"：@"+user.Username+"\n"+
+	//	str+"\n💰"+
+	//	global.Translations[_lang]["balance"]+"：\n"+
+	//	"- TRX："+user.TronAmount+"\n"+
+	//	"- USDT："+user.Amount)
+	//msg.ReplyMarkup = inlineKeyboard
+	//msg.ParseMode = "HTML"
+	//bot.Send(msg)
+
+	//msg := tgbotapi.NewMessage(message.Chat.ID, "🆔 ID："+user.Associates+"\n👤：@"+user.Username+"\n\n")
+	//msg.ReplyMarkup = inlineKeyboard
+	//msg.ParseMode = "HTML"
+	//bot.Send(msg)
+}
+
+func MenuNavigateSwapExchange(_lang string, db *gorm.DB, message *tgbotapi.Message, bot *tgbotapi.BotAPI) {
+	// 当点击"按钮 1"时显示内联键盘
+	//inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
+	//	tgbotapi.NewInlineKeyboardRow(
+	//		tgbotapi.NewInlineKeyboardButtonData("🖊️"+global.Translations[_lang]["transaction_plans"], "back_bundle_package"),
+	//	),
+	//)
 	//_agent := os.Getenv("Agent")
 	//sysUserRepo := repositories.NewSysUsersRepository(db)
 	//receiveAddress, _, _ := sysUserRepo.Find(context.Background(), _agent)
@@ -41,7 +116,7 @@ func MenuNavigateSwapExchange(_lang string, db *gorm.DB, message *tgbotapi.Messa
 	targetStr := strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(strings.ReplaceAll(originStr, "{trx_amount}", usdt_swap_trx_amount), "{swap_address}", usdt_swap_trx_swap_address), "{min_amount}", usdt_swap_trx_min_amount), "{max_amount}", usdt_swap_trx_max_amount)
 
 	msg := tgbotapi.NewMessage(message.Chat.ID, targetStr)
-	msg.ReplyMarkup = inlineKeyboard
+	//msg.ReplyMarkup = inlineKeyboard
 	msg.ParseMode = "HTML"
 	//msg.DisableWebPagePreview = true
 	bot.Send(msg)
@@ -219,20 +294,6 @@ func MenuNavigateEnergyExchange(_lang string, db *gorm.DB, message *tgbotapi.Mes
 
 	energy_cost_2x, _ := StringMultiply(energy_cost, 2)
 	energy_cost_10x, _ := StringMultiply(energy_cost, 10)
-	//old_str := "【⚡️能量闪租】\n🔸转账  " + energy_cost + " Trx=  1 笔能量\n🔸转账  " + energy_cost_2x + " Trx=  2 笔能量\n\n单笔 " + energy_cost + " Trx，以此类推，最大10 笔\n" +
-	//"1.向无U地址转账，需要双倍能量。\n2.请在1小时内转账，否则过期回收。\n\n🔸闪租能量收款地址:\n"
-
-	//old_str = "【⚡️能量闪租】\n\n 转账 3 TRX，系统自动按原路返还一笔能量，\n 如需向无U地址转账 ，请转账 6 TRX（返还两笔能量）\n\n"
-
-	//old_str := "欢迎使用U盾能量闪兑\n🔸转账  " + energy_cost + " Trx=  1 笔能量\n🔸转账  " + energy_cost_2x + " Trx=  2 笔能量\n🔸闪兑收款地址: "
-	//msg := tgbotapi.NewMessage(message.Chat.ID, old_str+
-	//	"<code>"+receiveAddress+"</code>"+"\n"+
-	//	"➖➖➖➖"+"点击复制"+"➖➖➖➖\n重要提示："+"\n"+
-	//	"1.单笔 "+energy_cost+"Trx，以此类推，一次最大 10笔（"+energy_cost_10x+"TRX，超出不予入账）\n"+
-	//	"2.向无U地址转账，需要购买两笔能量\n"+
-	//	"3.向闪兑地址转账成功后能量将即时按充值地址原路完成闪兑\n"+
-	//	"4.禁止使用交易所钱包提币使用",
-	//)
 
 	originStr := global.Translations[_lang]["energy_swap_tips"]
 
@@ -367,6 +428,9 @@ func MenuNavigateHome(_lang string, cache cache.Cache, db *gorm.DB, message *tgb
 			tgbotapi.NewInlineKeyboardButtonData("💬"+global.Translations[_lang]["channel"], "click_offical_channel"),
 
 			tgbotapi.NewInlineKeyboardButtonData("❓"+global.Translations[_lang]["tutorials"], "click_QA"),
+		),
+		tgbotapi.NewInlineKeyboardRow(
+			tgbotapi.NewInlineKeyboardButtonData("🌍"+global.Translations[_lang]["language"], "click_language"),
 		),
 		//tgbotapi.NewInlineKeyboardRow(),
 	)

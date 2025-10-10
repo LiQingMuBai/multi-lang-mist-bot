@@ -148,13 +148,19 @@
   "smart_transaction_auto_dispatch_close_successfully": "成功關閉智能筆數",
   "smart_transaction_auto_dispatch_open_successfully": "成功開啟智能筆數",
   "smart_transaction_package_address_list": "智能筆數地址列表",
-  "close_auto_dispatch_energy": "關閉自動發能量",
-  "open_auto_dispatch_energy": "開啟自動發能量",
+
   "smart_transaction_package_order_purchased_successfully": "智能筆數套餐訂單購買成功",
   "smart_transaction_plans_repeat_order": "該地址已經有訂閱記錄，正在進行中，唔需要重複購買。\n\n",
   "smart_transaction_plans": "智能筆數",
   "smart_transaction_plans_head1": "智能筆數介紹",
   "smart_transaction_plans_head": "",
   "smart_transaction_plans_tips1": "系統將自動檢測您嘅能量餘量。如果唔夠一筆轉賬，系統會自動為您補充能量。喺購買嘅筆數內，唔會再燃燒 TRX 嚟購買筆數，而係根據實際消耗嘅能量扣費。消耗 65k 扣 1 筆，消耗 131k 扣 2 筆。\n\n說明 1：如果長期冇轉賬，每日會扣除 2 筆作為佔用費。如果有轉賬就唔會收取呢個費用。\n說明 2：轉賬間隔唔好太短，能量可能仲未到賬。建議間隔至少 1 分鐘。\n說明 3：如果進入空閒暫停狀態，請喺列表手動開啟。",
-  "smart_transaction_plans_tips": "歡迎使用 U 盾能量智能托管\n⚙\uFE0F 功能介紹\n\uD83E\uDD16 喺開啟智能托管之後，系統會自動檢測地址嘅能量餘量。當能量少過 131k 時，系統會自動補充能量。\n\uD83D\uDCCC 套餐筆數只限綁定嘅地址，唔可以交叉共享。\n\uD83D\uDD0B 消耗 65k 扣 1 筆，消耗 131k 扣 2 筆。\n⛽ 每筆轉賬需要 0.345TRX 嘅帶寬。請確保地址內有足夠嘅 TRX。\n⏰ 能量喺當日有效。如果冇轉賬，每日會收取 2 筆嘅佔用費。連續轉賬建議間隔 1 分鐘。\n\uD83D\uDCA4 您可以喺列表開啟或暫停托管。如果地址空閒兩日，系統會自動暫停托管。"
+  "smart_transaction_plans_tips": "歡迎使用 U 盾能量智能托管\n⚙\uFE0F 功能介紹\n\uD83E\uDD16 喺開啟智能托管之後，系統會自動檢測地址嘅能量餘量。當能量少過 131k 時，系統會自動補充能量。\n\uD83D\uDCCC 套餐筆數只限綁定嘅地址，唔可以交叉共享。\n\uD83D\uDD0B 消耗 65k 扣 1 筆，消耗 131k 扣 2 筆。\n⛽ 每筆轉賬需要 0.345TRX 嘅帶寬。請確保地址內有足夠嘅 TRX。\n⏰ 能量喺當日有效。如果冇轉賬，每日會收取 2 筆嘅佔用費。連續轉賬建議間隔 1 分鐘。\n\uD83D\uDCA4 您可以喺列表開啟或暫停托管。如果地址空閒兩日，系統會自動暫停托管。",
+
+  "close_auto_dispatch_energy": "暫停",
+  "open_auto_dispatch_energy": "開啟",
+  "tron_energy_menu": "Tron 能量",
+  "smart_transaction_disable": "託管: 🟢 已啟用 ",
+  "smart_transaction_enable": "託管: 🔴 已暫停 "
+
 }

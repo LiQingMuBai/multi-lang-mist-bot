@@ -146,13 +146,19 @@
   "smart_transaction_auto_dispatch_close_successfully": "Transação inteligente fechada com sucesso",
   "smart_transaction_auto_dispatch_open_successfully": "Transação inteligente aberta com sucesso",
   "smart_transaction_package_address_list": "Lista de endereços de transações inteligentes",
-  "close_auto_dispatch_energy": "Fechar Despacho Automático de Energia",
-  "open_auto_dispatch_energy": "Abrir Despacho Automático de Energia",
+
   "smart_transaction_package_order_purchased_successfully": "Pedido de pacote de transações inteligentes comprado com sucesso",
   "smart_transaction_plans_repeat_order": "Já existe um registro de assinatura para este endereço e está em andamento. Não há necessidade de comprar novamente.\n\n",
   "smart_transaction_plans": "Transações inteligentes",
   "smart_transaction_plans_head1": "Introdução às transações inteligentes",
   "smart_transaction_plans_head": "",
   "smart_transaction_plans_tips1": "O sistema detectará automaticamente seu saldo de energia. Se não for suficiente para uma transação, ele reabastecerá automaticamente sua energia. Dentro do número de transações compradas, você não queimará mais TRX para comprar transações, mas, em vez disso, a taxa será deduzida com base no consumo real de energia. Consumir 65k deduz 1 transação, consumir 131k deduz 2 transações.\n\nExplicação 1: Se não houver transações por um longo período, 2 transações serão deduzidas por dia como taxa de ocupação. Esta taxa não será cobrada se houver transações.\nExplicação 2: Não faça transações com muita frequência, pois a energia pode ainda não ter chegado. Recomenda-se um intervalo de pelo menos 1 minuto.\nExplicação 3: Se você entrar em um estado de pausa ocioso, ligue-o manualmente na lista.",
-  "smart_transaction_plans_tips": "Bem-vindo ao Gerenciamento Inteligente de Energia U-Shield\n⚙\uFE0F Introdução à função\n\uD83E\uDD16Depois que o gerenciamento inteligente é ativado, o sistema detecta automaticamente o saldo de energia do endereço. Quando a energia for menor que 131k, o sistema reabastecerá automaticamente a energia.\n\uD83D\uDCCC As transações do pacote são limitadas apenas ao endereço vinculado e não podem ser compartilhadas entre si.\n\uD83D\uDD0B Consumir 65k deduz 1 transação, consumir 131k deduz 2 transações.\n⛽ Cada transação requer 0,345TRX de largura de banda. Certifique-se de que haja TRX suficiente no endereço.\n⏰ A energia é válida no mesmo dia. Se não houver transações, uma taxa de ocupação de 2 transações/dia será cobrada. Para transações consecutivas, recomenda-se um intervalo de 1 minuto.\n\uD83D\uDCA4 Você pode ativar ou pausar o gerenciamento na lista. Se o endereço ficar inativo por dois dias, o sistema pausará automaticamente o gerenciamento."
+  "smart_transaction_plans_tips": "Bem-vindo ao Gerenciamento Inteligente de Energia U-Shield\n⚙\uFE0F Introdução à função\n\uD83E\uDD16Depois que o gerenciamento inteligente é ativado, o sistema detecta automaticamente o saldo de energia do endereço. Quando a energia for menor que 131k, o sistema reabastecerá automaticamente a energia.\n\uD83D\uDCCC As transações do pacote são limitadas apenas ao endereço vinculado e não podem ser compartilhadas entre si.\n\uD83D\uDD0B Consumir 65k deduz 1 transação, consumir 131k deduz 2 transações.\n⛽ Cada transação requer 0,345TRX de largura de banda. Certifique-se de que haja TRX suficiente no endereço.\n⏰ A energia é válida no mesmo dia. Se não houver transações, uma taxa de ocupação de 2 transações/dia será cobrada. Para transações consecutivas, recomenda-se um intervalo de 1 minuto.\n\uD83D\uDCA4 Você pode ativar ou pausar o gerenciamento na lista. Se o endereço ficar inativo por dois dias, o sistema pausará automaticamente o gerenciamento.",
+
+  "close_auto_dispatch_energy": "Pausar",
+  "open_auto_dispatch_energy": "Abrir",
+  "tron_energy_menu": "Energia Tron",
+  "smart_transaction_disable": "Gerenciado: 🟢 Ativado ",
+  "smart_transaction_enable": "Gerenciado: 🔴 Pausado "
+
 }

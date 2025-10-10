@@ -478,9 +478,11 @@ func handleStartCommand(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbota
 	keyboard := tgbotapi.NewReplyKeyboard(
 		tgbotapi.NewKeyboardButtonRow(
 
-			tgbotapi.NewKeyboardButton("⚡"+global.Translations[_lang]["energy_swap"]),
-			tgbotapi.NewKeyboardButton("🖊️"+global.Translations[_lang]["transaction_plans"]),
-			tgbotapi.NewKeyboardButton("🤖"+global.Translations[_lang]["smart_transaction_plans"]),
+			tgbotapi.NewKeyboardButton("⛽"+global.Translations[_lang]["tron_energy_menu"]),
+			tgbotapi.NewKeyboardButton("✅"+global.Translations[_lang]["usdt_trx_swap"]),
+			//tgbotapi.NewKeyboardButton("⚡"+global.Translations[_lang]["energy_swap"]),
+			//tgbotapi.NewKeyboardButton("🖊️"+global.Translations[_lang]["transaction_plans"]),
+			//tgbotapi.NewKeyboardButton("🤖"+global.Translations[_lang]["smart_transaction_plans"]),
 		),
 		tgbotapi.NewKeyboardButtonRow(
 			tgbotapi.NewKeyboardButton("🕸"+global.Translations[_lang]["address_trace_menu"]),
@@ -488,9 +490,8 @@ func handleStartCommand(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbota
 			tgbotapi.NewKeyboardButton("🚨"+global.Translations[_lang]["usdt_freeze_alert"]),
 		),
 		tgbotapi.NewKeyboardButtonRow(
-			tgbotapi.NewKeyboardButton("✅"+global.Translations[_lang]["usdt_trx_swap"]),
+
 			tgbotapi.NewKeyboardButton("👤"+global.Translations[_lang]["my_account"]),
-			tgbotapi.NewKeyboardButton("🌍"+global.Translations[_lang]["language"]),
 		),
 	)
 
@@ -526,6 +527,8 @@ func handleRegularMessage(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbo
 	}
 
 	switch message.Text {
+	case "⛽" + global.Translations[_lang]["tron_energy_menu"]:
+		service.MenuNavigateTronEnergy(_lang, db, message, bot)
 	case "✅" + global.Translations[_lang]["usdt_trx_swap"]:
 		service.MenuNavigateSwapExchange(_lang, db, message, bot)
 	case "🕸" + global.Translations[_lang]["address_trace_menu"]:
@@ -946,11 +949,11 @@ func handleRegularMessage(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbo
 func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery *tgbotapi.CallbackQuery, db *gorm.DB, _trxfeeUrl, _trxfeeApiKey, _trxfeeSecret string) {
 	// 先应答回调
 
-	log.Println("已选择: " + callbackQuery.Data)
-	callback := tgbotapi.NewCallback(callbackQuery.ID, "已选择: "+callbackQuery.Data)
-	if _, err := bot.Request(callback); err != nil {
-		log.Printf("Error answering callback: %v", err)
-	}
+	//log.Println("已选择: " + callbackQuery.Data)
+	//callback := tgbotapi.NewCallback(callbackQuery.ID, "已选择: "+callbackQuery.Data)
+	//if _, err := bot.Request(callback); err != nil {
+	//	log.Printf("Error answering callback: %v", err)
+	//}
 	_lang, err := cache.Get("LANG_" + strconv.FormatInt(callbackQuery.Message.Chat.ID, 10))
 
 	if err != nil {
@@ -960,6 +963,22 @@ func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery 
 	var responseText string
 	switch {
 
+	//case "🖊️" + global.Translations[_lang]["transaction_plans"]:
+	//	service.MenuNavigateBundlePackage(_lang, db, message.Chat.ID, bot, "TRX")
+	//
+	//case "🤖" + global.Translations[_lang]["smart_transaction_plans"]:
+	//	service.MenuNavigateSmartTransactionPlans(_lang, db, message.Chat.ID, bot, "TRX")
+	//
+	//case "⚡" + global.Translations[_lang]["energy_swap"]:
+	//	service.MenuNavigateEnergyExchange(_lang, db, message, bot)
+	case callbackQuery.Data == "click_energy_swap":
+		service.MenuNavigateEnergyExchange(_lang, db, callbackQuery.Message, bot)
+	case callbackQuery.Data == "click_transaction_plan":
+		service.MenuNavigateBundlePackage(_lang, db, callbackQuery.Message.Chat.ID, bot, "TRX")
+	case callbackQuery.Data == "click_smart_transaction_plan":
+		service.MenuNavigateSmartTransactionPlans(_lang, db, callbackQuery.Message.Chat.ID, bot, "TRX")
+	case callbackQuery.Data == "click_language":
+		service.MenuNavigateHome2(db, callbackQuery.Message, bot)
 	case callbackQuery.Data == "dispatch_Now_Others":
 		msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, global.Translations[_lang]["enter_address"]+"\n\n")
 		msg.ParseMode = "HTML"

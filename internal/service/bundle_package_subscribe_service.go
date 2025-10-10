@@ -903,7 +903,12 @@ func CLICK_BUNDLE_PACKAGE_ADDRESS_STATS_ST(_lang string, db *gorm.DB, chatID int
 			//}
 			//
 			//builder.WriteString("\n")
-
+			if order.Status == 2 {
+				builder.WriteString(global.Translations[_lang]["smart_transaction_disable"])
+			}
+			if order.Status == 1 {
+				builder.WriteString(global.Translations[_lang]["smart_transaction_enable"])
+			}
 			builder.WriteString(global.Translations[_lang]["remaining"])
 			builder.WriteString(strconv.FormatInt(order.Times, 10))
 			builder.WriteString(" " + global.Translations[_lang]["笔"])
