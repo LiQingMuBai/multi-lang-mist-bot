@@ -162,6 +162,6 @@
   "smart_transaction_enable": "Gerenciado: 🔴 Pausado ",
 
   "coin_swap_coin_menu": "Troca Rápida de Criptomoedas",
-  "coin_swap_coin_tips": "Descrição dos passos para troca de moedas\n1. Clique no botão abaixo 【Trocar moedas】⬇\uFE0F\n2. Insira o token de origem e o token de destino\n3. Insira a quantidade\n4. Insira o endereço de recebimento\n5. <b>Opcional</b>, pode escolher receber notificação por e‑mail ao receber os fundos (pode escolher sem notificação)\n6. Aguarde o endereço de pagamento em QR code, insira o valor correto e faça a transferência\n7. Você receberá os fundos dentro de 3 minutos"
-
+  "coin_swap_coin_tips": "Descrição dos passos para troca de moedas\n1. Clique no botão abaixo 【Trocar moedas】⬇\uFE0F\n2. Insira o token de origem e o token de destino\n3. Insira a quantidade\n4. Insira o endereço de recebimento\n5. <b>Opcional</b>, pode escolher receber notificação por e‑mail ao receber os fundos (pode escolher sem notificação)\n6. Aguarde o endereço de pagamento em QR code, insira o valor correto e faça a transferência\n7. Você receberá os fundos dentro de 3 minutos",
+  "smart_transaction_address_list": "Lista de endereços"
 }

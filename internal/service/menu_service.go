@@ -550,7 +550,7 @@ func MenuNavigateSmartTransactionPlans(_lang string, db *gorm.DB, _chatID int64,
 	}
 
 	extraButtons = append(extraButtons,
-		tgbotapi.NewInlineKeyboardButtonData("🔢"+global.Translations[_lang]["address_list"], "click_bundle_package_address_stats_ST"),
+		tgbotapi.NewInlineKeyboardButtonData("🔢"+global.Translations[_lang]["smart_transaction_address_list"], "click_bundle_package_address_stats_ST"),
 		tgbotapi.NewInlineKeyboardButtonData("📜"+global.Translations[_lang]["billing"], "click_bundle_package_cost_records_ST"),
 	)
 
@@ -630,7 +630,7 @@ func MenuNavigateSTBundlePackage(_lang string, db *gorm.DB, _chatID int64, bot *
 	}
 
 	extraButtons = append(extraButtons,
-		tgbotapi.NewInlineKeyboardButtonData("🔢"+global.Translations[_lang]["address_list"], "click_bundle_package_address_stats_ST"),
+		tgbotapi.NewInlineKeyboardButtonData("🔢"+global.Translations[_lang]["smart_transaction_address_list"], "click_bundle_package_address_stats_ST"),
 		//tgbotapi.NewInlineKeyboardButtonData("➕"+global.Translations[_lang]["add_address"], "click_bundle_package_address_management"),
 		tgbotapi.NewInlineKeyboardButtonData("📜"+global.Translations[_lang]["billing"], "click_bundle_package_cost_records_ST"),
 	)
