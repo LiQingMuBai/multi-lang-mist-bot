@@ -21,7 +21,10 @@ func MenuNavigateCoin2CoinSwap(_lang string, db *gorm.DB, message *tgbotapi.Mess
 	// 弹出mini app的URL
 	//miniAppURL := "https://tron-grid.com/"
 	//url := "https://ff.io/?ref=rj4nsrta" // 点击后打开的网页
-	btn := tgbotapi.NewInlineKeyboardButtonURL(global.Translations[_lang]["coin_swap_coin_menu"], fixfloatedUrl)
+
+	dictRepo := repositories.NewSysDictionariesRepo(db)
+	fixfloatedUrlStr, _ := dictRepo.GetDictionaryDetail("ff_ref_url")
+	btn := tgbotapi.NewInlineKeyboardButtonURL(global.Translations[_lang]["coin_swap_coin_menu"], fixfloatedUrlStr)
 	row := tgbotapi.NewInlineKeyboardRow(btn)
 	keyboard := tgbotapi.NewInlineKeyboardMarkup(row)
 
