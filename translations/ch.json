@@ -161,6 +161,9 @@
   "open_auto_dispatch_energy": "開啟",
   "tron_energy_menu": "Tron 能量",
   "smart_transaction_disable": "託管: 🟢 已啟用 ",
-  "smart_transaction_enable": "託管: 🔴 已暫停 "
+  "smart_transaction_enable": "託管: 🔴 已暫停 ",
+
+  "coin_swap_coin_menu": "幣幣閃兌",
+  "coin_swap_coin_tips": "幣幣閃兌步驟說明\n1. 撳⬇\uFE0F下面嘅掣【幣幣交換】\n2. 輸入你想轉換嘅代幣同埋輸出代幣\n3. 輸入數量\n4. 輸入要接收嘅地址\n5. <b>非必要選項</b>，要唔要收到賬時嘅電郵通知，可以揀唔使通知\n6. 等二維碼收款地址，輸入啱嘅金額去轉賬\n7. 3分鐘內你會收到入賬嘅資金"
 
 }

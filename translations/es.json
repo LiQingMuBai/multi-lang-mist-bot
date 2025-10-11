@@ -159,6 +159,9 @@
   "open_auto_dispatch_energy": "Abrir",
   "tron_energy_menu": "Energía Tron",
   "smart_transaction_disable": "Gestionado: 🟢 Activado ",
-  "smart_transaction_enable": "Gestionado: 🔴 Pausado "
+  "smart_transaction_enable": "Gestionado: 🔴 Pausado ",
+  
+  "coin_swap_coin_menu": "Intercambio Rápido de Criptomonedas",
+  "coin_swap_coin_tips": "Descripción de los pasos para intercambio instantáneo\n1. Haga clic en el botón de abajo 【Intercambiar monedas】⬇\uFE0F\n2. Introduzca el token de origen y el token de destino\n3. Introduzca la cantidad\n4. Introduzca la dirección de recepción\n5. <b>Opcional</b>, puede elegir si desea recibir notificación por correo electrónico al recibir los fondos (puede elegir sin notificación)\n6. Espere la dirección de pago en código QR, introduzca la cantidad correcta y realice la transferencia\n7. Recibirá los fondos en un plazo de 3 minutos"
 
 }

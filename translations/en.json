@@ -157,6 +157,9 @@
   "open_auto_dispatch_energy": "Open",
   "tron_energy_menu": "Tron Energy",
   "smart_transaction_disable": "Managed: 🟢 Enabled ",
-  "smart_transaction_enable": "Managed: 🔴 Paused "
+  "smart_transaction_enable": "Managed: 🔴 Paused ",
+  
+  "coin_swap_coin_menu": "Coin Swap",
+  "coin_swap_coin_tips": "Coin swap steps explanation\n1. Click the button below 【Coin Exchange】⬇\uFE0F\n2. Enter the token you want to convert and the output token\n3. Enter the amount\n4. Enter the receiving address\n5. <b>Optional</b>, choose whether to receive an email notification when funds arrive (you may choose no notification)\n6. Wait for the QR code payment address, then transfer the correct amount\n7. You will receive the funds within 3 minutes"
 
 }

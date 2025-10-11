@@ -159,6 +159,9 @@
   "open_auto_dispatch_energy": "Mở",
   "tron_energy_menu": "Năng lượng Tron",
   "smart_transaction_disable": "Được quản lý: 🟢 Đã bật ",
-  "smart_transaction_enable": "Được quản lý: 🔴 Đã tạm dừng "
+  "smart_transaction_enable": "Được quản lý: 🔴 Đã tạm dừng ",
+
+  "coin_swap_coin_menu": "Đổi Coin Nhanh",
+  "coin_swap_coin_tips": "Hướng dẫn các bước đổi coin\n1. Nhấn nút bên dưới 【Đổi coin】⬇\uFE0F\n2. Nhập token cần chuyển và token muốn nhận\n3. Nhập số lượng\n4. Nhập địa chỉ nhận\n5. <b>Không bắt buộc</b>, chọn có nhận thông báo qua email khi tiền đến hay không (có thể chọn không nhận)\n6. Chờ địa chỉ thanh toán dưới dạng mã QR, nhập đúng số tiền và chuyển\n7. Bạn sẽ nhận được tiền trong vòng 3 phút"
 
 }

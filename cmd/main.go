@@ -143,6 +143,8 @@ func main() {
 	trxfeeApiKey := os.Getenv("TRXFEE_APIKEY")
 	trxfeeSecret := os.Getenv("TRXFEE_APISECRET")
 
+	fixfloatedUrl := os.Getenv("FIXFLOATED_REF_URL")
+
 	botName := os.Getenv("BOT_NAME")
 
 	log.Printf("Trxfee URL: %s", trxfeeUrl)
@@ -457,7 +459,7 @@ func main() {
 
 				log.Printf("3")
 				log.Printf("来自于自发的信息[%s] %s", update.Message.From.UserName, update.Message.Text)
-				handleRegularMessage(cache, bot, update.Message, db, _cookie, trxfeeUrl, trxfeeApiKey, trxfeeSecret)
+				handleRegularMessage(cache, bot, update.Message, db, _cookie, trxfeeUrl, trxfeeApiKey, trxfeeSecret, fixfloatedUrl)
 			}
 		} else if update.CallbackQuery != nil {
 			log.Printf("4")
@@ -480,6 +482,7 @@ func handleStartCommand(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbota
 
 			tgbotapi.NewKeyboardButton("⛽"+global.Translations[_lang]["tron_energy_menu"]),
 			tgbotapi.NewKeyboardButton("✅"+global.Translations[_lang]["usdt_trx_swap"]),
+			tgbotapi.NewKeyboardButton("🔃"+global.Translations[_lang]["coin_swap_coin_menu"]),
 			//tgbotapi.NewKeyboardButton("⚡"+global.Translations[_lang]["energy_swap"]),
 			//tgbotapi.NewKeyboardButton("🖊️"+global.Translations[_lang]["transaction_plans"]),
 			//tgbotapi.NewKeyboardButton("🤖"+global.Translations[_lang]["smart_transaction_plans"]),
@@ -516,7 +519,7 @@ func handleHideCommand(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbotap
 }
 
 // 处理普通消息（键盘按钮点击）
-func handleRegularMessage(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbotapi.Message, db *gorm.DB, _cookie string, _trxfeeUrl, _trxfeeApiKey, _trxfeeSecret string) {
+func handleRegularMessage(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbotapi.Message, db *gorm.DB, _cookie string, _trxfeeUrl, _trxfeeApiKey, _trxfeeSecret string, fixfloatedUrl string) {
 	_lang, err := cache.Get("LANG_" + strconv.FormatInt(message.Chat.ID, 10))
 	if len(_lang) == 0 || err != nil {
 		userRepo := repositories.NewUserRepository(db)
@@ -527,6 +530,8 @@ func handleRegularMessage(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbo
 	}
 
 	switch message.Text {
+	case "🔃" + global.Translations[_lang]["coin_swap_coin_menu"]:
+		service.MenuNavigateCoin2CoinSwap(_lang, db, message, bot, fixfloatedUrl)
 	case "⛽" + global.Translations[_lang]["tron_energy_menu"]:
 		service.MenuNavigateTronEnergy(_lang, db, message, bot)
 	case "✅" + global.Translations[_lang]["usdt_trx_swap"]:
