@@ -1891,8 +1891,8 @@ func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery 
 
 		bot.Send(msg)
 
-	default:
-		responseText = "未知选项"
+		//default:
+		//	responseText = "未知选项"
 	}
 
 	// 发送新消息作为响应
