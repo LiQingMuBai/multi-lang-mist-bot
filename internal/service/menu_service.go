@@ -24,7 +24,7 @@ func MenuNavigateCoin2CoinSwap(_lang string, db *gorm.DB, message *tgbotapi.Mess
 
 	dictRepo := repositories.NewSysDictionariesRepo(db)
 	fixfloatedUrlStr, _ := dictRepo.GetDictionaryDetail("ff_ref_url")
-	btn := tgbotapi.NewInlineKeyboardButtonURL(global.Translations[_lang]["coin_swap_coin_menu"], fixfloatedUrlStr)
+	btn := tgbotapi.NewInlineKeyboardButtonURL("🔃"+global.Translations[_lang]["coin_swap_coin_menu"], fixfloatedUrlStr)
 	row := tgbotapi.NewInlineKeyboardRow(btn)
 	keyboard := tgbotapi.NewInlineKeyboardMarkup(row)
 

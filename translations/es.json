@@ -163,5 +163,26 @@
   
   "coin_swap_coin_menu": "Intercambio Rápido de Criptomonedas",
   "coin_swap_coin_tips": "Descripción de los pasos para intercambio instantáneo\n1. Haga clic en el botón de abajo 【Intercambiar monedas】⬇\uFE0F\n2. Introduzca el token de origen y el token de destino\n3. Introduzca la cantidad\n4. Introduzca la dirección de recepción\n5. <b>Opcional</b>, puede elegir si desea recibir notificación por correo electrónico al recibir los fondos (puede elegir sin notificación)\n6. Espere la dirección de pago en código QR, introduzca la cantidad correcta y realice la transferencia\n7. Recibirá los fondos en un plazo de 3 minutos",
-  "smart_transaction_address_list": "Lista de direcciones"
+  "smart_transaction_address_list": "Lista de direcciones",
+
+  "catfee_smart_transaction_menu": "Custodia Inteligente",
+  "catfee_smart_transaction_pay_button": "Por favor, pague",
+  "catfee_smart_transaction_head_1": "\uD83E\uDDFE Pedido del paquete de custodia inteligente creado con éxito\nPaquete: ",
+  "catfee_smart_transaction_head_2": "\nMonto del pago: ",
+  "catfee_smart_transaction_head_3": "\nDirección de recepción: ",
+  "catfee_smart_transaction_head_4": "\nValidez del pedido: 10 minutos\n⚠\uFE0F Asegúrese de ingresar el monto exacto, de lo contrario el pago no se acreditará.",
+  "catfee_smart_transaction_tips": "\uD83C\uDF89 Compra exitosa del paquete de custodia inteligente {bundle_package_name}",
+  "placeholder_array_size_warning": "Debido a la inestabilidad en la red TRON, las transacciones pueden retrasarse o fallar.\nPara garantizar la seguridad de los activos del usuario, hemos decidido cerrar temporalmente el canal de depósito de la red TRON y lo reabriremos una vez que la red se estabilice.\n✅ Otras funciones: alertas, detección, paquetes de transacciones, etc. funcionan normalmente y no se ven afectadas.\nSugerencia:\nSi necesita depositar, espere 10 minutos y vuelva a intentarlo.\nEstamos monitoreando de cerca la situación de la red TRON. Pedimos disculpas por las molestias ocasionadas.",
+  "catfee_add_address": "Agregar custodia",
+  "catfee_add_address_already_exit_tips": "La dirección ya está bajo custodia, no es necesario agregarla nuevamente",
+  "catfee_remove_address": "Eliminar custodia",
+  "catfee_custody_address_tips": "Por favor ingrese la dirección a custodiar: ",
+  "catfee_enable_address_success": "Habilitado con éxito",
+  "catfee_disable_address_success": "Pausado con éxito",
+  "catfee_custody_address_list_head": "Total comprado: {total_times} transacciones, Usadas: {used_times} transacciones, Restantes: {rest_times} transacciones",
+  "catfee_custody_address_energy": "Energía",
+  "catfee_custody_address_count": "\uD83D\uDD0BDirección bajo custodia 【{custody_address_count}】\n➖➖➖➖➖➖➖➖➖➖",
+  "catfee_custody_address_energy_rule": "\n\uD83D\uDD39【Transferencia a dirección con USDT】 Consume 65K de energía, descuenta 1 transacción\n\uD83D\uDD39【Transferencia a dirección sin USDT】 Consume 131K de energía, descuenta 2 transacciones",
+  "catfee_energy_address_limit_tips": "⚠\uFE0F Ya ha agregado 5 direcciones. Para agregar una nueva, primero elimine una dirección antigua.\uD83D\uDEAB",
+  "catfee_energy_address_buy_error": "❌ Lo sentimos, su cantidad de transacciones bajo custodia es insuficiente. Vuelva a la página principal para comprar un paquete de custodia."
 }

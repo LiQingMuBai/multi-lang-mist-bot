@@ -172,6 +172,28 @@
   "tron_energy_menu": "波场能量",
   "smart_transaction_disable": "托管:\uD83D\uDFE2 已开启 ",
   "smart_transaction_enable": "托管:\uD83D\uDFE1 已暂停 ",
-  "smart_transaction_address_list": "托管列表"
+  "smart_transaction_address_list": "托管列表",
+
+  "catfee_smart_transaction_menu": "智能托管",
+  "catfee_smart_transaction_pay_button": "请支付",
+  "catfee_smart_transaction_head_1": "\uD83E\uDDFE 智能托管套餐订单创建成功\n\n套餐：",
+  "catfee_smart_transaction_head_2": "\n\n支付金额：",
+  "catfee_smart_transaction_head_3": "\n收款地址：",
+  "catfee_smart_transaction_head_4": "\n\n订单有效期：10 分钟\n\n⚠\uFE0F 请务必准确输入尾数金额，否则将无法入账！",
+  "catfee_smart_transaction_tips": "\uD83C\uDF89 成功购买{bundle_package_name}智能托管套餐",
+
+  "placeholder_array_size_warning": "由于波场(TRON)网络出现不稳定情况，可能导致交易延迟或失败。\n为保障用户资产安全，我们决定暂时关闭波场(TRON)网络的充值通道，待网络稳定后重新开放。\n\n✅ 其他功能：预警、检测、笔数套餐等业务均正常运作，不受影响。\n\n建议：\n如需充值，请等待10分钟后再尝试。\n我们正在密切关注波场(TRON)网络情况，由此带来的不便，敬请谅解！",
+  "catfee_add_address": "添加托管",
+  "catfee_add_address_already_exit_tips": "地址已经存在托管中，无需重复托管",
+  "catfee_remove_address": "删除托管",
+  "catfee_custody_address_tips": "请输入需托管的地址: ",
+  "catfee_enable_address_success": "启用成功",
+  "catfee_disable_address_success": "暂停成功",
+  "catfee_custody_address_list_head": "已购总数 {total_times}笔 已用 {used_times}笔  剩余 {rest_times}笔",
+  "catfee_custody_address_energy": "能量",
+  "catfee_custody_address_count": "\uD83D\uDD0B托管地址【{custody_address_count}】\n➖➖➖➖➖➖➖➖➖➖",
+  "catfee_custody_address_energy_rule": "\n\uD83D\uDD39【转有U地址】 消耗  65K能量  扣1笔\n\uD83D\uDD39【转无U地址】 消耗131K能量  扣2笔",
+  "catfee_energy_address_limit_tips": "⚠\uFE0F 您已添加 5 个地址，如需新增，请先删除旧地址。\uD83D\uDEAB",
+  "catfee_energy_address_buy_error": "❌抱歉，您的托管笔数已不足，请重新回主页购买托管套餐"
 }
 

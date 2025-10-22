@@ -163,5 +163,26 @@
 
   "coin_swap_coin_menu": "코인 스왑",
   "coin_swap_coin_tips": "코인 스왑 단계 설명\n1. 아래 버튼 【코인 교환】을 클릭하세요⬇\uFE0F\n2. 변환할 토큰(입력)과 출력 토큰(출력)을 입력하세요\n3. 수량을 입력하세요\n4. 수신할 주소를 입력하세요\n5. <b>선택 사항</b>, 도착 시 이메일 알림을 받을지 선택할 수 있습니다(알림 불필요 선택 가능)\n6. QR 코드 결제 주소를 기다린 후, 정확한 금액을 입력하여 송금하세요\n7. 3분 이내에 자금이 입금됩니다",
-  "smart_transaction_address_list": "주소 목록"
+  "smart_transaction_address_list": "주소 목록",
+
+  "catfee_smart_transaction_menu": "스마트 위탁",
+  "catfee_smart_transaction_pay_button": "결제하기",
+  "catfee_smart_transaction_head_1": "\uD83E\uDDFE 스마트 위탁 패키지 주문이 성공적으로 생성되었습니다\n패키지: ",
+  "catfee_smart_transaction_head_2": "\n결제 금액: ",
+  "catfee_smart_transaction_head_3": "\n수취 주소: ",
+  "catfee_smart_transaction_head_4": "\n주문 유효 기간: 10분\n⚠\uFE0F 반드시 정확한 금액을 입력하십시오. 그렇지 않으면 입금되지 않습니다!",
+  "catfee_smart_transaction_tips": "\uD83C\uDF89 {bundle_package_name} 스마트 위탁 패키지를 성공적으로 구매하였습니다",
+  "placeholder_array_size_warning": "TRON 네트워크의 불안정으로 인해 거래가 지연되거나 실패할 수 있습니다.\n사용자 자산 보호를 위해 TRON 네트워크 입금 채널을 일시적으로 닫았으며, 네트워크가 안정되면 다시 열릴 예정입니다.\n✅ 기타 기능: 알림, 검사, 트랜잭션 패키지 등은 정상적으로 작동하며 영향을 받지 않습니다.\n권장 사항:\n입금이 필요하시면 10분 후 다시 시도해 주세요.\nTRON 네트워크 상황을 면밀히 모니터링하고 있습니다. 불편을 끼쳐드려 죄송합니다!",
+  "catfee_add_address": "위탁 추가",
+  "catfee_add_address_already_exit_tips": "이미 위탁 중인 주소입니다. 중복 추가할 필요 없습니다.",
+  "catfee_remove_address": "위탁 삭제",
+  "catfee_custody_address_tips": "위탁할 주소를 입력하세요: ",
+  "catfee_enable_address_success": "성공적으로 활성화됨",
+  "catfee_disable_address_success": "성공적으로 일시 중지됨",
+  "catfee_custody_address_list_head": "총 구매 {total_times}건, 사용 {used_times}건, 잔여 {rest_times}건",
+  "catfee_custody_address_energy": "에너지",
+  "catfee_custody_address_count": "\uD83D\uDD0B위탁 주소 【{custody_address_count}】\n➖➖➖➖➖➖➖➖➖➖",
+  "catfee_custody_address_energy_rule": "\n\uD83D\uDD39【USDT 있는 주소로 이체】 65K 에너지 소모, 1건 차감\n\uD83D\uDD39【USDT 없는 주소로 이체】 131K 에너지 소모, 2건 차감",
+  "catfee_energy_address_limit_tips": "⚠\uFE0F 이미 5개의 주소를 추가하셨습니다. 새 주소를 추가하려면 먼저 기존 주소를 삭제하세요.\uD83D\uDEAB",
+  "catfee_energy_address_buy_error": "❌ 죄송합니다. 위탁 횟수가 부족합니다. 메인 페이지로 돌아가 위탁 패키지를 구매하세요."
 }

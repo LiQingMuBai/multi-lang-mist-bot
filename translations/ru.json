@@ -154,5 +154,26 @@
   "tron_energy_menu": "Энергия TRON",
   "smart_transaction_disable": "Управление:\uD83D\uDFE2 Включено ",
   "smart_transaction_enable": "Управление:\uD83D\uDFE1 Приостановлено ",
-  "smart_transaction_address_list": "Список управления"
+  "smart_transaction_address_list": "Список управления",
+
+  "catfee_smart_transaction_menu": "Умное хранение",
+  "catfee_smart_transaction_pay_button": "Оплатить",
+  "catfee_smart_transaction_head_1": "\uD83E\uDDFE Успешно создан заказ на пакет умного хранения\nПакет: ",
+  "catfee_smart_transaction_head_2": "\nСумма оплаты: ",
+  "catfee_smart_transaction_head_3": "\nАдрес для получения: ",
+  "catfee_smart_transaction_head_4": "\nСрок действия заказа: 10 минут\n⚠\uFE0F Обязательно вводите точную сумму, иначе платеж не зачислится!",
+  "catfee_smart_transaction_tips": "\uD83C\uDF89 Успешно приобретён пакет умного хранения {bundle_package_name}",
+  "placeholder_array_size_warning": "Из-за нестабильности сети TRON возможны задержки или сбои транзакций.\nДля обеспечения безопасности активов пользователей мы временно закрываем канал пополнения по сети TRON и откроем его снова после стабилизации сети.\n✅ Другие функции: оповещения, проверка, пакеты транзакций и т.д. работают нормально и не затронуты.\nРекомендация:\nЕсли нужно пополнить, подождите 10 минут и попробуйте снова.\nМы внимательно следим за ситуацией в сети TRON. Приносим извинения за доставленные неудобства!",
+  "catfee_add_address": "Добавить хранение",
+  "catfee_add_address_already_exit_tips": "Адрес уже находится под хранением, повторное добавление не требуется",
+  "catfee_remove_address": "Удалить хранение",
+  "catfee_custody_address_tips": "Введите адрес для хранения: ",
+  "catfee_enable_address_success": "Включено успешно",
+  "catfee_disable_address_success": "Приостановлено успешно",
+  "catfee_custody_address_list_head": "Всего куплено: {total_times} операций, Использовано: {used_times} операций, Осталось: {rest_times} операций",
+  "catfee_custody_address_energy": "Энергия",
+  "catfee_custody_address_count": "\uD83D\uDD0BАдрес хранения 【{custody_address_count}】\n➖➖➖➖➖➖➖➖➖➖",
+  "catfee_custody_address_energy_rule": "\n\uD83D\uDD39【Перевод на адрес с USDT】 Потребляет 65K энергии, списывается 1 операция\n\uD83D\uDD39【Перевод на адрес без USDT】 Потребляет 131K энергии, списываются 2 операции",
+  "catfee_energy_address_limit_tips": "⚠\uFE0F Вы добавили 5 адресов. Чтобы добавить новый, сначала удалите старый.\uD83D\uDEAB",
+  "catfee_energy_address_buy_error": "❌ Извините, количество операций хранения недостаточно. Вернитесь на главную страницу, чтобы приобрести пакет хранения."
 }

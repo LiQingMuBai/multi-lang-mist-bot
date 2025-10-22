@@ -165,5 +165,27 @@
 
   "coin_swap_coin_menu": "幣幣閃兌",
   "coin_swap_coin_tips": "幣幣閃兌步驟說明\n1. 撳⬇\uFE0F下面嘅掣【幣幣交換】\n2. 輸入你想轉換嘅代幣同埋輸出代幣\n3. 輸入數量\n4. 輸入要接收嘅地址\n5. <b>非必要選項</b>，要唔要收到賬時嘅電郵通知，可以揀唔使通知\n6. 等二維碼收款地址，輸入啱嘅金額去轉賬\n7. 3分鐘內你會收到入賬嘅資金",
-  "smart_transaction_address_list": "地址列表"
+  "smart_transaction_address_list": "地址列表",
+
+
+  "catfee_smart_transaction_menu": "智能託管",
+  "catfee_smart_transaction_pay_button": "請支付",
+  "catfee_smart_transaction_head_1": "\uD83E\uDDFE 智能託管套餐訂單創建成功\n套餐：",
+  "catfee_smart_transaction_head_2": "\n支付金額：",
+  "catfee_smart_transaction_head_3": "\n收款地址：",
+  "catfee_smart_transaction_head_4": "\n訂單有效期：10 分鐘\n⚠\uFE0F 請務必準確輸入尾數金額，否則將無法入帳！",
+  "catfee_smart_transaction_tips": "\uD83C\uDF89 成功購買{bundle_package_name}智能託管套餐",
+  "placeholder_array_size_warning": "由於波場(TRON)網絡出現不穩定情況，可能導致交易延遲或失敗。\n為保障用戶資產安全，我們決定暫時關閉波場(TRON)網絡的充值通道，待網絡穩定後重新開放。\n✅ 其他功能：預警、檢測、筆數套餐等業務均正常運作，不受影響。\n建議：\n如需充值，請等待10分鐘後再嘗試。\n我們正在密切關注波場(TRON)網絡情況，由此帶來的不便，敬請諒解！",
+  "catfee_add_address": "添加託管",
+  "catfee_add_address_already_exit_tips": "地址已經存在託管中，無需重複託管",
+  "catfee_remove_address": "刪除託管",
+  "catfee_custody_address_tips": "請輸入需託管的地址: ",
+  "catfee_enable_address_success": "啟用成功",
+  "catfee_disable_address_success": "暫停成功",
+  "catfee_custody_address_list_head": "已購總數 {total_times}筆 已用 {used_times}筆  剩餘 {rest_times}筆",
+  "catfee_custody_address_energy": "能量",
+  "catfee_custody_address_count": "\uD83D\uDD0B託管地址【{custody_address_count}】\n➖➖➖➖➖➖➖➖➖➖",
+  "catfee_custody_address_energy_rule": "\n\uD83D\uDD39【轉有U地址】 消耗  65K能量  扣1筆\n\uD83D\uDD39【轉無U地址】 消耗131K能量  扣2筆",
+  "catfee_energy_address_limit_tips": "⚠\uFE0F 您已添加 5 個地址，如需新增，請先刪除舊地址。\uD83D\uDEAB",
+  "catfee_energy_address_buy_error": "❌抱歉，您的託管筆數已不足，請重新回主頁購買託管套餐"
 }

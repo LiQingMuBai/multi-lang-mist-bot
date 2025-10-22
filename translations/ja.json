@@ -163,5 +163,26 @@
 
   "coin_swap_coin_menu": "コインスワップ",
   "coin_swap_coin_tips": "コインスワップ手順の説明\n1. 下のボタン【コイン交換】をクリックしてください⬇\uFE0F\n2. 変換元トークンと変換先トークンを入力してください\n3. 数量を入力してください\n4. 受取用アドレスを入力してください\n5. <b>任意項目</b>：着金時にメール通知を受け取るか選べます（通知不要を選択可）\n6. QRコードの支払いアドレスを待ち、正確な金額を入力して送金してください\n7. 3分以内に入金されます",
-  "smart_transaction_address_list": "アドレスリスト"
+  "smart_transaction_address_list": "アドレスリスト",
+
+  "catfee_smart_transaction_menu": "スマートカストディ",
+  "catfee_smart_transaction_pay_button": "お支払いください",
+  "catfee_smart_transaction_head_1": "\uD83E\uDDFE スマートカストディパッケージ注文が作成されました\nパッケージ：",
+  "catfee_smart_transaction_head_2": "\n支払い金額：",
+  "catfee_smart_transaction_head_3": "\n受取アドレス：",
+  "catfee_smart_transaction_head_4": "\n注文の有効期限：10分\n⚠\uFE0F 正確な金額を入力してください。そうでないと入金されません！",
+  "catfee_smart_transaction_tips": "\uD83C\uDF89 {bundle_package_name}スマートカストディパッケージの購入が完了しました",
+  "placeholder_array_size_warning": "TRONネットワークの不安定により、取引が遅延または失敗する可能性があります。\nユーザー資産の安全を確保するため、TRONネットワークの入金チャネルを一時的に閉鎖し、ネットワークが安定次第再開する予定です。\n✅ その他の機能：アラート、検出、トランザクション回数パッケージなどは正常に稼働しており、影響はありません。\nご提案：\n入金が必要な場合は、10分後に再試行してください。\nTRONネットワークの状況を注意深く監視しています。ご不便をおかけして申し訳ありません。",
+  "catfee_add_address": "カストディ追加",
+  "catfee_add_address_already_exit_tips": "アドレスはすでにカストディ登録済みです。重複登録は不要です。",
+  "catfee_remove_address": "カストディ削除",
+  "catfee_custody_address_tips": "カストディ登録するアドレスを入力してください：",
+  "catfee_enable_address_success": "有効化に成功しました",
+  "catfee_disable_address_success": "一時停止に成功しました",
+  "catfee_custody_address_list_head": "合計購入 {total_times}回 使用済み {used_times}回 残り {rest_times}回",
+  "catfee_custody_address_energy": "エネルギー",
+  "catfee_custody_address_count": "\uD83D\uDD0Bカストディアドレス 【{custody_address_count}】\n➖➖➖➖➖➖➖➖➖➖",
+  "catfee_custody_address_energy_rule": "\n\uD83D\uDD39【USDTありアドレスへ送金】 65Kエネルギー消費 1回差し引き\n\uD83D\uDD39【USDTなしアドレスへ送金】 131Kエネルギー消費 2回差し引き",
+  "catfee_energy_address_limit_tips": "⚠\uFE0F アドレスを5つ追加済みです。新規追加するには、まず古いアドレスを削除してください。\uD83D\uDEAB",
+  "catfee_energy_address_buy_error": "❌ 申し訳ありません。カストディ利用回数が不足しています。ホーム画面に戻ってカストディパッケージをご購入ください。"
 }

@@ -163,5 +163,26 @@
 
   "coin_swap_coin_menu": "Đổi Coin Nhanh",
   "coin_swap_coin_tips": "Hướng dẫn các bước đổi coin\n1. Nhấn nút bên dưới 【Đổi coin】⬇\uFE0F\n2. Nhập token cần chuyển và token muốn nhận\n3. Nhập số lượng\n4. Nhập địa chỉ nhận\n5. <b>Không bắt buộc</b>, chọn có nhận thông báo qua email khi tiền đến hay không (có thể chọn không nhận)\n6. Chờ địa chỉ thanh toán dưới dạng mã QR, nhập đúng số tiền và chuyển\n7. Bạn sẽ nhận được tiền trong vòng 3 phút",
-  "smart_transaction_address_list": "Danh sách địa chỉ"
+  "smart_transaction_address_list": "Danh sách địa chỉ",
+
+  "catfee_smart_transaction_menu": "Ủy thác thông minh",
+  "catfee_smart_transaction_pay_button": "Vui lòng thanh toán",
+  "catfee_smart_transaction_head_1": "\uD83E\uDDFE Tạo đơn đặt hàng gói ủy thác thông minh thành công\nGói: ",
+  "catfee_smart_transaction_head_2": "\nSố tiền thanh toán: ",
+  "catfee_smart_transaction_head_3": "\nĐịa chỉ nhận: ",
+  "catfee_smart_transaction_head_4": "\nThời hạn đơn hàng: 10 phút\n⚠\uFE0F Vui lòng nhập chính xác số tiền, nếu không sẽ không thể ghi nhận!",
+  "catfee_smart_transaction_tips": "\uD83C\uDF89 Mua thành công gói ủy thác thông minh {bundle_package_name}",
+  "placeholder_array_size_warning": "Do mạng TRON gặp sự cố không ổn định, có thể dẫn đến giao dịch bị trì hoãn hoặc thất bại.\nĐể đảm bảo an toàn tài sản người dùng, chúng tôi quyết định tạm thời đóng kênh nạp tiền qua mạng TRON và sẽ mở lại khi mạng ổn định.\n✅ Các chức năng khác: cảnh báo, kiểm tra, gói số lượng giao dịch,... đều hoạt động bình thường, không bị ảnh hưởng.\nKhuyến nghị:\nNếu cần nạp tiền, vui lòng đợi 10 phút rồi thử lại.\nChúng tôi đang theo dõi sát tình hình mạng TRON, rất mong sự thông cảm của bạn!",
+  "catfee_add_address": "Thêm ủy thác",
+  "catfee_add_address_already_exit_tips": "Địa chỉ đã tồn tại trong ủy thác, không cần thêm lại",
+  "catfee_remove_address": "Xóa ủy thác",
+  "catfee_custody_address_tips": "Vui lòng nhập địa chỉ cần ủy thác: ",
+  "catfee_enable_address_success": "Kích hoạt thành công",
+  "catfee_disable_address_success": "Tạm dừng thành công",
+  "catfee_custody_address_list_head": "Tổng đã mua {total_times} lần Đã dùng {used_times} lần Còn lại {rest_times} lần",
+  "catfee_custody_address_energy": "Năng lượng",
+  "catfee_custody_address_count": "\uD83D\uDD0BĐịa chỉ ủy thác 【{custody_address_count}】\n➖➖➖➖➖➖➖➖➖➖",
+  "catfee_custody_address_energy_rule": "\n\uD83D\uDD39【Chuyển đến địa chỉ có U】 Tiêu thụ 65K năng lượng Trừ 1 lần\n\uD83D\uDD39【Chuyển đến địa chỉ không có U】 Tiêu thụ 131K năng lượng Trừ 2 lần",
+  "catfee_energy_address_limit_tips": "⚠\uFE0F Bạn đã thêm 5 địa chỉ, nếu muốn thêm mới, vui lòng xóa địa chỉ cũ trước.\uD83D\uDEAB",
+  "catfee_energy_address_buy_error": "❌ Rất tiếc, số lần ủy thác của bạn không đủ, vui lòng quay lại trang chủ để mua gói ủy thác"
 }

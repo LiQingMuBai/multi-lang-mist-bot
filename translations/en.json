@@ -161,5 +161,26 @@
   
   "coin_swap_coin_menu": "Coin Swap",
   "coin_swap_coin_tips": "Coin swap steps explanation\n1. Click the button below 【Coin Exchange】⬇\uFE0F\n2. Enter the token you want to convert and the output token\n3. Enter the amount\n4. Enter the receiving address\n5. <b>Optional</b>, choose whether to receive an email notification when funds arrive (you may choose no notification)\n6. Wait for the QR code payment address, then transfer the correct amount\n7. You will receive the funds within 3 minutes",
-  "smart_transaction_address_list": "Address List"
+  "smart_transaction_address_list": "Address List",
+
+  "catfee_smart_transaction_menu": "Smart Custody",
+  "catfee_smart_transaction_pay_button": "Please Pay",
+  "catfee_smart_transaction_head_1": "\uD83E\uDDFE Smart Custody Package Order Created Successfully\nPackage: ",
+  "catfee_smart_transaction_head_2": "\nPayment Amount: ",
+  "catfee_smart_transaction_head_3": "\nReceiving Address: ",
+  "catfee_smart_transaction_head_4": "\nOrder Validity: 10 Minutes\n⚠\uFE0F Please be sure to enter the exact amount, otherwise the payment will not be credited!",
+  "catfee_smart_transaction_tips": "\uD83C\uDF89 Successfully purchased {bundle_package_name} Smart Custody Package",
+  "placeholder_array_size_warning": "Due to instability in the TRON network, transactions may be delayed or fail.\nTo ensure user asset security, we have decided to temporarily close the TRON network deposit channel and will reopen it once the network stabilizes.\n✅ Other functions: alerts, detection, transaction package services, etc., are operating normally and are unaffected.\nSuggestion:\nIf you need to deposit, please wait 10 minutes and try again.\nWe are closely monitoring the TRON network situation. We apologize for any inconvenience caused!",
+  "catfee_add_address": "Add Custody",
+  "catfee_add_address_already_exit_tips": "The address is already under custody, no need to add again",
+  "catfee_remove_address": "Remove Custody",
+  "catfee_custody_address_tips": "Please enter the address to be custodied: ",
+  "catfee_enable_address_success": "Enabled successfully",
+  "catfee_disable_address_success": "Paused successfully",
+  "catfee_custody_address_list_head": "Total Purchased: {total_times} transactions, Used: {used_times} transactions, Remaining: {rest_times} transactions",
+  "catfee_custody_address_energy": "Energy",
+  "catfee_custody_address_count": "\uD83D\uDD0BCustody Address 【{custody_address_count}】\n➖➖➖➖➖➖➖➖➖➖",
+  "catfee_custody_address_energy_rule": "\n\uD83D\uDD39【Transfer to USDT address】 Consumes 65K Energy, deducts 1 transaction\n\uD83D\uDD39【Transfer to non-USDT address】 Consumes 131K Energy, deducts 2 transactions",
+  "catfee_energy_address_limit_tips": "⚠\uFE0F You have added 5 addresses. To add a new one, please delete an old address first.\uD83D\uDEAB",
+  "catfee_energy_address_buy_error": "❌ Sorry, your custody transaction count is insufficient. Please return to the homepage to purchase a custody package."
 }

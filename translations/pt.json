@@ -163,5 +163,26 @@
 
   "coin_swap_coin_menu": "Troca Rápida de Criptomoedas",
   "coin_swap_coin_tips": "Descrição dos passos para troca de moedas\n1. Clique no botão abaixo 【Trocar moedas】⬇\uFE0F\n2. Insira o token de origem e o token de destino\n3. Insira a quantidade\n4. Insira o endereço de recebimento\n5. <b>Opcional</b>, pode escolher receber notificação por e‑mail ao receber os fundos (pode escolher sem notificação)\n6. Aguarde o endereço de pagamento em QR code, insira o valor correto e faça a transferência\n7. Você receberá os fundos dentro de 3 minutos",
-  "smart_transaction_address_list": "Lista de endereços"
+  "smart_transaction_address_list": "Lista de endereços",
+
+  "catfee_smart_transaction_menu": "Custódia Inteligente",
+  "catfee_smart_transaction_pay_button": "Por favor, pague",
+  "catfee_smart_transaction_head_1": "\uD83E\uDDFE Pedido do pacote de custódia inteligente criado com sucesso\nPacote: ",
+  "catfee_smart_transaction_head_2": "\nValor do pagamento: ",
+  "catfee_smart_transaction_head_3": "\nEndereço de recebimento: ",
+  "catfee_smart_transaction_head_4": "\nValidade do pedido: 10 minutos\n⚠\uFE0F Certifique-se de inserir o valor exato, caso contrário, o pagamento não será creditado!",
+  "catfee_smart_transaction_tips": "\uD83C\uDF89 Compra bem-sucedida do pacote de custódia inteligente {bundle_package_name}",
+  "placeholder_array_size_warning": "Devido à instabilidade na rede TRON, as transações podem ser atrasadas ou falhar.\nPara garantir a segurança dos ativos dos usuários, decidimos fechar temporariamente o canal de depósito da rede TRON e reabri-lo quando a rede estiver estável.\n✅ Outras funções: alertas, detecção, pacotes de transações etc. estão funcionando normalmente e não são afetadas.\nSugestão:\nSe precisar depositar, aguarde 10 minutos e tente novamente.\nEstamos monitorando de perto a situação da rede TRON. Pedimos desculpas por qualquer inconveniente causado!",
+  "catfee_add_address": "Adicionar custódia",
+  "catfee_add_address_already_exit_tips": "O endereço já está sob custódia, não é necessário adicionar novamente",
+  "catfee_remove_address": "Remover custódia",
+  "catfee_custody_address_tips": "Por favor, insira o endereço a ser colocado sob custódia: ",
+  "catfee_enable_address_success": "Ativado com sucesso",
+  "catfee_disable_address_success": "Pausado com sucesso",
+  "catfee_custody_address_list_head": "Total comprado: {total_times} transações, Usadas: {used_times} transações, Restantes: {rest_times} transações",
+  "catfee_custody_address_energy": "Energia",
+  "catfee_custody_address_count": "\uD83D\uDD0BEndereço sob custódia 【{custody_address_count}】\n➖➖➖➖➖➖➖➖➖➖",
+  "catfee_custody_address_energy_rule": "\n\uD83D\uDD39【Transferência para endereço com USDT】 Consome 65K de energia, deduz 1 transação\n\uD83D\uDD39【Transferência para endereço sem USDT】 Consome 131K de energia, deduz 2 transações",
+  "catfee_energy_address_limit_tips": "⚠\uFE0F Você já adicionou 5 endereços. Para adicionar um novo, exclua primeiro um endereço antigo.\uD83D\uDEAB",
+  "catfee_energy_address_buy_error": "❌ Desculpe, seu número de transações sob custódia é insuficiente. Volte à página inicial para comprar um pacote de custódia."
 }
