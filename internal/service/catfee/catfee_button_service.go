@@ -150,7 +150,7 @@ func CheckOption(_lang string, db *gorm.DB, chatID int64, messageID int, _data s
 			msg.ParseMode = "HTML"
 			inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
 				tgbotapi.NewInlineKeyboardRow(
-					tgbotapi.NewInlineKeyboardButtonData(global.Translations[_lang]["back_homepage"], "back_bundle_package_ST"),
+					tgbotapi.NewInlineKeyboardButtonData("🔢"+global.Translations[_lang]["smart_transaction_address_list"], "click_bundle_package_address_stats_ST"),
 				))
 			msg.ReplyMarkup = inlineKeyboard
 			msg.ParseMode = "HTML"
@@ -176,7 +176,7 @@ func CheckOption(_lang string, db *gorm.DB, chatID int64, messageID int, _data s
 			msg.ParseMode = "HTML"
 			inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
 				tgbotapi.NewInlineKeyboardRow(
-					tgbotapi.NewInlineKeyboardButtonData(global.Translations[_lang]["back_homepage"], "back_bundle_package_ST"),
+					tgbotapi.NewInlineKeyboardButtonData("🔢"+global.Translations[_lang]["smart_transaction_address_list"], "click_bundle_package_address_stats_ST"),
 				))
 			msg.ReplyMarkup = inlineKeyboard
 			msg.ParseMode = "HTML"
