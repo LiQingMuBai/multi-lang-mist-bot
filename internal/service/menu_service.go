@@ -24,7 +24,7 @@ func MenuNavigateCoin2CoinSwap(_lang string, db *gorm.DB, message *tgbotapi.Mess
 
 	dictRepo := repositories.NewSysDictionariesRepo(db)
 	fixfloatedUrlStr, _ := dictRepo.GetDictionaryDetail("ff_ref_url")
-	btn := tgbotapi.NewInlineKeyboardButtonURL("🔃"+global.Translations[_lang]["coin_swap_coin_menu"], fixfloatedUrlStr)
+	btn := tgbotapi.NewInlineKeyboardButtonURL(global.Translations[_lang]["coin_swap_coin_menu"], fixfloatedUrlStr)
 	row := tgbotapi.NewInlineKeyboardRow(btn)
 	keyboard := tgbotapi.NewInlineKeyboardMarkup(row)
 
@@ -48,7 +48,8 @@ func MenuNavigateTronEnergy(_lang string, db *gorm.DB, message *tgbotapi.Message
 		tgbotapi.NewInlineKeyboardRow(
 			//tgbotapi.NewInlineKeyboardButtonData("⚡"+global.Translations[_lang]["energy_swap"], "click_energy_swap"),
 			tgbotapi.NewInlineKeyboardButtonData("🖊️"+global.Translations[_lang]["transaction_plans"], "click_transaction_plan"),
-			tgbotapi.NewInlineKeyboardButtonData("🤖"+global.Translations[_lang]["smart_transaction_plans"], "click_smart_transaction_plan"),
+			//tgbotapi.NewInlineKeyboardButtonData("🤖"+global.Translations[_lang]["smart_transaction_plans"], "click_smart_transaction_plan"),
+			tgbotapi.NewInlineKeyboardButtonData("🤖"+global.Translations[_lang]["catfee_smart_transaction_menu"], "click_smart_transaction_plan"),
 		),
 	)
 
@@ -447,7 +448,7 @@ func MenuNavigateHome(_lang string, cache cache.Cache, db *gorm.DB, message *tgb
 			//tgbotapi.NewInlineKeyboardButtonData("🛠️我的服务", "click_my_service"),
 		),
 		tgbotapi.NewInlineKeyboardRow(
-			//tgbotapi.NewInlineKeyboardButtonData("🔗绑定备用帐号", "click_backup_account"),
+			//	//tgbotapi.NewInlineKeyboardButtonData("🔗绑定备用帐号", "click_backup_account"),
 			tgbotapi.NewInlineKeyboardButtonData("👥"+global.Translations[_lang]["business"], "click_business_cooperation"),
 			tgbotapi.NewInlineKeyboardButtonData("💬"+global.Translations[_lang]["channel"], "click_offical_channel"),
 
@@ -501,6 +502,7 @@ func MenuNavigateHome2(db *gorm.DB, message *tgbotapi.Message, bot *tgbotapi.Bot
 		),
 		tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonData("한국어", "set_lang_"+"ko"),
+
 			tgbotapi.NewInlineKeyboardButtonData("ภาษาไทย", "set_lang_"+"th"),
 			tgbotapi.NewInlineKeyboardButtonData("日本語", "set_lang_"+"ja"),
 		),

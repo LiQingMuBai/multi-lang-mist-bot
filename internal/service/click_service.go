@@ -2,14 +2,15 @@ package service
 
 import (
 	"context"
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
-	"gorm.io/gorm"
 	"strconv"
 	"strings"
 	"ushield_bot/internal/global"
 	"ushield_bot/internal/infrastructure/repositories"
 	. "ushield_bot/internal/infrastructure/tools"
 	"ushield_bot/internal/request"
+
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+	"gorm.io/gorm"
 )
 
 func CLICK_DEPOSIT_USDT_RECORDS(_lang string, db *gorm.DB, callbackQuery *tgbotapi.CallbackQuery, bot *tgbotapi.BotAPI) {

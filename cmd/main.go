@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+	"ushield_bot/internal/service/catfee"
 
 	"github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"github.com/joho/godotenv"
@@ -151,6 +152,15 @@ func main() {
 	log.Printf("trxfeeApiKeyL: %s", trxfeeApiKey)
 	log.Printf("\ttrxfeeSecret: %s", trxfeeSecret)
 
+	CATFEE_BASE_URL := os.Getenv("CATFEE_BASE_URL")
+	CATFEE_APIKEY := os.Getenv("CATFEE_APIKEY")
+	CATFEE_APISECRET := os.Getenv("CATFEE_APISECRET")
+
+	log.Printf("CATFEE_BASE_URL: %s\n", CATFEE_BASE_URL)
+	log.Printf("CATFEE_APIKEY: %s\n", CATFEE_APIKEY)
+	log.Printf("CATFEE_APISECRET: %s\n", CATFEE_APISECRET)
+
+	catfee, _ := trxfee.NewCatfeeService(CATFEE_APIKEY, CATFEE_APISECRET, CATFEE_BASE_URL)
 	// 1. 创建字符串数组
 	cookies := []string{_cookie1, _cookie2, _cookie3}
 
@@ -459,11 +469,11 @@ func main() {
 
 				log.Printf("3")
 				log.Printf("来自于自发的信息[%s] %s", update.Message.From.UserName, update.Message.Text)
-				handleRegularMessage(cache, bot, update.Message, db, _cookie, trxfeeUrl, trxfeeApiKey, trxfeeSecret, fixfloatedUrl)
+				handleRegularMessage(cache, bot, update.Message, db, _cookie, trxfeeUrl, trxfeeApiKey, trxfeeSecret, fixfloatedUrl, catfee)
 			}
 		} else if update.CallbackQuery != nil {
 			log.Printf("4")
-			handleCallbackQuery(cache, bot, update.CallbackQuery, db, trxfeeUrl, trxfeeApiKey, trxfeeSecret)
+			handleCallbackQuery(cache, bot, update.CallbackQuery, db, trxfeeUrl, trxfeeApiKey, trxfeeSecret, catfee)
 		}
 	}
 }
@@ -519,7 +529,7 @@ func handleHideCommand(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbotap
 }
 
 // 处理普通消息（键盘按钮点击）
-func handleRegularMessage(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbotapi.Message, db *gorm.DB, _cookie string, _trxfeeUrl, _trxfeeApiKey, _trxfeeSecret string, fixfloatedUrl string) {
+func handleRegularMessage(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbotapi.Message, db *gorm.DB, _cookie string, _trxfeeUrl, _trxfeeApiKey, _trxfeeSecret string, fixfloatedUrl string, catfeeClient *trxfee.CatfeeService) {
 	_lang, err := cache.Get("LANG_" + strconv.FormatInt(message.Chat.ID, 10))
 	if len(_lang) == 0 || err != nil {
 		userRepo := repositories.NewUserRepository(db)
@@ -946,12 +956,19 @@ func handleRegularMessage(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbo
 		case strings.HasPrefix(status, "usdt_risk_query"):
 			//fmt.Printf("bundle: %s", status)
 			service.ExtractSlowMistRiskQuery(_lang, cache, message, db, _cookie, bot)
+
+		case strings.HasPrefix(status, "catfee_add_address"):
+			catfee.CustodyAddressAdd(_lang, cache, db, bot, message)
+
+		case strings.HasPrefix(status, "catfee_remove_address"):
+			catfee.CustodyAddressRemove(_lang, cache, db, bot, message, catfeeClient)
+
 		}
 	}
 }
 
 // 处理内联键盘回调
-func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery *tgbotapi.CallbackQuery, db *gorm.DB, _trxfeeUrl, _trxfeeApiKey, _trxfeeSecret string) {
+func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery *tgbotapi.CallbackQuery, db *gorm.DB, _trxfeeUrl, _trxfeeApiKey, _trxfeeSecret string, catfeeClient *trxfee.CatfeeService) {
 	// 先应答回调
 
 	//log.Println("已选择: " + callbackQuery.Data)
@@ -981,7 +998,9 @@ func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery 
 	case callbackQuery.Data == "click_transaction_plan":
 		service.MenuNavigateBundlePackage(_lang, db, callbackQuery.Message.Chat.ID, bot, "TRX")
 	case callbackQuery.Data == "click_smart_transaction_plan":
-		service.MenuNavigateSmartTransactionPlans(_lang, db, callbackQuery.Message.Chat.ID, bot, "TRX")
+		//service.MenuNavigateSmartTransactionPlans(_lang, db, callbackQuery.Message.Chat.ID, bot, "TRX")
+		catfee.MenuNavigateCatfeeSmartTransactionPlans(_lang, db, callbackQuery.Message.Chat.ID, bot, "TRX")
+
 	case callbackQuery.Data == "click_language":
 		service.MenuNavigateHome2(db, callbackQuery.Message, bot)
 	case callbackQuery.Data == "dispatch_Now_Others":
@@ -1356,9 +1375,14 @@ func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery 
 		bot.Send(msg)
 
 	case callbackQuery.Data == "click_bundle_package_address_stats_ST":
-		msg := service.CLICK_BUNDLE_PACKAGE_ADDRESS_STATS_ST(_lang, db, callbackQuery.Message.Chat.ID)
-		bot.Send(msg)
+		//msg := service.CLICK_BUNDLE_PACKAGE_ADDRESS_STATS_ST(_lang, db, callbackQuery.Message.Chat.ID)
+		//bot.Send(msg)
+		catfee.CLICK_BUNDLE_PACKAGE_ADDRESS_STATS_ST(_lang, cache, db, callbackQuery.Message.Chat.ID, bot)
 
+	case strings.HasPrefix(callbackQuery.Data, "custody_address_check_"):
+		{
+			catfee.CheckOption(_lang, db, callbackQuery.Message.Chat.ID, callbackQuery.Message.MessageID, callbackQuery.Data, bot, catfeeClient)
+		}
 	case callbackQuery.Data == "next_bundle_package_address_stats":
 		if service.NEXT_BUNDLE_PACKAGE_ADDRESS_STATS(_lang, callbackQuery, db, bot) {
 			return
@@ -1395,8 +1419,28 @@ func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery 
 		bot.Send(msg)
 
 	case callbackQuery.Data == "click_bundle_package_cost_records_ST":
-		msg := service.ExtractBundlePackageST(_lang, db, callbackQuery)
+		//msg := service.ExtractBundlePackageST(_lang, db, callbackQuery)
+		//bot.Send(msg)
+		msg := catfee.ExtractBundlePackageST(_lang, db, callbackQuery)
 		bot.Send(msg)
+
+	case callbackQuery.Data == "prev_st_bundle_package_page":
+		state, done := catfee.EXTRACT_PREV_BUNDLE_PACKAGE_PAGE(_lang, callbackQuery, db, bot)
+		if done {
+			return
+		}
+		fmt.Printf("state: %v\n", state)
+
+	case callbackQuery.Data == "next_st_bundle_package_page":
+		if catfee.EXTRACT_NEXT_BUNDLE_PACKAGE_PAGE(_lang, callbackQuery, db, bot) {
+			return
+		}
+
+	case callbackQuery.Data == "catfee_add_address":
+		catfee.CustodyAddressCond(_lang, cache, db, bot, callbackQuery)
+
+	case callbackQuery.Data == "catfee_remove_address":
+		catfee.CustodyRemoveAddressCond(_lang, cache, db, bot, callbackQuery)
 
 	case callbackQuery.Data == "click_bundle_package_management":
 		msg := service.ExtractBundlePackage(_lang, db, callbackQuery)

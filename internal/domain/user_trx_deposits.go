@@ -17,6 +17,9 @@ type UserTRXDeposits struct {
 	CreatedAt   time.Time `json:"createdAt" form:"createdAt" gorm:"column:created_at;"`      //createdAt字段 `db:"create_at"`
 	UpdatedAt   time.Time `json:"updatedAt" form:"updatedAt" gorm:"column:updated_at;"`      //updatedAt字段`db:"update_at"`
 	CreatedDate string    `json:"created_date"`                                              // 用于接收格式化后的日期
+
+	Source   int64 `json:"source" form:"source" gorm:"column:source;size:19;"`        //source  0代表充值、1代表智能托管、2代表检测、3代表预警
+	BundleId int64 `json:"bundleId" form:"bundleId" gorm:"column:bundle_id;size:19;"` //套餐ID
 }
 
 // TableName ronUsers表 RonUsers自定义表名 ron_users

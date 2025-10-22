@@ -51,7 +51,7 @@ func TruncateString(s string) string {
 	}
 
 	// 取前8个字符 + "..." + 后8个字符
-	return string(runes[:8]) + "..." + string(runes[totalRunes-8:])
+	return string(runes[:4]) + "..." + string(runes[totalRunes-4:])
 }
 func RandomCookiesString(strings []string) string {
 	if len(strings) == 0 {

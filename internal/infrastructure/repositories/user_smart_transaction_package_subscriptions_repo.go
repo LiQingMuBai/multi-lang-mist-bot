@@ -3,6 +3,7 @@ package repositories
 import (
 	"context"
 	"errors"
+	"fmt"
 	"ushield_bot/internal/domain"
 	"ushield_bot/internal/request"
 
@@ -101,6 +102,10 @@ func (r *UserSmartTransactionPackageSubscriptionsRepository) Delete(ctx context.
 func (r *UserSmartTransactionPackageSubscriptionsRepository) GetUserSmartTransactionPackageSubscriptionsInfoList(ctx context.Context, info request.UserAddressDetectionSearch, _chatID int64) (list []domain.UserSmartTransactionPackageSubscriptions, total int64, err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
+
+	fmt.Printf("limit: %d, offset: %d\n", limit, offset)
+
+	fmt.Printf("page: %d\n", info.Page)
 	// 创建db
 	db := r.db.Model(&domain.UserSmartTransactionPackageSubscriptions{}).Select("id,status,amount,times,bundle_name,bundle_id,address, DATE_FORMAT(created_at, '%m-%d') as created_date").Where("chat_id = ? and times > 0 and status > 0", _chatID)
 	var UserSmartTransactionPackageSubscriptions []domain.UserSmartTransactionPackageSubscriptions

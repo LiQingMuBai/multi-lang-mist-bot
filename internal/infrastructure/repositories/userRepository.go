@@ -2,10 +2,12 @@ package repositories
 
 import (
 	"context"
+
 	_ "github.com/go-sql-driver/mysql"
 
-	"gorm.io/gorm"
 	"ushield_bot/internal/domain"
+
+	"gorm.io/gorm"
 )
 
 type UserRepository struct {
@@ -64,6 +66,24 @@ func (r *UserRepository) UpdateTimes(_times uint64, _username string) error {
 func (r *UserRepository) UpdateBundleTimes(_bundleTimes int64, _chatID int64) error {
 	query := "UPDATE tg_users SET bundle_times = ?  WHERE associates = ?"
 	tx := r.db.Exec(query, _bundleTimes, _chatID)
+	return tx.Error
+}
+
+func (r *UserRepository) UpdateSTTimes(_bundleTimes int64, _chatID int64) error {
+	query := "UPDATE tg_users SET st_times = ?  WHERE associates = ?"
+	tx := r.db.Exec(query, _bundleTimes, _chatID)
+	return tx.Error
+}
+
+func (r *UserRepository) UpdateTrxAmount(_trxAmount string, _chatID int64) error {
+	query := "UPDATE tg_users SET tron_amount = ?  WHERE associates = ?"
+	tx := r.db.Exec(query, _trxAmount, _chatID)
+	return tx.Error
+}
+
+func (r *UserRepository) UpdateUSDTAmount(_amount string, _chatID int64) error {
+	query := "UPDATE tg_users SET amount = ?  WHERE associates = ?"
+	tx := r.db.Exec(query, _amount, _chatID)
 	return tx.Error
 }
 
