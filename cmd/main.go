@@ -1789,7 +1789,8 @@ func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery 
 		handleStartCommand(cache, bot, callbackQuery.Message)
 
 	case strings.HasPrefix(callbackQuery.Data, "ST_bundle_"):
-		service.ST_BUNDLE_CHECK(_lang, cache, bot, callbackQuery, db)
+		//service.ST_BUNDLE_CHECK(_lang, cache, bot, callbackQuery, db)
+		catfee.ST_BUNDLE_CHECK(_lang, cache, bot, callbackQuery, db)
 
 	case strings.HasPrefix(callbackQuery.Data, "bundle_"):
 		service.BUNDLE_CHECK2(_lang, cache, bot, callbackQuery, db)
@@ -1800,6 +1801,9 @@ func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery 
 	case strings.HasPrefix(callbackQuery.Data, "deposit_trx"):
 		service.DepositPrevOrder(_lang, cache, bot, callbackQuery, db)
 	case callbackQuery.Data == "cancel_order":
+		service.DepositCancelOrder(_lang, cache, bot, callbackQuery, db)
+
+	case callbackQuery.Data == "cancel_catfee_order":
 		service.DepositCancelOrder(_lang, cache, bot, callbackQuery, db)
 
 	case callbackQuery.Data == "address_trace_add":
