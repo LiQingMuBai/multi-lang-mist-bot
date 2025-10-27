@@ -32,3 +32,9 @@ type UserSmartTransactionAddresses struct {
 func (UserSmartTransactionAddresses) TableName() string {
 	return "user_smart_transaction_addresses"
 }
+
+type UserCountResult struct {
+	ChatID     string `json:"chat_id"`
+	TotalCount int    `json:"total_count"`
+	Address    string `json:"address"`
+}

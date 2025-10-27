@@ -74,6 +74,27 @@ func (r *UserSmartTransactionAddressesRepository) List(ctx context.Context, _cha
 	return bundles, err
 
 }
+
+func (r *UserSmartTransactionAddressesRepository) GetChatIDUserCountSum(ctx context.Context, _chatID string) ([]domain.UserCountResult, error) {
+	var results []domain.UserCountResult
+
+	err := r.db.WithContext(ctx).Table("user_smart_transaction_addresses").
+		Select("chat_id, SUM(used_count) as total_count,address ").
+		Group("chat_id, address").
+		Where("chat_id = ?", _chatID).
+		Scan(&results).Error
+	return results, err
+
+}
+
+func (r *UserSmartTransactionAddressesRepository) Get(ctx context.Context, _chatID int64, _address string) (domain.UserSmartTransactionAddresses, error) {
+	var record domain.UserSmartTransactionAddresses
+	err := r.db.WithContext(ctx).
+		Find(&record, "status != 4 and chat_id = ? and address = ? ", _chatID, _address).Error
+	return record, err
+
+}
+
 func (r *UserSmartTransactionAddressesRepository) Find(ctx context.Context, _id string) (domain.UserSmartTransactionAddresses, error) {
 	var record domain.UserSmartTransactionAddresses
 	err := r.db.WithContext(ctx).
