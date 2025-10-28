@@ -29,12 +29,7 @@ func DepositPrevUSDTOrder(_lang string, cache cache.Cache, bot *tgbotapi.BotAPI,
 	//err := trxPlaceholderRepo.Update(context.Background(), placeholder.Id, 1)
 	if esg != nil {
 		fmt.Printf("Failed to update user: " + esg.Error())
-		msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID,
-			"由于波场(TRON)网络出现不稳定情况，可能导致交易延迟或失败。"+
-				"为保障用户资产安全，我们决定暂时关闭波场(TRON)网络的充值通道，待网络稳定后重新开放。"+
-				"\n✅ 其他功能：预警、检测、笔数套餐等业务均正常运作，不受影响。\n"+
-				"建议：\n🔹 如需充值，请等待10分钟后再尝试。\n\n"+
-				"我们正在密切关注波场(TRON)网络情况，由此带来的不便，敬请谅解！")
+		msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, global.Translations[_lang]["placeholder_array_size_warning"])
 
 		inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
 			tgbotapi.NewInlineKeyboardRow(
@@ -50,11 +45,7 @@ func DepositPrevUSDTOrder(_lang string, cache cache.Cache, bot *tgbotapi.BotAPI,
 	}
 	if placeholder.Id == 0 {
 		msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID,
-			"由于波场(TRON)网络出现不稳定情况，可能导致交易延迟或失败。"+
-				"为保障用户资产安全，我们决定暂时关闭波场(TRON)网络的充值通道，待网络稳定后重新开放。"+
-				"\n✅ 其他功能：预警、检测、笔数套餐等业务均正常运作，不受影响。\n"+
-				"建议：\n🔹 如需充值，请等待10分钟后再尝试。\n\n"+
-				"我们正在密切关注波场(TRON)网络情况，由此带来的不便，敬请谅解！")
+			global.Translations[_lang]["placeholder_array_size_warning"])
 
 		inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
 			tgbotapi.NewInlineKeyboardRow(
@@ -322,7 +313,7 @@ func DepositPrevOrder(_lang string, cache cache.Cache, bot *tgbotapi.BotAPI, cal
 	//"转账10分钟后没到账及时联系"+"\n")
 	inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
 		tgbotapi.NewInlineKeyboardRow(
-			tgbotapi.NewInlineKeyboardButtonData("⏳"+global.Translations[_lang]["catfee_smart_transaction_pay_button"]+realTransferAmount+" USDT ", "noop"),
+			tgbotapi.NewInlineKeyboardButtonData("⏳"+global.Translations[_lang]["catfee_smart_transaction_pay_button"]+realTransferAmount+" TRX ", "noop"),
 		),
 
 		tgbotapi.NewInlineKeyboardRow(
