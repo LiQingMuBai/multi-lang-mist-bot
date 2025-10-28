@@ -428,6 +428,7 @@ func main() {
 						var user domain.User
 						user.Associates = strconv.FormatInt(update.Message.Chat.ID, 10)
 						user.Username = update.Message.Chat.UserName
+						user.Lang = "zh"
 						user.CreatedAt = time.Now()
 
 						user.BotName = botName
