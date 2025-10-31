@@ -10,6 +10,7 @@ import (
 	"strconv"
 	"strings"
 	"ushield_bot/internal/service/catfee"
+	"ushield_bot/internal/service/yhb"
 
 	"github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"github.com/joho/godotenv"
@@ -506,6 +507,7 @@ func handleStartCommand(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbota
 		tgbotapi.NewKeyboardButtonRow(
 
 			tgbotapi.NewKeyboardButton("👤"+global.Translations[_lang]["my_account"]),
+			tgbotapi.NewKeyboardButton("🧧"+global.Translations[_lang]["yhb_menu"]),
 		),
 	)
 
@@ -543,6 +545,8 @@ func handleRegularMessage(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbo
 	switch message.Text {
 	case "🔃" + global.Translations[_lang]["coin_swap_coin_menu"]:
 		service.MenuNavigateCoin2CoinSwap(_lang, db, message, bot, fixfloatedUrl)
+	case "🧧" + global.Translations[_lang]["yhb_menu"]:
+		yhb.MenuNavigateTronEnergy(_lang, db, message, bot)
 	case "⛽" + global.Translations[_lang]["tron_energy_menu"]:
 		service.MenuNavigateTronEnergy(_lang, db, message, bot)
 	case "✅" + global.Translations[_lang]["usdt_trx_swap"]:

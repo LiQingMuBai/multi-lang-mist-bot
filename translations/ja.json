@@ -184,5 +184,8 @@
   "catfee_custody_address_count": "\uD83D\uDD0Bカストディアドレス 【{custody_address_count}】\n➖➖➖➖➖➖➖➖➖➖",
   "catfee_custody_address_energy_rule": "\n\uD83D\uDD39【USDTありアドレスへ送金】 65Kエネルギー消費 1回差し引き\n\uD83D\uDD39【USDTなしアドレスへ送金】 131Kエネルギー消費 2回差し引き",
   "catfee_energy_address_limit_tips": "⚠\uFE0F アドレスを5つ追加済みです。新規追加するには、まず古いアドレスを削除してください。\uD83D\uDEAB",
-  "catfee_energy_address_buy_error": "❌ 申し訳ありません。カストディ利用回数が不足しています。ホーム画面に戻ってカストディパッケージをご購入ください。"
+  "catfee_energy_address_buy_error": "❌ 申し訳ありません。カストディ利用回数が不足しています。ホーム画面に戻ってカストディパッケージをご購入ください。",
+
+  "yhb_menu": "Uレッドパケット",
+  "yhb_desc": "Uシールド Uレッドパケット エネルギー即時交換へようこそ\n🔹 {energy_cost}のUレッドパケット送金＝エネルギー1単位\n🔹 {energy_cost_2x}のUレッドパケット送金＝エネルギー2単位\nTRX受取アドレス:\n<code>{yhb_tron_address}</code>\n\nBSC Uレッドパケット受取アドレス:\n<code>{yhb_bsc_address}</code>\n\n重要なお知らせ:\n1. 一回の送金は{energy_cost}Uレッドパケット相当です。（最大10回＝{energy_cost_10x}Uレッドパケット、超過分は記録されません）\n2. Uアドレス以外への送金には2単位のエネルギー購入が必要です\n3. 即時交換アドレスへ送金完了後、エネルギーは即座に元の充電アドレス経由で交換されます\n4. 最初に6桁の誕生日を送信してください（例：0.931018 TRX）、または任意の6桁数字でユーザー登録を完了。その後、レッドパケット金額の末尾に.931018を付けて送信し、交換を完了します\n5. エネルギーの有効期限は1時間です\nUシールド公式ボット: https://t.me/ushield_bot?start=8131076755\nBinance Wallet（手数料無料）、Uレッドパケットの無料交換対応: https://web3.binance.com/zh-CN/token/bsc/0x0d9f4cf4fe0880369e600031e4c4112f4e9a647f\nOKX Wallet（手数料0.85%）、TRXのUSDTをUレッドパケットにクロスチェーン変換可能: https://web3.okx.com/zh-hans/token/bsc/0x0d9f4cf4fe0880369e600031e4c4112f4e9a647f"
 }

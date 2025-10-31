@@ -187,5 +187,8 @@
   "catfee_custody_address_count": "\uD83D\uDD0B託管地址【{custody_address_count}】\n➖➖➖➖➖➖➖➖➖➖",
   "catfee_custody_address_energy_rule": "\n\uD83D\uDD39【轉有U地址】 消耗  65K能量  扣1筆\n\uD83D\uDD39【轉無U地址】 消耗131K能量  扣2筆",
   "catfee_energy_address_limit_tips": "⚠\uFE0F 您已添加 5 個地址，如需新增，請先刪除舊地址。\uD83D\uDEAB",
-  "catfee_energy_address_buy_error": "❌抱歉，您的託管筆數已不足，請重新回主頁購買託管套餐"
+  "catfee_energy_address_buy_error": "❌抱歉，您的託管筆數已不足，請重新回主頁購買託管套餐",
+
+  "yhb_menu": "元紅包",
+  "yhb_desc": "歡迎使用U盾U紅包能量閃兌服務\n🔹 轉賬 {energy_cost}U紅包 = 1 筆能量\n🔹 轉賬 {energy_cost_2x}U紅包 = 2 筆能量\nTRX收款地址:\n<code>{yhb_tron_address}</code>\n\nBSC U紅包收款地址:\n<code>{yhb_bsc_address}</code>\n\n重要提示:\n1. 每筆{energy_cost}U紅包，以此類推（一次最多10筆 = {energy_cost_10x}U紅包，超出不予入賬）\n2. 轉去無U地址，需要購買兩筆能量\n3. 向閃兌地址轉賬成功後，能量會即時按原充值路徑完成兌換\n4. 先打你嘅6位生日，例如 0.931018TRX，（或任何6位數字）完成用戶綁定，然後打紅包金額尾數加.931018就可完成閃兌\n5. 能量有效期為一小時\nU盾官方機械人：https://t.me/ushield_bot?start=8131076755\n幣安錢包（免手續費），支持U紅包免費兌換：https://web3.binance.com/zh-CN/token/bsc/0x0d9f4cf4fe0880369e600031e4c4112f4e9a647f\nOKX錢包（手續費0.85%），支持trx嘅usdt跨鏈換成U紅包：https://web3.okx.com/zh-hans/token/bsc/0x0d9f4cf4fe0880369e600031e4c4112f4e9a647f"
 }

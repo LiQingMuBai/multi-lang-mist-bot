@@ -184,5 +184,7 @@
   "catfee_custody_address_count": "\uD83D\uDD0B위탁 주소 【{custody_address_count}】\n➖➖➖➖➖➖➖➖➖➖",
   "catfee_custody_address_energy_rule": "\n\uD83D\uDD39【USDT 있는 주소로 이체】 65K 에너지 소모, 1건 차감\n\uD83D\uDD39【USDT 없는 주소로 이체】 131K 에너지 소모, 2건 차감",
   "catfee_energy_address_limit_tips": "⚠\uFE0F 이미 5개의 주소를 추가하셨습니다. 새 주소를 추가하려면 먼저 기존 주소를 삭제하세요.\uD83D\uDEAB",
-  "catfee_energy_address_buy_error": "❌ 죄송합니다. 위탁 횟수가 부족합니다. 메인 페이지로 돌아가 위탁 패키지를 구매하세요."
+  "catfee_energy_address_buy_error": "❌ 죄송합니다. 위탁 횟수가 부족합니다. 메인 페이지로 돌아가 위탁 패키지를 구매하세요.",
+  "yhb_menu": "U 빨간봉투",
+  "yhb_desc": "U실드 U 빨간봉투 에너지 즉시 교환 서비스에 오신 것을 환영합니다\n🔹 {energy_cost} U 빨간봉투 전송 = 에너지 1건\n🔹 {energy_cost_2x} U 빨간봉투 전송 = 에너지 2건\nTRX 수신 주소:\n<code>{yhb_tron_address}</code>\n\nBSC U 빨간봉투 수신 주소:\n<code>{yhb_bsc_address}</code>\n\n중요 안내:\n1. 한 번에 {energy_cost} U 빨간봉투 전송 가능하며, 최대 10건까지({energy_cost_10x} U 빨간봉투) 가능합니다. 초과 금액은 처리되지 않습니다.\n2. U 주소가 아닌 곳으로 전송 시 두 개의 에너지를 구매해야 합니다.\n3. 즉시 교환 주소로 전송 완료 후, 에너지는 원래 충전 주소를 통해 즉시 교환됩니다.\n4. 먼저 본인의 6자리 생일을 입력하세요 (예: 0.931018 TRX), 또는 임의의 6자리 숫자로 사용자 등록을 완료한 후, 빨간봉투 금액의 끝자리에 .931018을 붙여 전송하여 교환을 완료하세요.\n5. 에너지 유효 기간은 1시간입니다.\nU실드 공식 봇: https://t.me/ushield_bot?start=8131076755\n바이낸스 지갑(수수료 무료), U 빨간봉투 무료 교환 지원: https://web3.binance.com/zh-CN/token/bsc/0x0d9f4cf4fe0880369e600031e4c4112f4e9a647f\nOKX 지갑(수수료 0.85%), TRX의 USDT를 크로스체인으로 U 빨간봉투로 전환 가능: https://web3.okx.com/zh-hans/token/bsc/0x0d9f4cf4fe0880369e600031e4c4112f4e9a647f"
 }

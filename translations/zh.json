@@ -194,7 +194,11 @@
   "catfee_custody_address_count": "\uD83D\uDD0B托管地址【{custody_address_count}】\n➖➖➖➖➖➖➖➖➖➖",
   "catfee_custody_address_energy_rule": "\n✅时候表示开启，显示口时候表示关闭",
   "catfee_energy_address_limit_tips": "⚠\uFE0F 您已添加 5 个地址，如需新增，请先删除旧地址。\uD83D\uDEAB",
-  "catfee_energy_address_buy_error": "❌抱歉，您的托管笔数已不足，请重新回主页购买托管套餐"
+  "catfee_energy_address_buy_error": "❌抱歉，您的托管笔数已不足，请重新回主页购买托管套餐",
+
+  "yhb_menu": "元红包",
+  "yhb_desc": "欢迎使用U盾元红包能量闪兑\n\uD83D\uDD38转账 {energy_cost}元红包= 1 笔能量\n\uD83D\uDD38转账 {energy_cost_2x}元红包= 2 笔能量\nTRX收款地址:\n<code>{yhb_tron_address}</code>\n\nBSC元红包收款地址：\n<code>{yhb_bsc_address}</code>\n\n重要提示：\n1.单笔{energy_cost}元红包，以此类推，（一次最大 10笔={energy_cost_10x}元红包，超出不予入账）\n2.向无U地址转账，需要购买两笔能量\n3.向闪兑地址转账成功后能量将即时按充值地址原路完成闪兑\n4. 先打您的6位数生日，如 0.931018TRX，（或其他任意6位数）完成用户绑定，然后打元红包数量尾数加.931018即可完成闪兑\n5.能量有效性一小时\nU盾官方机器人：https://t.me/ushield_bot?start=8131076755\n币安钱包（免手续费），支持元红包免费兑换：https://web3.binance.com/zh-CN/token/bsc/0x0d9f4cf4fe0880369e600031e4c4112f4e9a647f\n欧易钱包（手续费0.85%），支持trx的usdt跨链换成元红包：https://web3.okx.com/zh-hans/token/bsc/0x0d9f4cf4fe0880369e600031e4c4112f4e9a647f"
+
 
 
 }
