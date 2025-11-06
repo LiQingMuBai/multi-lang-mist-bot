@@ -502,13 +502,12 @@ func MenuNavigateHome2(db *gorm.DB, message *tgbotapi.Message, bot *tgbotapi.Bot
 		),
 		tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonData("한국어", "set_lang_"+"ko"),
-
 			tgbotapi.NewInlineKeyboardButtonData("ภาษาไทย", "set_lang_"+"th"),
 			tgbotapi.NewInlineKeyboardButtonData("日本語", "set_lang_"+"ja"),
 		),
 		tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonData("Русский язык", "set_lang_"+"ru"),
-			tgbotapi.NewInlineKeyboardButtonData("Português", "set_lang_"+"pt"),
+			tgbotapi.NewInlineKeyboardButtonData("فارسی", "set_lang_"+"fa"),
 			tgbotapi.NewInlineKeyboardButtonData("Español", "set_lang_"+"es"),
 		),
 	)

@@ -21,8 +21,8 @@ var (
 var (
 	Translations = make(map[string]map[string]string) // 存储所有翻译
 
-	TranslationsDir = "translations"                                                             // 翻译文件目录
-	SupportedLangs  = []string{"en", "zh", "ar", "es", "pt", "ko", "th", "ja", "vi", "ch", "ru"} // 支持的语言
-	DefaultLang     = "zh"                                                                       // 默认语言
-	Mutex           = &sync.RWMutex{}                                                            // 读写锁
+	TranslationsDir = "translations"                                                                   // 翻译文件目录
+	SupportedLangs  = []string{"en", "zh", "ar", "es", "pt", "ko", "th", "ja", "vi", "ch", "ru", "fa"} // 支持的语言
+	DefaultLang     = "zh"                                                                             // 默认语言
+	Mutex           = &sync.RWMutex{}                                                                  // 读写锁
 )
