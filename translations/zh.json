@@ -197,7 +197,29 @@
   "catfee_energy_address_buy_error": "❌抱歉，您的托管笔数已不足，请重新回主页购买托管套餐",
 
   "yhb_menu": "元红包",
-  "yhb_desc": "欢迎使用U盾元红包能量闪兑\n\uD83D\uDD38转账 {energy_cost}元红包= 1 笔能量\n\uD83D\uDD38转账 {energy_cost_2x}元红包= 2 笔能量\nTRX收款地址:\n<code>{yhb_tron_address}</code>\n\nBSC元红包收款地址：\n<code>{yhb_bsc_address}</code>\n\n重要提示：\n1.单笔{energy_cost}元红包，以此类推，（一次最大 10笔={energy_cost_10x}元红包，超出不予入账）\n2.向无U地址转账，需要购买两笔能量\n3.向闪兑地址转账成功后能量将即时按充值地址原路完成闪兑\n4. 先打您的6位数生日，如 0.931018TRX，（或其他任意6位数）完成用户绑定，然后打元红包数量尾数加.931018即可完成闪兑\n5.能量有效性一小时\nU盾官方机器人：https://t.me/ushield_bot?start=8131076755\n币安钱包（免手续费），支持元红包免费兑换：https://web3.binance.com/zh-CN/token/bsc/0x0d9f4cf4fe0880369e600031e4c4112f4e9a647f\n欧易钱包（手续费0.85%），支持trx的usdt跨链换成元红包：https://web3.okx.com/zh-hans/token/bsc/0x0d9f4cf4fe0880369e600031e4c4112f4e9a647f"
+  "yhb_desc": "欢迎使用U盾元红包能量闪兑\n\uD83D\uDD38转账 {energy_cost}元红包= 1 笔能量\n\uD83D\uDD38转账 {energy_cost_2x}元红包= 2 笔能量\nTRX收款地址:\n<code>{yhb_tron_address}</code>\n\nBSC元红包收款地址：\n<code>{yhb_bsc_address}</code>\n\n重要提示：\n1.单笔{energy_cost}元红包，以此类推，（一次最大 10笔={energy_cost_10x}元红包，超出不予入账）\n2.向无U地址转账，需要购买两笔能量\n3.向闪兑地址转账成功后能量将即时按充值地址原路完成闪兑\n4. 先打您的6位数生日，如 0.931018TRX，（或其他任意6位数）完成用户绑定，然后打元红包数量尾数加.931018即可完成闪兑\n5.能量有效性一小时\nU盾官方机器人：https://t.me/ushield_bot?start=8131076755\n币安钱包（免手续费），支持元红包免费兑换：https://web3.binance.com/zh-CN/token/bsc/0x0d9f4cf4fe0880369e600031e4c4112f4e9a647f\n欧易钱包（手续费0.85%），支持trx的usdt跨链换成元红包：https://web3.okx.com/zh-hans/token/bsc/0x0d9f4cf4fe0880369e600031e4c4112f4e9a647f",
+
+
+
+
+
+
+
+
+  "ushield_additional_services_desc": "\uD83D\uDED2扩展服务\n➖➖➖➖➖➖➖➖➖➖\n\uD83C\uDDED\uD83C\uDDF0香港鸭聊卡\n\uD83D\uDD25香港鸭聊卡有效期1年，可充值，18G一次性流量卡，附带一个香港号码，可免费收短信。\n\n\uD83D\uDCB3匿名信用卡\n\uD83D\uDD25适用各种跨境场景，轻松付全球！支持AWS、tiktok、Facebook、Alipay 、Google、paypal、推特、星链、广告投放、域名服务器、 购物、注册、订阅等，覆盖多种消费场景，支持多币种交易、开卡即用、实时到账、极速消费。\n\n✈能量理财\n\uD83D\uDD25Telegram 在 TON 区块链上发布了有限的虚拟电话号码作为NFT收藏品。 Telegram 用户可以使用这些号码进行注册，无需 SIM 卡，并直接在 Fragment 上接收注册、或登录验证码。\n\n\uD83D\uDEA2社交账号\n\uD83D\uDD25支持Linkedin、Facebook 、Google账号以及投流服务，帮助客户跨境贸易\n\n\uD83D\uDEA2海外服务器\n\uD83D\uDD25支持购买匿名服务器",
+  "ushield_additional_services_menu": "扩展服务",
+  "ushield_additional_services_sim": "鸭聊卡",
+  "ushield_additional_services_sim_desc": "\uD83D\uDED2扩展服务\n\n\n\uD83C\uDDED\uD83C\uDDF0香港鸭聊卡\n➖➖➖➖➖➖➖➖➖➖\n\uD83D\uDD25香港鸭聊卡有效期1年，可充值，18G一次性流量卡，附带一个香港号码，可免费收短信。\n\n\uD83D\uDD38单价：60 USDT / 卡\n\uD83D\uDD38邮费：到付\n\n\uD83D\uDD39激活拨打：*103*800#\n\uD83D\uDD39查询拨打：*#130#",
+  "ushield_additional_services_energy_financing": "能量理财",
+  "ushield_additional_services_energy_financing_desc": "\uD83D\uDD38能量代理模式收购价格： 44 SUN\n\uD83D\uDD38年化收益率（APY）： 15.42%\n\uD83D\uDD38质押能量每10000TRX每天收益：4.23 TRX\n\n\uD83D\uDD38带宽代理模式收购价格： 260 SUN\n\uD83D\uDD38年化收益率（APY）： 15.51%\n\uD83D\uDD38质押带宽每10000TRX每天收益：4.25 TRX\n\n\uD83D\uDD38 以上收益均为质押能量或者带宽的收益，质押TRX额外还有 3.5% APY投票收益，在钱包APP内操作即可领取额外投票收益！ \n\n\n此功能主要给：已经质押 TRX  获取能量的用户自助出售能量\n质押能量首选钱包APP： 波宝  TronLink\n质押流程：\n钱包内进入【质押功能】选择质押【能量】或者【带宽】\n\n出售流程：\n钱包点击【带宽】或者【能量】选择代理，输入收购地址，发送完成即可。",
+  "ushield_additional_services_visa": "匿名信用卡",
+  "ushield_additional_services_visa_desc": "\uD83D\uDCB3匿名信用卡\n➖➖➖➖➖➖➖➖➖➖\n\uD83D\uDD25适用各种跨境场景，轻松付全球！支持多币种交易、开卡即用、实时到账、极速消费、支持AVS验证。\n\n\uD83D\uDD38充值手续费：3%\n\uD83D\uDD38开卡手续费：6 USD\n\n\uD83D\uDCCC适用平台：Alipay、Facebook、Google、Amazon、GoDaddy、Open AI、Twitter、Shopify、Starlink、Wechat、Alibaba、AliExpress等。\n\n⚠\uFE0F该卡禁止恶意拒付，如造成多次交易拒付或支付失败，将会触发风控进行处罚或销卡处理，请养成良好的支付习惯，如订阅有其他服务，请您在订阅网站完成解绑、或取消订阅操作！",
+  "ushield_additional_services_sns": "社交账号",
+  "ushield_additional_services_sns_desc": "支持Linkedin、Facebook 、Google账号以及投流服务，帮助客户跨境贸易",
+  "ushield_additional_services_contact": "\n💁客服热线：{ushield_additional_services_contact}",
+  "ushield_additional_services_wallet": "\n👛充值钱包：<code>{ushield_additional_services_wallet}</code>",
+  "ushield_additional_services_ecs": "海外服务器",
+  "ushield_additional_services_ecs_desc": "购买匿名海外服务器ECS"
 
 
 

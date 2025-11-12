@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+	"ushield_bot/internal/service/additional"
 	"ushield_bot/internal/service/catfee"
 	"ushield_bot/internal/service/yhb"
 
@@ -493,8 +494,12 @@ func handleStartCommand(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbota
 		tgbotapi.NewKeyboardButtonRow(
 
 			tgbotapi.NewKeyboardButton("⛽"+global.Translations[_lang]["tron_energy_menu"]),
-			tgbotapi.NewKeyboardButton("✅"+global.Translations[_lang]["usdt_trx_swap"]),
-			tgbotapi.NewKeyboardButton("🔃"+global.Translations[_lang]["coin_swap_coin_menu"]),
+
+			//tgbotapi.NewInlineKeyboardButtonData("⚡"+global.Translations[_lang]["energy_swap"], "click_energy_swap"),
+			tgbotapi.NewKeyboardButton("🖊️"+global.Translations[_lang]["transaction_plans"]),
+			//tgbotapi.NewInlineKeyboardButtonData("🤖"+global.Translations[_lang]["smart_transaction_plans"], "click_smart_transaction_plan"),
+			tgbotapi.NewKeyboardButton("🤖"+global.Translations[_lang]["catfee_smart_transaction_menu"]),
+
 			//tgbotapi.NewKeyboardButton("⚡"+global.Translations[_lang]["energy_swap"]),
 			//tgbotapi.NewKeyboardButton("🖊️"+global.Translations[_lang]["transaction_plans"]),
 			//tgbotapi.NewKeyboardButton("🤖"+global.Translations[_lang]["smart_transaction_plans"]),
@@ -506,8 +511,15 @@ func handleStartCommand(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbota
 		),
 		tgbotapi.NewKeyboardButtonRow(
 
+			tgbotapi.NewKeyboardButton("✅"+global.Translations[_lang]["usdt_trx_swap"]),
+			tgbotapi.NewKeyboardButton("🔃"+global.Translations[_lang]["coin_swap_coin_menu"]),
+			//tgbotapi.NewKeyboardButton("🧧"+global.Translations[_lang]["yhb_menu"]),
+			//tgbotapi.NewKeyboardButton("👤"+global.Translations[_lang]["my_account"]),
+
+			tgbotapi.NewKeyboardButton("🛒"+global.Translations[_lang]["ushield_additional_services_menu"]),
+		),
+		tgbotapi.NewKeyboardButtonRow(
 			tgbotapi.NewKeyboardButton("👤"+global.Translations[_lang]["my_account"]),
-			tgbotapi.NewKeyboardButton("🧧"+global.Translations[_lang]["yhb_menu"]),
 		),
 	)
 
@@ -543,6 +555,8 @@ func handleRegularMessage(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbo
 	}
 
 	switch message.Text {
+	case "🛒" + global.Translations[_lang]["ushield_additional_services_menu"]:
+		additional.MenuNavigate(_lang, db, message.Chat.ID, bot)
 	case "🔃" + global.Translations[_lang]["coin_swap_coin_menu"]:
 		service.MenuNavigateCoin2CoinSwap(_lang, db, message, bot, fixfloatedUrl)
 	case "🧧" + global.Translations[_lang]["yhb_menu"]:
@@ -559,9 +573,8 @@ func handleRegularMessage(cache cache.Cache, bot *tgbotapi.BotAPI, message *tgbo
 		service.MenuNavigateAddressFreeze(_lang, cache, bot, message.Chat.ID, db)
 	case "🖊️" + global.Translations[_lang]["transaction_plans"]:
 		service.MenuNavigateBundlePackage(_lang, db, message.Chat.ID, bot, "TRX")
-
-	case "🤖" + global.Translations[_lang]["smart_transaction_plans"]:
-		service.MenuNavigateSmartTransactionPlans(_lang, db, message.Chat.ID, bot, "TRX")
+	case "🤖" + global.Translations[_lang]["catfee_smart_transaction_menu"]:
+		catfee.MenuNavigateCatfeeSmartTransactionPlans(_lang, db, message.Chat.ID, bot, "TRX")
 
 	case "⚡" + global.Translations[_lang]["energy_swap"]:
 		service.MenuNavigateEnergyExchange(_lang, db, message, bot)
@@ -1894,6 +1907,49 @@ func handleCallbackQuery(cache cache.Cache, bot *tgbotapi.BotAPI, callbackQuery 
 		msg.ReplyMarkup = inlineKeyboard
 		msg.ParseMode = "HTML"
 
+		bot.Send(msg)
+
+	case callbackQuery.Data == "click_visa":
+
+		dictRepo := repositories.NewSysDictionariesRepo(db)
+		ushield_additional_services_contact, _ := dictRepo.GetDictionaryDetail("ushield_additional_services_contact")
+		ushield_additional_services_wallet, _ := dictRepo.GetDictionaryDetail("ushield_additional_services_wallet")
+
+		msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, global.Translations[_lang]["ushield_additional_services_visa_desc"]+"\n"+strings.ReplaceAll(global.Translations[_lang]["ushield_additional_services_contact"], "{ushield_additional_services_contact}", ushield_additional_services_contact)+strings.ReplaceAll(global.Translations[_lang]["ushield_additional_services_wallet"], "{ushield_additional_services_wallet}", ushield_additional_services_wallet))
+		msg.ParseMode = "HTML"
+		bot.Send(msg)
+	case callbackQuery.Data == "click_sim":
+		dictRepo := repositories.NewSysDictionariesRepo(db)
+		ushield_additional_services_contact, _ := dictRepo.GetDictionaryDetail("ushield_additional_services_contact")
+		ushield_additional_services_wallet, _ := dictRepo.GetDictionaryDetail("ushield_additional_services_wallet")
+
+		msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, global.Translations[_lang]["ushield_additional_services_sim_desc"]+"\n"+strings.ReplaceAll(global.Translations[_lang]["ushield_additional_services_contact"], "{ushield_additional_services_contact}", ushield_additional_services_contact)+strings.ReplaceAll(global.Translations[_lang]["ushield_additional_services_wallet"], "{ushield_additional_services_wallet}", ushield_additional_services_wallet))
+		msg.ParseMode = "HTML"
+		bot.Send(msg)
+
+	case callbackQuery.Data == "click_energy_financing":
+		dictRepo := repositories.NewSysDictionariesRepo(db)
+		ushield_additional_services_contact, _ := dictRepo.GetDictionaryDetail("ushield_additional_services_contact")
+		ushield_additional_services_wallet, _ := dictRepo.GetDictionaryDetail("ushield_additional_services_wallet")
+
+		msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, global.Translations[_lang]["ushield_additional_services_energy_financing_desc"]+"\n"+strings.ReplaceAll(global.Translations[_lang]["ushield_additional_services_contact"], "{ushield_additional_services_contact}", ushield_additional_services_contact)+strings.ReplaceAll(global.Translations[_lang]["ushield_additional_services_wallet"], "{ushield_additional_services_wallet}", ushield_additional_services_wallet))
+		msg.ParseMode = "HTML"
+		bot.Send(msg)
+	case callbackQuery.Data == "click_sns":
+		dictRepo := repositories.NewSysDictionariesRepo(db)
+		ushield_additional_services_contact, _ := dictRepo.GetDictionaryDetail("ushield_additional_services_contact")
+		ushield_additional_services_wallet, _ := dictRepo.GetDictionaryDetail("ushield_additional_services_wallet")
+
+		msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, global.Translations[_lang]["ushield_additional_services_sns_desc"]+"\n"+strings.ReplaceAll(global.Translations[_lang]["ushield_additional_services_contact"], "{ushield_additional_services_contact}", ushield_additional_services_contact)+strings.ReplaceAll(global.Translations[_lang]["ushield_additional_services_wallet"], "{ushield_additional_services_wallet}", ushield_additional_services_wallet))
+		msg.ParseMode = "HTML"
+		bot.Send(msg)
+	case callbackQuery.Data == "click_ecs":
+		dictRepo := repositories.NewSysDictionariesRepo(db)
+		ushield_additional_services_contact, _ := dictRepo.GetDictionaryDetail("ushield_additional_services_contact")
+		ushield_additional_services_wallet, _ := dictRepo.GetDictionaryDetail("ushield_additional_services_wallet")
+
+		msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, global.Translations[_lang]["ushield_additional_services_ecs_desc"]+"\n"+strings.ReplaceAll(global.Translations[_lang]["ushield_additional_services_contact"], "{ushield_additional_services_contact}", ushield_additional_services_contact)+strings.ReplaceAll(global.Translations[_lang]["ushield_additional_services_wallet"], "{ushield_additional_services_wallet}", ushield_additional_services_wallet))
+		msg.ParseMode = "HTML"
 		bot.Send(msg)
 
 		//default:
