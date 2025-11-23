@@ -181,7 +181,7 @@
   "catfee_custody_address_energy": "Energy",
   "catfee_custody_address_count": "\uD83D\uDD0BCustody Address 【{custody_address_count}】\n➖➖➖➖➖➖➖➖➖➖",
   "catfee_custody_address_energy_rule": "\n\uD83D\uDD39【Transfer to USDT address】 Consumes 65K Energy, deducts 1 transaction\n\uD83D\uDD39【Transfer to non-USDT address】 Consumes 131K Energy, deducts 2 transactions",
-  "catfee_energy_address_limit_tips": "⚠\uFE0F You have added 5 addresses. To add a new one, please delete an old address first.\uD83D\uDEAB",
+  "catfee_energy_address_limit_tips": "⚠\uFE0F You have added 8 addresses. To add a new one, please delete an old address first.\uD83D\uDEAB",
   "catfee_energy_address_buy_error": "❌ Sorry, your custody transaction count is insufficient. Please return to the homepage to purchase a custody package.",
 
   "yhb_menu": "U Red Packet",

@@ -180,7 +180,7 @@
   "catfee_custody_address_energy": "พลังงาน",
   "catfee_custody_address_count": "\uD83D\uDD0Bที่อยู่การฝาก 【{custody_address_count}】\n➖➖➖➖➖➖➖➖➖➖",
   "catfee_custody_address_energy_rule": "\n\uD83D\uDD39【โอนไปยังที่อยู่ที่มี USDT】 ใช้พลังงาน 65K หัก 1 ครั้ง\n\uD83D\uDD39【โอนไปยังที่อยู่ที่ไม่มี USDT】 ใช้พลังงาน 131K หัก 2 ครั้ง",
-  "catfee_energy_address_limit_tips": "⚠\uFE0F คุณได้เพิ่ม 5 ที่อยู่แล้ว หากต้องการเพิ่มใหม่ กรุณาลบที่อยู่เก่าก่อน \uD83D\uDEAB",
+  "catfee_energy_address_limit_tips": "⚠\uFE0F คุณได้เพิ่ม 8 ที่อยู่แล้ว หากต้องการเพิ่มใหม่ กรุณาลบที่อยู่เก่าก่อน \uD83D\uDEAB",
   "catfee_energy_address_buy_error": "❌ ขออภัย จำนวนครั้งการฝากของคุณไม่เพียงพอ กรุณาเข้าสู่หน้าหลักเพื่อซื้อแพ็กเกจการฝาก",
 
   "yhb_menu": "อั่งเปา U",

@@ -174,7 +174,7 @@
   "catfee_custody_address_energy": "Энергия",
   "catfee_custody_address_count": "\uD83D\uDD0BАдрес хранения 【{custody_address_count}】\n➖➖➖➖➖➖➖➖➖➖",
   "catfee_custody_address_energy_rule": "\n\uD83D\uDD39【Перевод на адрес с USDT】 Потребляет 65K энергии, списывается 1 операция\n\uD83D\uDD39【Перевод на адрес без USDT】 Потребляет 131K энергии, списываются 2 операции",
-  "catfee_energy_address_limit_tips": "⚠\uFE0F Вы добавили 5 адресов. Чтобы добавить новый, сначала удалите старый.\uD83D\uDEAB",
+  "catfee_energy_address_limit_tips": "⚠\uFE0F Вы добавили 8 адресов. Чтобы добавить новый, сначала удалите старый.\uD83D\uDEAB",
   "catfee_energy_address_buy_error": "❌ Извините, количество операций хранения недостаточно. Вернитесь на главную страницу, чтобы приобрести пакет хранения.",
 
   "yhb_menu": "Красный конверт U",

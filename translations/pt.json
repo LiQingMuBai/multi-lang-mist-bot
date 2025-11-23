@@ -183,7 +183,7 @@
   "catfee_custody_address_energy": "Energia",
   "catfee_custody_address_count": "\uD83D\uDD0BEndereço sob custódia 【{custody_address_count}】\n➖➖➖➖➖➖➖➖➖➖",
   "catfee_custody_address_energy_rule": "\n\uD83D\uDD39【Transferência para endereço com USDT】 Consome 65K de energia, deduz 1 transação\n\uD83D\uDD39【Transferência para endereço sem USDT】 Consome 131K de energia, deduz 2 transações",
-  "catfee_energy_address_limit_tips": "⚠\uFE0F Você já adicionou 5 endereços. Para adicionar um novo, exclua primeiro um endereço antigo.\uD83D\uDEAB",
+  "catfee_energy_address_limit_tips": "⚠\uFE0F Você já adicionou 8 endereços. Para adicionar um novo, exclua primeiro um endereço antigo.\uD83D\uDEAB",
   "catfee_energy_address_buy_error": "❌ Desculpe, seu número de transações sob custódia é insuficiente. Volte à página inicial para comprar um pacote de custódia.",
 
   "yhb_menu": "Pacote Vermelho U",

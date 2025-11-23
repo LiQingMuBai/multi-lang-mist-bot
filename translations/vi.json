@@ -183,7 +183,7 @@
   "catfee_custody_address_energy": "Năng lượng",
   "catfee_custody_address_count": "\uD83D\uDD0BĐịa chỉ ủy thác 【{custody_address_count}】\n➖➖➖➖➖➖➖➖➖➖",
   "catfee_custody_address_energy_rule": "\n\uD83D\uDD39【Chuyển đến địa chỉ có U】 Tiêu thụ 65K năng lượng Trừ 1 lần\n\uD83D\uDD39【Chuyển đến địa chỉ không có U】 Tiêu thụ 131K năng lượng Trừ 2 lần",
-  "catfee_energy_address_limit_tips": "⚠\uFE0F Bạn đã thêm 5 địa chỉ, nếu muốn thêm mới, vui lòng xóa địa chỉ cũ trước.\uD83D\uDEAB",
+  "catfee_energy_address_limit_tips": "⚠\uFE0F Bạn đã thêm 8 địa chỉ, nếu muốn thêm mới, vui lòng xóa địa chỉ cũ trước.\uD83D\uDEAB",
   "catfee_energy_address_buy_error": "❌ Rất tiếc, số lần ủy thác của bạn không đủ, vui lòng quay lại trang chủ để mua gói ủy thác",
 
   "yhb_menu": "Phong bì đỏ U",

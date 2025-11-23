@@ -37,7 +37,7 @@
   "theft": "盜竊",
   "huione": "匯旺",
   "ushield_tips": "\uD83D\uDEE1\uFE0F U盾，做您鏈上資產的護盾！",
-  "energy_swap_tips": "歡迎使用U盾能量閃兌\n\uD83D\uDD38轉賬  {energy_cost} Trx=  1 筆能量\n\uD83D\uDD38轉賬  {energy_cost_2x} Trx=  2 筆能量\n\uD83D\uDD38閃兌收款地址:<code> {receiveAddress}</code>\n➖➖➖➖點擊複製➖➖➖➖\n重要提示：\n1.單筆 {energy_cost}Trx，以此類推，一次最大 10筆（{energy_cost_10x}TRX，超出不予入賬）\n2.向無U地址轉賬，需要購買兩筆能量\n3.向閃兌地址轉賬成功後能量將即時按充值地址原路完成閃兌\n4.禁止使用交易所錢包提幣使用\n5.能量有效性一小时",
+  "energy_swap_tips": "歡迎使用U盾能量閃兌\n\uD83D\uDD38轉賬  {energy_cost} Trx=  1 筆能量\n\uD83D\uDD38轉賬  {energy_cost_2x} Trx=  2 筆能量\n\uD83D\uDD38閃兌收款地址:<code>{receiveAddress}</code>\n➖➖➖➖點擊複製➖➖➖➖\n重要提示：\n1.單筆 {energy_cost}Trx，以此類推，一次最大 10筆（{energy_cost_10x}TRX，超出不予入賬）\n2.向無U地址轉賬，需要購買兩筆能量\n3.向閃兌地址轉賬成功後能量將即時按充值地址原路完成閃兌\n4.禁止使用交易所錢包提幣使用\n5.能量有效性一小时",
   "welcome_tips": "\uD83D\uDEE1\uFE0FU盾，做您鏈上資產的護盾！\n我們不僅關注低價能量，更專注於交易安全！\n讓每一筆轉賬都更安心，讓每一次鏈上交互都值得信任！\n\uD83E\uDD16 三大實用功能，助您安全、高效地管理鏈上資產\n\uD83D\uDD0B 波場能量閃兌, 節省超過80%!\n\uD83D\uDD75\uFE0F 地址風險檢測, 讓每一筆轉賬都更安心!\n\uD83D\uDEA8 USDT凍結預警,秒級響應，讓您的U永不凍結！\n\uD83C\uDF89新用戶福利：每日一次免費地址風險查詢",
   "address_check_tips": "歡迎使用U盾地址風險檢測\n✅ 支援 TRON 或 ETH 網絡任意地址查詢\n✅ 系統將基於鏈上行為、風險標籤、關聯實體進行評分與分析\n\uD83D\uDCCA 風險等級說明：\n\uD83D\uDFE2低風險(0–30):無異常交易，未關聯已知風險實體\n\uD83D\uDFE1中風險(31–70):存在少量高風險交互，對手方不明\n\uD83D\uDFE0高風險(71–90):頻繁異常轉賬，或與惡意地址有關\n\uD83D\uDD34極高風險(91–100):涉及詐騙、制裁、黑客、洗錢等高風險行為\n\n\uD83D\uDCCC 每位用戶每天可免費檢測 1 次\n\uD83D\uDCCC 超出後每次扣 {address_detection_cost} TRX 或{address_detection_cost_usdt} USDT（系統將優先扣除 TRX）\n\uD83D\uDCB0當前餘額：\n- TRX：{tron_amount}\n- USDT：{amount}\n請輸入要檢測的地址 \uD83D\uDC47",
   "daily_free_limit": "每日免費次數已用完，請充值後再次使用",
@@ -186,7 +186,7 @@
   "catfee_custody_address_energy": "能量",
   "catfee_custody_address_count": "\uD83D\uDD0B託管地址【{custody_address_count}】\n➖➖➖➖➖➖➖➖➖➖",
   "catfee_custody_address_energy_rule": "\n\uD83D\uDD39【轉有U地址】 消耗  65K能量  扣1筆\n\uD83D\uDD39【轉無U地址】 消耗131K能量  扣2筆",
-  "catfee_energy_address_limit_tips": "⚠\uFE0F 您已添加 5 個地址，如需新增，請先刪除舊地址。\uD83D\uDEAB",
+  "catfee_energy_address_limit_tips": "⚠\uFE0F 您已添加 8 個地址，如需新增，請先刪除舊地址。\uD83D\uDEAB",
   "catfee_energy_address_buy_error": "❌抱歉，您的託管筆數已不足，請重新回主頁購買託管套餐",
 
   "yhb_menu": "元紅包",

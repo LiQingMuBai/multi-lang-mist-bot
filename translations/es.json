@@ -183,7 +183,7 @@
   "catfee_custody_address_energy": "Energía",
   "catfee_custody_address_count": "\uD83D\uDD0BDirección bajo custodia 【{custody_address_count}】\n➖➖➖➖➖➖➖➖➖➖",
   "catfee_custody_address_energy_rule": "\n\uD83D\uDD39【Transferencia a dirección con USDT】 Consume 65K de energía, descuenta 1 transacción\n\uD83D\uDD39【Transferencia a dirección sin USDT】 Consume 131K de energía, descuenta 2 transacciones",
-  "catfee_energy_address_limit_tips": "⚠\uFE0F Ya ha agregado 5 direcciones. Para agregar una nueva, primero elimine una dirección antigua.\uD83D\uDEAB",
+  "catfee_energy_address_limit_tips": "⚠\uFE0F Ya ha agregado 8 direcciones. Para agregar una nueva, primero elimine una dirección antigua.\uD83D\uDEAB",
   "catfee_energy_address_buy_error": "❌ Lo sentimos, su cantidad de transacciones bajo custodia es insuficiente. Vuelva a la página principal para comprar un paquete de custodia.",
 
   "yhb_menu": "Paquete Rojo U",
