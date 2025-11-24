@@ -484,7 +484,8 @@ func MenuNavigateHome(_lang string, cache cache.Cache, db *gorm.DB, message *tgb
 		str+"\n\n💰"+
 		global.Translations[_lang]["balance"]+"：\n"+
 		"- TRX："+user.TronAmount+"\n"+
-		"- USDT："+user.Amount+"\n\n"+
+		"- USDT："+user.Amount+"\n"+
+		"- "+global.Translations[_lang]["promotion_income"]+"："+user.PromotionIncome+" USDT"+"\n\n"+
 		global.Translations[_lang]["promotion_link"]+":"+"<code>"+"https://t.me/ushield_bot?start="+strconv.FormatInt(message.Chat.ID, 10)+"</code>",
 	)
 

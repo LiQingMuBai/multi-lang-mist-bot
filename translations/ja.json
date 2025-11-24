@@ -197,6 +197,9 @@
   "ushield_additional_services_energy_financing_desc": "⚡ エネルギープロキシモード\n- 買取価格：44 SUN\n- 年利回り（APY）：15.42％\n- エネルギーとして10,000 TRXステーキング時の日次収益：4.23 TRX\n\n🌐 帯域幅プロキシモード\n- 買取価格：260 SUN\n- APY：15.51％\n- 帯域幅として10,000 TRXステーキング時の日次収益：4.25 TRX\n\n💡 さらに、TRXをステーキングすると追加で3.5％APYの投票報酬がウォレットアプリ内で受け取れます！\n\nこの機能は、すでにTRXをステーキングしてエネルギーを取得済みのユーザーが、エネルギーを自主的に売却するために提供されています。\n推奨ウォレット：TronLink（BoBo）\n\nステーキング手順：\nウォレット内【ステーキング】→【エネルギー】または【帯域幅】を選択\n\n売却手順：\nウォレットで【エネルギー】または【帯域幅】をクリック→【プロキシ】を選択→買取アドレスを入力→送信完了",
   "ushield_additional_services_visa_desc": "💳 匿名クレジットカード\n➖➖➖➖➖➖➖➖➖➖\nクロスボーダー利用に最適！マルチ通貨対応、即時発行、リアルタイム入金、超高速決済、AVS認証対応。\n\n💰 チャージ手数料：3％\n💳 発行手数料：6米ドル\n\n✅ 対応プラットフォーム：Alipay、Facebook、Google、Amazon、GoDaddy、OpenAI、Twitter、Shopify、Starlink、WeChat、Alibaba、AliExpressなど\n\n⚠️ 悪意あるチャージバックは厳禁です。複数回の支払い失敗やチャージバックが発生すると、リスク管理システムが作動し、ペナルティまたはカード停止処分となる場合があります。健全な支払い習慣を心がけてください。サブスクリプション契約がある場合は、必ず該当サイトで解約または連携解除を行ってください！",
   "ushield_additional_services_sns_desc": "LinkedIn、Facebook、Googleアカウントおよび広告出稿サービスを提供し、顧客のクロスボーダー取引を支援。",
-  "ushield_additional_services_ecs_desc": "匿名海外サーバー（ECS）の購入に対応"
+  "ushield_additional_services_ecs_desc": "匿名海外サーバー（ECS）の購入に対応",
+
+
+  "promotion_income":"プロモーション収入"
 
 }

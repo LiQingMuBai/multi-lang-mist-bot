@@ -219,9 +219,8 @@
   "ushield_additional_services_contact": "\n💁客服热线：{ushield_additional_services_contact}",
   "ushield_additional_services_wallet": "\n👛充值钱包：<code>{ushield_additional_services_wallet}</code>",
   "ushield_additional_services_ecs": "\uD83D\uDCE1海外服务器",
-  "ushield_additional_services_ecs_desc": "购买匿名海外服务器ECS"
+  "ushield_additional_services_ecs_desc": "购买匿名海外服务器ECS",
 
-
-
+  "promotion_income":"推广收入"
 }
 

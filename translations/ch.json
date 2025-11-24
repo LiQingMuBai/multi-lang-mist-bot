@@ -198,7 +198,7 @@
   "ushield_additional_services_energy_financing_desc": "⚡ 能量代理模式\n- 收購價：44 SUN\n- 年化收益率（APY）：15.42%\n- 每10,000 TRX質押為能量，每日收益：4.23 TRX\n\n🌐 頻寬代理模式\n- 收購價：260 SUN\n- 年化收益率（APY）：15.51%\n- 每10,000 TRX質押為頻寬，每日收益：4.25 TRX\n\n💡 此外，質押TRX另享3.5% APY投票收益，可於錢包APP內直接領取！\n\n本服務專為已質押TRX獲取能量的用戶設計，方便自助出售能量。\n推薦錢包：波寶 TronLink\n\n質押流程：\n於錢包內進入【質押功能】→ 選擇【能量】或【頻寬】\n\n出售流程：\n於錢包點擊【能量】或【頻寬】→ 選擇【代理】→ 輸入收購地址 → 發送即完成。",
   "ushield_additional_services_visa_desc": "💳 匿名信用卡\n➖➖➖➖➖➖➖➖➖➖\n適用各種跨境場景！支援多幣種交易、開卡即用、實時到賬、極速消費及AVS驗證。\n\n💰 增值手續費：3%\n💳 開卡費：6美元\n\n✅ 適用平台：Alipay、Facebook、Google、Amazon、GoDaddy、OpenAI、Twitter、Shopify、Starlink、WeChat、Alibaba、AliExpress等\n\n⚠️ 嚴禁惡意拒付。如多次交易失敗或拒付，將觸發風控系統，導致罰款或銷卡。請養成良好支付習慣。如有訂閱服務，請務必於網站取消綁定或退訂！",
   "ushield_additional_services_sns_desc": "支援 LinkedIn、Facebook、Google 帳號及廣告投放服務，協助客戶跨境貿易。",
-  "ushield_additional_services_ecs_desc": "可購買匿名海外伺服器（ECS）。"
+  "ushield_additional_services_ecs_desc": "可購買匿名海外伺服器（ECS）。",
 
-
+  "promotion_income":"推廣收入"
 }
