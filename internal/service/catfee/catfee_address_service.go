@@ -43,7 +43,7 @@ func CustodyAddressAdd(_lang string, cache cache.Cache, db *gorm.DB, bot *tgbota
 
 	total, _ := userSmartTransactionAddressesRepo.Count(context.Background(), _chatID)
 
-	if total >= 5 {
+	if total >= 8 {
 		msg := tgbotapi.NewMessage(_chatID, "<b>"+global.Translations[_lang]["catfee_energy_address_limit_tips"]+"</b>"+"\n")
 		inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
 			tgbotapi.NewInlineKeyboardRow(
