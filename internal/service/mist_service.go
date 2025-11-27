@@ -3,8 +3,6 @@ package service
 import (
 	"context"
 	"fmt"
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
-	"gorm.io/gorm"
 	"strings"
 	"ushield_bot/internal/cache"
 	"ushield_bot/internal/domain"
@@ -12,6 +10,9 @@ import (
 	"ushield_bot/internal/handler"
 	"ushield_bot/internal/infrastructure/repositories"
 	. "ushield_bot/internal/infrastructure/tools"
+
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+	"gorm.io/gorm"
 )
 
 func ExtractSlowMistRiskQuery(_lang string, cache cache.Cache, message *tgbotapi.Message, db *gorm.DB, _cookie string, bot *tgbotapi.BotAPI) {
@@ -22,7 +23,7 @@ func ExtractSlowMistRiskQuery(_lang string, cache cache.Cache, message *tgbotapi
 		//	user.Times = 10000
 		//}
 
-		if user.Times == 1 {
+		if user.Times >= 0 {
 			dictRepo := repositories.NewSysDictionariesRepo(db)
 			address_detection_cost_trx, _ := dictRepo.GetDictionaryDetail("address_detection_cost")
 			address_detection_cost_usdt, _ := dictRepo.GetDictionaryDetail("address_detection_cost_usdt")
