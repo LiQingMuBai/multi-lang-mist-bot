@@ -188,6 +188,8 @@
 
 
 
-  "promotion_income":"درآمد تبلیغاتی"
+  "promotion_income":"درآمد تبلیغاتی",
+
+  "address_detection_records": "رکورد کسر مبلغ برای تأیید آدرس"
 
 }

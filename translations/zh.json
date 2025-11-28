@@ -62,6 +62,7 @@
   "trx_deposit_records": "TRX充值记录",
   "usdt_deposit_records": "USDT充值记录",
   "deposit_records": "充值记录",
+  "address_detection_records": "地址检测扣款记录",
   "usdt_freeze_alert_tips": "欢迎使用U盾USDT冻结预警服务\n\uD83D\uDEE1\uFE0F U盾，做您链上资产的护盾！\n地址一旦被链上风控冻，资产将难以追回，损失巨大！\n每天都有数百个 USDT 钱包地址被冻结锁定，风险就在身边！\n✅ 适用于经常收付款 / 被制裁地址感染/与诈骗地址交互\n✅ 支持TRON/ETH网络的USDT 钱包地址\n\uD83D\uDCCC 服务价格（每地址）：\n • {server_trx_price} TRX / 30天 或 {server_usdt_price} USDT / 30天\n\uD83C\uDFAF 服务开启后U盾将24 小时不间断保护您的资产安全。\n⏰ 系统将在冻结前启动预警机制，持续 10 分钟每分钟推送提醒，通知您及时转移资产。\n\uD83D\uDCE9 所有预警信息将通过 Telegram 实时推送",
   "enable_freeze_alert": "开启冻结预警",
   "alert_monitoring_list": "预警监控列表",

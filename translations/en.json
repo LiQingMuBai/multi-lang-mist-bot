@@ -198,6 +198,8 @@
   "ushield_additional_services_sns_desc": "Supports LinkedIn, Facebook, Google accounts, and advertising campaign services to assist clients in cross-border trade.",
   "ushield_additional_services_ecs_desc": "Purchase anonymous overseas servers (ECS).",
 
-  "promotion_income":"Promotion Revenue"
+  "promotion_income":"Promotion Revenue",
+
+  "address_detection_records": "Address verification deduction record"
 
 }

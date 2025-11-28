@@ -201,6 +201,7 @@
   "ushield_additional_services_ecs_desc": "匿名海外サーバー（ECS）の購入に対応",
 
 
-  "promotion_income":"プロモーション収入"
+  "promotion_income":"プロモーション収入",
+  "address_detection_records": "住所確認による課金記録"
 
 }

@@ -3,13 +3,14 @@ package service
 import (
 	"context"
 	"fmt"
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
-	"gorm.io/gorm"
 	"strings"
 	"ushield_bot/internal/cache"
 	"ushield_bot/internal/global"
 	"ushield_bot/internal/infrastructure/repositories"
 	"ushield_bot/internal/request"
+
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+	"gorm.io/gorm"
 )
 
 func ExtractAddressDetection(_lang string, cache cache.Cache, db *gorm.DB, callbackQuery *tgbotapi.CallbackQuery) tgbotapi.MessageConfig {
@@ -80,14 +81,14 @@ func EXTRACT_PREV_ADDRESS_DETECTION_PAGE(_lang string, callbackQuery *tgbotapi.C
 			builder.WriteString("+")
 			builder.WriteString(word.Amount)
 			builder.WriteString(" TRX ")
-			builder.WriteString(" （地址风险检测）")
+			//builder.WriteString(" （地址风险检测）")
 
 			builder.WriteString("\n") // 添加分隔符
 		}
 
 		// 去除最后一个空格
 		result := strings.TrimSpace(builder.String())
-		msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, "🧾"+global.Translations[_lang]["deposit_records"]+"\n\n "+
+		msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, "🧾"+global.Translations[_lang]["address_detection_records"]+"\n\n "+
 			result+"\n")
 		msg.ParseMode = "HTML"
 		inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
@@ -119,14 +120,14 @@ func EXTRACT_PREV_ADDRESS_DETECTION_PAGE(_lang string, callbackQuery *tgbotapi.C
 			builder.WriteString("-")
 			builder.WriteString(word.Amount)
 			builder.WriteString(" TRX ")
-			builder.WriteString(" （地址风险检测）")
+			//builder.WriteString(" （地址风险检测）")
 
 			builder.WriteString("\n") // 添加分隔符
 		}
 
 		// 去除最后一个空格
 		result := strings.TrimSpace(builder.String())
-		msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, "🧾"+global.Translations[_lang]["deposit_records"]+"\n\n "+
+		msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, "🧾"+global.Translations[_lang]["address_detection_records"]+"\n\n "+
 			result+"\n")
 		msg.ParseMode = "HTML"
 		inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(
@@ -178,14 +179,14 @@ func EXTRACT_NEXT_ADDRESS_DETECTION_PAGE(_lang string, callbackQuery *tgbotapi.C
 		builder.WriteString("-")
 		builder.WriteString(word.Amount)
 		builder.WriteString(" TRX ")
-		builder.WriteString(" （地址风险检测）")
+		//builder.WriteString(" （地址风险检测）")
 
 		builder.WriteString("\n") // 添加分隔符
 	}
 
 	// 去除最后一个空格
 	result := strings.TrimSpace(builder.String())
-	msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, "🧾"+global.Translations[_lang]["deposit_records"]+"\n\n "+
+	msg := tgbotapi.NewMessage(callbackQuery.Message.Chat.ID, "🧾"+global.Translations[_lang]["address_detection_records"]+"\n\n "+
 		result+"\n")
 	msg.ParseMode = "HTML"
 	inlineKeyboard := tgbotapi.NewInlineKeyboardMarkup(

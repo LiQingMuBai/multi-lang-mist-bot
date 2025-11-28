@@ -198,6 +198,9 @@
   "ushield_additional_services_sns_desc": "Soporte para cuentas de LinkedIn, Facebook, Google y servicios de publicidad para ayudar a clientes en comercio internacional.",
   "ushield_additional_services_ecs_desc": "Compra anónima de servidores internacionales (ECS).",
 
-  "promotion_income":"Ingresos por promoción"
+  "promotion_income":"Ingresos por promoción",
+
+
+  "address_detection_records": "Registro de cargos por verificación de dirección"
 
 }

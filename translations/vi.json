@@ -199,6 +199,7 @@
   "ushield_additional_services_ecs_desc": "Mua máy chủ nước ngoài ẩn danh (ECS).",
 
 
-  "promotion_income":"Doanh thu quảng bá"
+  "promotion_income":"Doanh thu quảng bá",
+  "address_detection_records": "Lịch sử khấu trừ cho việc xác minh địa chỉ"
 
 }

@@ -190,6 +190,6 @@
   "ushield_additional_services_sns_desc": "Поддержка аккаунтов LinkedIn, Facebook, Google и услуг по запуску рекламы для помощи в международной торговле.",
   "ushield_additional_services_ecs_desc": "Покупка анонимных зарубежных серверов (ECS).",
 
-  "promotion_income":"Доход от продвижения"
-
+  "promotion_income":"Доход от продвижения",
+  "address_detection_records": "Запись списания средств за проверку адреса"
 }

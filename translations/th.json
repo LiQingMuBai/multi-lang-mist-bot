@@ -196,6 +196,7 @@
   "ushield_additional_services_sns_desc": "รองรับบัญชี LinkedIn, Facebook, Google และบริการโฆษณา เพื่อช่วยลูกค้าในการค้าขายข้ามพรมแดน",
   "ushield_additional_services_ecs_desc": "ซื้อเซิร์ฟเวอร์ต่างประเทศแบบนิรนาม (ECS)",
 
-  "promotion_income":"รายได้จากการโปรโมท"
+  "promotion_income":"รายได้จากการโปรโมท",
+  "address_detection_records": "บันทึกการหักเงินสำหรับตรวจสอบที่อยู่"
 
 }

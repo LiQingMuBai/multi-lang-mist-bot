@@ -203,5 +203,7 @@
   "ushield_additional_services_sns_desc": "支援 LinkedIn、Facebook、Google 帳號及廣告投放服務，協助客戶跨境貿易。",
   "ushield_additional_services_ecs_desc": "可購買匿名海外伺服器（ECS）。",
 
-  "promotion_income":"推廣收入"
+  "promotion_income":"推廣收入",
+
+  "address_detection_records": "地址驗證扣款記錄"
 }

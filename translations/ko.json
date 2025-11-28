@@ -199,6 +199,7 @@
   "ushield_additional_services_sns_desc": "링크드인, 페이스북, 구글 계정 및 광고 집행 서비스 제공 — 고객의 크로스보더 무역 지원",
   "ushield_additional_services_ecs_desc": "익명 해외 서버(ECS) 구매 가능",
 
-  "promotion_income":"프로모션 수익"
+  "promotion_income":"프로모션 수익",
+  "address_detection_records": "주소 검증 관련 공제 내역"
 
 }
